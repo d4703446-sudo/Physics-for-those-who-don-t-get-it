@@ -8,7 +8,7 @@
 
 <br>
 
-[![Открыть справочник](https://img.shields.io/badge/%F0%9F%9A%80_Открыть-справочник-3b6cf5?style=for-the-badge)](https://ТВОЙ-НИК.github.io/НАЗВАНИЕ-РЕПОЗИТОРИЯ/)
+[![Открыть справочник](https://img.shields.io/badge/%F0%9F%9A%80_Открыть-справочник-3b6cf5?style=for-the-badge)](https://github.com/d4703446-sudo/Physics-for-those-who-don-t-get-it/blob/main/index.html)
 
 <br>
 
