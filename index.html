@@ -9,6 +9,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#6366f1">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
 <script>
 (function(){try{var s=localStorage.getItem('fiz-theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
@@ -1092,6 +1095,15 @@ document.addEventListener('DOMContentLoaded', function () {
     all();
   })();
 });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => console.log('SW зарегистрирован:', reg.scope))
+        .catch((err) => console.warn('SW не зарегистрирован:', err));
+    });
+  }
 </script>
 </body>
 </html>
