@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Справочник формул по физике для 7–11 классов: механика, термодинамика, электричество, оптика, квантовая физика, СТО, астрономия. С выводами, примерами, калькуляторами и таблицами.">
+<title>Физика 7–11 · Справочник формул (24 раздела)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script>
+(function(){try{var s=localStorage.getItem('fiz-theme');var t=(s==='dark'||s==='light')?s:((window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
+</script>
+<style>
+:root{--bg:#f5f7fb;--surface:#fff;--surface-2:#eef2f8;--text:#0b1020;--muted:#64748b;--border:#e4e9f1;--border-strong:#d3dae5;
+--c-mech:222 82% 55%;--c-osc:280 70% 58%;--c-therm:22 92% 52%;--c-elec:155 68% 38%;--c-mag:268 72% 58%;--c-opt:338 82% 56%;--c-quant:195 90% 42%;
+--c-astro:200 85% 45%;--c-em:300 75% 55%;--c-stat:170 70% 40%;--c-fluid:190 75% 42%;--c-bohr:350 80% 55%;--c-tab:215 25% 42%;--c-lab:25 90% 50%;--c-nuc:100 55% 38%;
+--shadow-sm:0 1px 2px rgba(15,23,42,.05);--shadow-md:0 6px 18px -6px rgba(15,23,42,.10);--shadow-lg:0 30px 60px -20px rgba(15,23,42,.20);}
+[data-theme="dark"]{--bg:#070a14;--surface:#0f1524;--surface-2:#161d30;--text:#eef2f9;--muted:#93a1b8;--border:#1d2537;--border-strong:#2a3349;--shadow-sm:0 1px 2px rgba(0,0,0,.4);--shadow-md:0 6px 18px -6px rgba(0,0,0,.6);--shadow-lg:0 30px 60px -20px rgba(0,0,0,.7);}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+::selection{background:hsl(var(--c-mech)/.25)}a{color:inherit;text-decoration:none}code{font-family:'JetBrains Mono',ui-monospace,monospace}
+button{font-family:inherit}
+:focus-visible{outline:2px solid hsl(var(--c-mech));outline-offset:2px;border-radius:6px}
+.hero{position:relative;overflow:hidden;padding:56px 24px 36px;text-align:center;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 20% 0%,hsl(var(--c-mech)/.18),transparent 65%),radial-gradient(55% 55% at 85% 20%,hsl(var(--c-opt)/.16),transparent 65%),radial-gradient(60% 60% at 50% 100%,hsl(var(--c-astro)/.14),transparent 65%);z-index:-1}
+.hero-inner{max-width:820px;margin:0 auto}
+.eyebrow{display:inline-block;padding:6px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:13px;font-weight:600;color:var(--muted);box-shadow:var(--shadow-sm);margin-bottom:16px}
+.hero h1{font-size:clamp(26px,4.2vw,42px);line-height:1.08;letter-spacing:-0.03em;font-weight:800;margin:0 0 12px}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,hsl(var(--c-mech)),hsl(var(--c-osc)) 30%,hsl(var(--c-astro)) 60%,hsl(var(--c-bohr)) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{font-size:clamp(13px,1.3vw,15px);color:var(--muted);max-width:660px;margin:0 auto}
+
+.topbar{position:sticky;top:0;z-index:50;background:var(--bg);background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--border)}
+.topbar-inner{max-width:1120px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.search{flex:1 1 220px;min-width:150px;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:500 14px 'Inter',sans-serif;outline:none;transition:border-color .2s}
+.search:focus{border-color:hsl(var(--c-mech));box-shadow:0 0 0 3px hsl(var(--c-mech)/.15)}
+.search::placeholder{color:var(--muted)}
+.icon-btn,.sel{padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:600 13px 'Inter',sans-serif;cursor:pointer;transition:background .2s,transform .15s,border-color .2s;white-space:nowrap}
+.icon-btn:hover,.sel:hover{background:var(--surface-2)}.icon-btn:active{transform:scale(.96)}
+.icon-btn.on{background:hsl(var(--c-mech)/.14);border-color:hsl(var(--c-mech)/.5);color:hsl(var(--c-mech))}
+.filters{max-width:1120px;margin:0 auto;padding:0 16px 10px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters .lbl{font-size:12px;color:var(--muted);font-weight:600;margin-right:2px}
+.chip{padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface);color:var(--text);font:600 12px 'Inter',sans-serif;cursor:pointer;transition:all .15s}
+.chip:hover{background:var(--surface-2)}
+.chip.on{background:hsl(var(--c-mech));border-color:hsl(var(--c-mech));color:#fff}
+.sep{width:1px;height:20px;background:var(--border-strong);margin:0 6px}
+
+main{max-width:1120px;margin:0 auto;padding:24px 16px 80px}
+.toc{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:0 0 32px}
+.toc a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-sm);transition:transform .15s,box-shadow .2s,border-color .2s}
+.toc a:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:hsl(var(--c)/.5)}
+.toc .tn{flex-shrink:0;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;font:700 11px 'JetBrains Mono',monospace;color:hsl(var(--c));background:hsl(var(--c)/.12)}
+.toc .tt{font-size:12.5px;font-weight:600;line-height:1.25;flex:1}
+.toc .tc{font-size:11px;color:var(--muted);font-weight:600}
+.result-info{text-align:center;color:var(--muted);font-size:14px;margin-bottom:20px;display:none}.result-info.show{display:block}
+.section{margin-bottom:40px;scroll-margin-top:120px}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.section-num{flex-shrink:0;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;color:hsl(var(--c));background:hsl(var(--c)/.12);border:1px solid hsl(var(--c)/.3)}
+.section-head h2{margin:0 0 2px;font-size:clamp(17px,2vw,22px);letter-spacing:-0.02em;font-weight:700}
+.section-head p{margin:0;font-size:12px;color:var(--muted)}
+.tree{position:relative;padding-left:18px}
+.tree::before{content:"";position:absolute;left:6px;top:10px;bottom:10px;width:2px;background:linear-gradient(to bottom,hsl(var(--c)/.4),hsl(var(--c)/.05));border-radius:2px}
+.node{position:relative;margin-bottom:8px}
+.node::before{content:"";position:absolute;left:-12px;top:22px;width:10px;height:2px;background:hsl(var(--c)/.4);border-radius:1px}
+.fcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow-sm);overflow:hidden;transition:box-shadow .2s,border-color .3s,opacity .2s;scroll-margin-top:130px}
+.fcard:hover{box-shadow:var(--shadow-md)}
+.fcard.ctx{opacity:.55}
+.fcard.flash{border-color:hsl(var(--c));box-shadow:0 0 0 3px hsl(var(--c)/.25)}
+.fbar{display:flex;align-items:stretch}
+.fhead{display:flex;align-items:center;gap:12px;flex:1;min-width:0;padding:12px 8px 12px 16px;background:transparent;border:none;color:inherit;cursor:pointer;text-align:left;font:inherit}
+.fhead:hover{background:var(--surface-2)}
+.ftitle{font-weight:600;font-size:13.5px;flex:1;min-width:0}
+.ftitle mark{background:hsl(var(--c)/.25);color:inherit;border-radius:3px;padding:0 1px}
+.tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;font-size:10px;font-weight:700;color:var(--muted);background:var(--surface-2);border:1px solid var(--border);vertical-align:1px;white-space:nowrap}
+.tag.adv{color:hsl(var(--c-bohr));border-color:hsl(var(--c-bohr)/.35);background:hsl(var(--c-bohr)/.08)}
+.fformula{font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12.5px;color:hsl(var(--c));padding:3px 9px;background:hsl(var(--c)/.09);border-radius:6px;flex-shrink:0;max-width:52%;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none}
+.fformula::-webkit-scrollbar{display:none}
+.fformula .katex{font-size:1.05em}
+.fformula:empty{display:none}
+.chev{color:var(--muted);font-size:11px;transition:transform .25s;flex-shrink:0}
+.fcard.open .chev{transform:rotate(180deg)}
+.mini{width:36px;flex-shrink:0;background:transparent;border:none;border-left:1px solid var(--border);color:var(--muted);cursor:pointer;font-size:14px;transition:background .15s,color .15s}
+.mini:hover{background:var(--surface-2);color:var(--text)}
+.mini.star.on{color:#f5a524}
+.train .fcard:not(.open) .fhead .fformula{filter:blur(7px);user-select:none}
+.fbody{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;background:linear-gradient(to bottom,var(--surface),var(--surface-2))}
+.fcard.open .fbody{grid-template-rows:1fr}
+.fbody>.inner{overflow:hidden;min-height:0}
+.frow{display:flex;gap:12px;padding:10px 18px;border-top:1px dashed var(--border);font-size:13px;line-height:1.6}
+.fbody .inner>.frow:first-child{border-top:1px solid var(--border)}
+.flabel{font-size:14px;flex-shrink:0;line-height:1.5;opacity:.85}
+.frow b{color:var(--text);font-weight:600}
+.frow.example{background:hsl(var(--c)/.06)}.frow.example b{color:hsl(var(--c))}
+.frow.warn{background:hsl(var(--c-bohr)/.06)}
+.frow.sym{color:var(--muted)}
+.frow.deriv{background:hsl(var(--c)/.04);font-family:'JetBrains Mono',monospace;font-size:12px}
+.frow.deriv .arrow{color:hsl(var(--c));font-weight:700;margin-right:6px}
+.subtree{margin:4px 0 8px 24px;padding-left:12px;border-left:2px dashed hsl(var(--c)/.25)}
+.subtree .fcard{background:color-mix(in srgb,var(--surface) 92%,hsl(var(--c)/.06));border-color:hsl(var(--c)/.2)}
+.subtree .fhead{padding:10px 8px 10px 14px}.subtree .fformula{font-size:12px}
+.calc{margin:0;padding:12px 18px 14px;border-top:1px dashed var(--border);background:hsl(var(--c)/.04)}
+.calc .ctitle{font-size:12px;font-weight:700;color:hsl(var(--c));margin-bottom:8px}
+.cgrid{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.cgrid label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:var(--muted);font-weight:600}
+.cgrid input{width:110px;padding:7px 9px;border-radius:8px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);font:600 13px 'JetBrains Mono',monospace;outline:none}
+.cgrid input:focus{border-color:hsl(var(--c));box-shadow:0 0 0 3px hsl(var(--c)/.15)}
+.cout{padding:7px 12px;border-radius:8px;background:hsl(var(--c)/.12);color:hsl(var(--c));font:700 13.5px 'JetBrains Mono',monospace}
+.tblwrap{padding:6px 18px 14px;overflow-x:auto}
+table.tb{border-collapse:collapse;width:100%;font-size:12.5px}
+table.tb th,table.tb td{padding:6px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+table.tb th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:hsl(var(--c));background:hsl(var(--c)/.07)}
+table.tb tr:hover td{background:hsl(var(--c)/.04)}
+.labgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:14px}
+.labcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-sm)}
+.labcard h3{margin:0 0 8px;font-size:15px}
+.labcard canvas{width:100%;height:auto;border-radius:10px;background:var(--surface-2);border:1px solid var(--border);display:block}
+.ctrls{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.ctrls label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);font-weight:600;min-width:130px;flex:1}
+.ctrls b{color:var(--text)}
+.ctrls input[type=range]{width:100%;accent-color:hsl(var(--c-lab))}
+.ctrls select{padding:6px 8px;border-radius:8px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);font:600 12px 'Inter',sans-serif}
+.labcard .out{margin:10px 0 0;font:600 12.5px 'JetBrains Mono',monospace;color:hsl(var(--c-lab))}
+noscript{display:block;text-align:center;padding:40px;color:var(--muted)}
+footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}footer b{color:var(--text)}
+.totop{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--text);color:var(--bg);border:none;cursor:pointer;box-shadow:var(--shadow-lg);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;font-size:18px;z-index:60}
+.totop.show{opacity:1;pointer-events:auto}.totop:hover{transform:translateY(-3px)}
+@media print{:root{--bg:#fff;--surface:#fff;--surface-2:#f5f5f5;--text:#000;--muted:#555;--border:#ccc;--border-strong:#bbb}
+.topbar,.filters,.toc,.totop,.hero::before,.mini,.calc,#lab,.chev,.result-info,.tag{display:none!important}
+.hero{padding:12px 0}.hero h1{font-size:20px}.section{margin-bottom:14px}
+.fcard{box-shadow:none;break-inside:avoid;margin-bottom:5px}.fcard .fbody{grid-template-rows:1fr!important}.fbody>.inner{overflow:visible}
+.fhead{cursor:default}.train .fcard .fhead .fformula{filter:none!important}.frow{font-size:10.5px;padding:5px 10px}.fformula{font-size:10.5px;max-width:none;overflow:visible}main{padding:10px}}
+@media(max-width:640px){.hero{padding:36px 14px 24px}main{padding:16px 8px 60px}.fhead{padding:10px 6px 10px 10px;gap:6px;flex-wrap:wrap}.ftitle{font-size:12px;flex-basis:100%}.fformula{font-size:11.5px;order:-1;max-width:88%}.frow{padding:8px 10px;font-size:12px;gap:6px}.flabel{font-size:12px}.subtree{margin-left:8px;padding-left:6px}.calc{padding:10px}.tblwrap{padding:6px 8px 12px}.mini{width:32px}.toc{grid-template-columns:1fr 1fr}.sep{display:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow" id="eyebrow">🌳 Полный справочник · 7–11 класс</div>
+    <h1>Все формулы физики — <em>с выводом, примерами и калькуляторами</em></h1>
+    <p class="lede">Механика, колебания, термодинамика, электричество, магнетизм, оптика, квантовая и ядерная физика, СТО, астрономия, ЭМВ, статистическая физика, механика сплошных сред и теория Бора. Обозначения, единицы, типичные ошибки, таблицы констант и интерактивная лаборатория.</p>
+  </div>
+</header>
+
+<nav class="topbar" aria-label="Панель инструментов">
+  <div class="topbar-inner">
+    <input class="search" id="search" type="search" placeholder="🔍 Поиск: скорость, Ом, фотон, Кеплер...  (нажми /)" aria-label="Поиск по формулам" autocomplete="off">
+    <select class="sel" id="jump" aria-label="Перейти к разделу"><option value="">📑 Разделы…</option></select>
+    <button class="icon-btn" type="button" id="favOnly" aria-pressed="false">⭐ Избранное <span id="favCount">0</span></button>
+    <button class="icon-btn" type="button" id="trainBtn" aria-pressed="false" title="Формулы размыты — вспомни сам, потом открой карточку">🎓 Тренировка</button>
+    <button class="icon-btn" type="button" id="toggleExpand">📖 Развернуть всё</button>
+    <button class="icon-btn" type="button" id="printBtn" title="Печать или сохранение в PDF (Ctrl+P). С включённым «Избранным» получится шпаргалка.">🖨 PDF</button>
+    <button class="icon-btn" type="button" id="themeToggle" aria-label="Сменить тему">🌙</button>
+  </div>
+  <div class="filters" id="filters">
+    <span class="lbl">Класс:</span>
+    <button class="chip on" type="button" data-g="0">Все</button>
+    <button class="chip" type="button" data-g="7">7</button>
+    <button class="chip" type="button" data-g="8">8</button>
+    <button class="chip" type="button" data-g="9">9</button>
+    <button class="chip" type="button" data-g="10">10</button>
+    <button class="chip" type="button" data-g="11">11</button>
+    <span class="sep"></span>
+    <span class="lbl">Уровень:</span>
+    <button class="chip on" type="button" data-l="all">Все</button>
+    <button class="chip" type="button" data-l="base">Базовый</button>
+    <button class="chip" type="button" data-l="adv">Углублённый</button>
+  </div>
+</nav>
+
+<main id="main">
+  <nav class="toc" id="toc" aria-label="Оглавление"></nav>
+  <div class="result-info" id="resultInfo" role="status"></div>
+  <noscript>Для работы справочника нужен включённый JavaScript.</noscript>
+</main>
+
+<template id="labTpl">
+<div class="labgrid">
+  <div class="labcard">
+    <h3>🎯 Бросок под углом</h3>
+    <canvas id="cvProj" width="640" height="300" aria-label="Траектория броска"></canvas>
+    <div class="ctrls">
+      <label>v₀ = <b id="vv0">20</b> м/с<input id="rv0" type="range" min="1" max="40" step="1" value="20"></label>
+      <label>α = <b id="vAl">45</b>°<input id="rAl" type="range" min="1" max="89" step="1" value="45"></label>
+      <label>Где бросаем<select id="sG"><option value="9.8">Земля (g = 9,8)</option><option value="1.62">Луна (g = 1,62)</option><option value="3.71">Марс (g = 3,71)</option></select></label>
+    </div>
+    <p class="out" id="oProj"></p>
+  </div>
+  <div class="labcard">
+    <h3>🌡 Распределение Максвелла</h3>
+    <canvas id="cvMax" width="640" height="300" aria-label="Распределение молекул по скоростям"></canvas>
+    <div class="ctrls">
+      <label>T = <b id="vT">300</b> K<input id="rT" type="range" min="100" max="1000" step="10" value="300"></label>
+      <label>Газ<select id="sM"><option value="0.002">H₂</option><option value="0.004">He</option><option value="0.028" selected>N₂</option><option value="0.032">O₂</option><option value="0.044">CO₂</option></select></label>
+    </div>
+    <p class="out" id="oMax"></p>
+  </div>
+  <div class="labcard">
+    <h3>🔍 Тонкая собирающая линза</h3>
+    <canvas id="cvLens" width="700" height="300" aria-label="Ход лучей в линзе"></canvas>
+    <div class="ctrls">
+      <label>F = <b id="vF">12</b> см<input id="rF" type="range" min="5" max="30" step="1" value="12"></label>
+      <label>d = <b id="vD">30</b> см<input id="rD" type="range" min="3" max="60" step="1" value="30"></label>
+    </div>
+    <p class="out" id="oLens"></p>
+  </div>
+</div>
+</template>
+
+<footer>
+<b id="footTitle">Справочник формул</b><br>
+Кликни на карточку, чтобы увидеть объяснение, обозначения, пример и ошибки. ⭐ — в избранное, 🔗 — ссылка на формулу. Шпаргалка: включи «Избранное» и нажми «PDF» (Ctrl+P).<br>
+В калькуляторах g = 9,8 м/с² (в задачах обычно берут 10).
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Наверх">↑</button>
+
+<!-- ===================== ДАННЫЕ ===================== -->
+<script>
+const T = String.raw;
+/* Поля карточки: t — название, f — формула (TeX), c — классы ('7-9'), a — углублённый,
+   s — по-простому, sym — обозначения и единицы, e — пример, err — типичная ошибка, d — вывод,
+   k/o — калькулятор, tbl — таблица, w — ключевые слова для поиска, kids — вложенные формулы */
+const SECTIONS = [
+
+/* ============ 01 КИНЕМАТИКА ============ */
+{id:'kinematics',n:'Кинематика',sub:'Равномерное и равноускоренное движение · Бросок · Окружность',col:'mech',cards:[
+ {t:'Равномерное движение',f:T`v=\dfrac{S}{t}`,c:'7-9',s:'Скорость — это путь за единицу времени. 2 км за 30 мин — это 4 км/ч.',sym:'v — скорость (м/с, км/ч); S — путь (м, км); t — время (с, ч)',e:'120 км за 2 ч → **60 км/ч**.',err:'Нельзя смешивать единицы: 36 км/ч = 10 м/с (км/ч делим на 3,6).',k:[['S','S, км',120],['t','t, ч',2]],o:['v, км/ч','S/t'],
+  kids:[
+   {t:'Путь и время',f:T`S=vt,\quad t=\dfrac{S}{v}`,d:'v = S/t  ⇒  S = v·t,  t = S/v'},
+   {t:'Закон равномерного движения',f:T`x=x_0+vt`,c:'9-10',s:'Координата тела в момент t. Если тело едет против оси, скорость берут со знаком «−».',sym:'x₀ — начальная координата (м); v — проекция скорости на ось (м/с); t — время (с)',e:'x₀ = 5 м, v = −2 м/с, t = 3 с → x = **−1 м**.'}
+  ]},
+ {t:'Средняя скорость',f:T`v_{\text{ср}}=\dfrac{S_{\text{общ}}}{t_{\text{общ}}}`,c:'7-9',s:'Весь путь делим на всё время. Это не среднее арифметическое скоростей!',sym:'S_общ — весь путь (м); t_общ — всё время (с)',e:'60 км со скоростью 30 км/ч и ещё 60 км со скоростью 60 км/ч: t = 2 + 1 = 3 ч, v_ср = 120/3 = **40 км/ч** (а не 45).',err:'Считать (v₁+v₂)/2. Так можно только если участки равны по времени, а не по пути.',k:[['S1','S₁, км',60],['v1','v₁, км/ч',30],['S2','S₂, км',60],['v2','v₂, км/ч',60]],o:['v_ср, км/ч','(S1+S2)/(S1/v1+S2/v2)']},
+ {t:'Относительность движения',f:T`\vec v=\vec v_1+\vec v_2`,c:'9-10',s:'Скорости складываются как векторы: катер по течению плывёт быстрее, против — медленнее.',sym:'v₁ — скорость тела относительно среды (м/с); v₂ — скорость среды относительно берега (м/с)',e:'Катер 5 м/с, течение 2 м/с: по течению **7 м/с**, против — **3 м/с**.',err:'Закон сложения Галилея верен при v ≪ c. Для скоростей, близких к c, — раздел «СТО».'},
+ {t:'Графики движения',f:T`v=\dfrac{\Delta x}{\Delta t},\quad S=\int v\,dt`,c:'8-10',s:'На графике x(t) наклон линии — скорость. На графике v(t) наклон — ускорение, а площадь под линией — пройденный путь.',e:'v = 4 м/с в течение 5 с: площадь прямоугольника 4·5 = **20 м**.',err:'Горизонтальная линия на x(t) — тело стоит, а на v(t) — едет равномерно.',w:'график наклон площадь'},
+ {t:'Ускорение',f:T`a=\dfrac{v-v_0}{t}`,c:'9-10',s:'Показывает, как быстро меняется скорость.',sym:'a — ускорение (м/с²); v₀, v — начальная и конечная скорости (м/с); t — время (с)',e:'Разгон 0 → 20 м/с за 4 с → **5 м/с²**.',err:'Знак ускорения зависит от выбора оси. При торможении a направлено против скорости.',k:[['v0','v₀, м/с',0],['v','v, м/с',20],['t','t, с',4]],o:['a, м/с²','(v-v0)/t'],
+  kids:[
+   {t:'Скорость при разгоне',f:T`v=v_0+at`,d:'a = (v−v₀)/t  ⇒  v = v₀ + at'},
+   {t:'Путь при разгоне',f:T`S=v_0t+\dfrac{at^2}{2}`,d:'S = (v₀+v)/2 · t, v = v₀+at  ⇒  S = v₀t + at²/2',k:[['v0','v₀, м/с',0],['a','a, м/с²',2],['t','t, с',5]],o:['S, м','v0*t+a*t*t/2']},
+   {t:'Координата при ускоренном движении',f:T`x=x_0+v_0t+\dfrac{at^2}{2}`,c:'9-10',d:'S = x − x₀ = v₀t + at²/2'},
+   {t:'Путь без времени',f:T`S=\dfrac{v^2-v_0^2}{2a}`,d:'Из v = v₀+at выразили t и подставили в S = (v₀+v)/2·t'},
+   {t:'Торможение до остановки',f:T`S=\dfrac{v_0^2}{2a},\quad t=\dfrac{v_0}{a}`,c:'9-10',s:'Тормозной путь растёт как квадрат скорости: скорость вдвое больше — путь в 4 раза длиннее.',e:'v₀ = 20 м/с, a = 5 м/с² → S = **40 м**, t = **4 с**.',err:'Думать, что при скорости вдвое больше тормозной путь тоже вдвое длиннее.'},
+   {t:'Путь за n-ю секунду',f:T`S_n=v_0+\dfrac{a(2n-1)}{2}`,a:1,s:'Разность путей за n и за n−1 секунд.',e:'v₀ = 0, a = 2 м/с², n = 3 → **5 м**.'}
+  ]},
+ {t:'Свободное падение',f:T`h=\dfrac{gt^2}{2},\; v=gt,\; v^2=2gh`,c:'9-10',s:'Частный случай равноускоренного движения с a = g ≈ 9,8 м/с² (в задачах — 10).',sym:'g — ускорение свободного падения (м/с²); h — высота (м); t — время (с)',e:'Падение 3 с → v = **30 м/с**, h = **45 м** (g = 10).',err:'Без сопротивления воздуха все тела падают одинаково — и тяжёлые, и лёгкие.',k:[['t','t, с',3]],o:['h, м (g=9,8)','g*t*t/2'],
+  kids:[
+   {t:'Бросок вертикально вверх',f:T`h_{\max}=\dfrac{v_0^2}{2g},\; t_{\text{подъёма}}=\dfrac{v_0}{g}`,c:'9-10',s:'На самой высокой точке скорость равна нулю. Время подъёма равно времени падения.',e:'v₀ = 20 м/с → h_max = **20 м**, подъём 2 с, весь полёт 4 с (g = 10).',err:'В верхней точке v = 0, но ускорение остаётся равным g.'},
+   {t:'Бросок горизонтально',f:T`t=\sqrt{\dfrac{2h}{g}},\; L=v_0t`,c:'9-10',s:'По горизонтали — равномерное движение, по вертикали — свободное падение. Движения не мешают друг другу.',e:'h = 45 м, v₀ = 10 м/с → t = **3 с**, L = **30 м**.'}
+  ]},
+ {t:'Бросок под углом к горизонту',f:T`L=\dfrac{v_0^2\sin2\alpha}{g},\; H=\dfrac{v_0^2\sin^2\alpha}{2g}`,c:'9-11',s:'Дальность и высота. Максимальная дальность — при 45°. Углы α и 90°−α дают одинаковую дальность.',sym:'v₀ — начальная скорость (м/с); α — угол к горизонту; L — дальность (м); H — наибольшая высота (м)',e:'v₀ = 20 м/с, α = 45° → L = **40 м** (g = 10).',err:'Время полёта T = 2v₀sinα/g, а не L/v₀ с неправильным углом.',k:[['v0','v₀, м/с',20],['al','α, °',45]],o:['L, м (g=9,8)','v0*v0*Math.sin(2*al*Math.PI/180)/g'],w:'траектория дальность полёта снаряд'},
+ {t:'Движение по окружности',f:T`v=\omega R=\dfrac{2\pi R}{T},\; a_{\text{ц}}=\dfrac{v^2}{R}`,c:'9-11',s:'На повороте «вжимает в сиденье» — это центростремительное ускорение, направленное к центру.',sym:'ω — угловая скорость (рад/с); R — радиус (м); T — период (с); a_ц — центростремительное ускорение (м/с²)',e:'v = 10 м/с, R = 50 м → a = **2 м/с²**.',err:'Равномерное движение по окружности — это движение с ускорением, ведь направление скорости меняется.',k:[['v','v, м/с',10],['R','R, м',50]],o:['a, м/с²','v*v/R'],
+  kids:[
+   {t:'Период и частота',f:T`T=\dfrac{1}{\nu},\quad \nu=\dfrac{1}{T}`,c:'9-11',sym:'T — период (с); ν — частота (Гц = 1/с)',d:'По определению: T — время одного оборота, ν — число оборотов за 1 с'},
+   {t:'Циклическая частота',f:T`\omega=\dfrac{2\pi}{T}=2\pi\nu`,c:'10-11',sym:'ω — циклическая частота (рад/с)',d:'Полный оборот = 2π радиан  ⇒  ω = 2π/T = 2πν'}
+  ]}
+]},
+
+/* ============ 02 ДИНАМИКА ============ */
+{id:'dynamics',n:'Динамика',sub:'Законы Ньютона · Силы · Тяготение',col:'mech',cards:[
+ {t:'Первый закон Ньютона',f:T`\sum\vec F=0\;\Rightarrow\;\vec v=\mathrm{const}`,c:'7-9',s:'Если силы уравновешены, тело стоит или движется равномерно и прямолинейно. Закон инерции.',err:'Для движения с постоянной скоростью сила не нужна. Сила нужна только для изменения скорости.'},
+ {t:'Второй закон Ньютона',f:T`\vec F=m\vec a`,c:'8-11',s:'Чем больше сила — тем больше разгон. Чем больше масса — тем меньше разгон.',sym:'F — равнодействующая сила (Н); m — масса (кг); a — ускорение (м/с²)',e:'10 кг, 20 Н → **2 м/с²**.',err:'В F = ma стоит равнодействующая всех сил, а не одна из них.',k:[['F','F, Н',20],['m','m, кг',10]],o:['a, м/с²','F/m'],
+  kids:[
+   {t:'Импульсная форма',f:T`\vec F=\dfrac{\Delta\vec p}{\Delta t}`,c:'9-11',s:'Сила — это скорость изменения импульса. Так Ньютон записывал свой закон.'},
+   {t:'Сила тяжести',f:T`F_{\text{тяж}}=mg`,c:'7-9',s:'Действует на тело всегда, приложена к телу, направлена вниз.',e:'m = 5 кг → **≈ 50 Н**.',k:[['m','m, кг',5]],o:['F, Н (g=9,8)','m*g']},
+   {t:'Вес тела',f:T`P=mg`,c:'7-9',s:'Вес — это сила, с которой тело давит на опору или тянет подвес. Формула верна для покоя или равномерного движения.',err:'Вес и масса — разные величины: масса в кг, вес в Н; вес приложен к опоре, а не к телу.'},
+   {t:'Вес в лифте',f:T`P=m(g\pm a)`,c:'9-10',s:'Ускорение вверх — «+», перегрузка. Ускорение вниз — «−». При a = g — невесомость.',e:'m = 70 кг, a = 2 м/с² вверх → P = 70·(9,8+2) ≈ **826 Н**.'}
+  ]},
+ {t:'Третий закон Ньютона',f:T`\vec F_{12}=-\vec F_{21}`,c:'7-9',s:'Бьёшь в стену — стена «бьёт» в ответ с той же силой.',err:'Эти две силы приложены к разным телам, поэтому не уравновешивают друг друга.'},
+ {t:'Закон Гука',f:T`F_{\text{упр}}=k\,\Delta l`,c:'7-9',s:'Чем сильнее растянули пружину, тем сильнее она тянет назад.',sym:'k — жёсткость (Н/м); Δl — удлинение (м)',e:'k = 100 Н/м, Δl = 0,1 м → **10 Н**.',err:'Δl — это удлинение, а не длина пружины. Закон работает только для малых деформаций.',k:[['k','k, Н/м',100],['dl','Δl, м',0.1]],o:['F, Н','k*dl'],
+  kids:[
+   {t:'Соединения пружин',f:T`k_{\parallel}=k_1+k_2,\quad \dfrac1{k_{\text{посл}}}=\dfrac1{k_1}+\dfrac1{k_2}`,c:'9-10',s:'Параллельно — жёстче, последовательно — мягче.',e:'k₁=k₂=100 Н/м: параллельно **200**, последовательно **50 Н/м**.'}
+  ]},
+ {t:'Сила трения',f:T`F_{\text{тр}}=\mu N`,c:'7-9',s:'На льду μ маленький, на асфальте — большой.',sym:'μ — коэффициент трения (безразмерный); N — сила реакции опоры (Н)',e:'N = 500 Н, μ = 0,2 → **100 Н**.',err:'N — не всегда mg: на наклонной плоскости N = mg·cosα. Трение покоя может быть меньше μN.',k:[['mu','μ',0.2],['N','N, Н',500]],o:['Fтр, Н','mu*N'],
+  kids:[
+   {t:'Наклонная плоскость',f:T`a=g(\sin\alpha-\mu\cos\alpha)`,c:'9-10',s:'Вдоль плоскости — mg·sinα вниз и μmg·cosα трение. Масса сокращается.',e:'α = 30°, μ = 0,2, g = 10 → a ≈ **3,3 м/с²**.',err:'Если μ ≥ tgα, тело само не соскользнёт.',k:[['al','α, °',30],['mu','μ',0.2]],o:['a, м/с²','g*(Math.sin(al*Math.PI/180)-mu*Math.cos(al*Math.PI/180))']}
+  ]},
+ {t:'Две массы на блоке (Атвуд)',f:T`a=\dfrac{(m_2-m_1)g}{m_1+m_2},\; T=\dfrac{2m_1m_2g}{m_1+m_2}`,c:'10-11',a:1,s:'Лёгкая и тяжёлая гири на нити через блок. Тяжёлая опускается с ускорением a.',sym:'T — сила натяжения нити (Н)',e:'m₁ = 1 кг, m₂ = 3 кг, g = 10 → a = **5 м/с²**, T = **15 Н**.',err:'Натяжение не равно ни m₁g, ни m₂g.',k:[['m1','m₁, кг',1],['m2','m₂, кг',3]],o:['a, м/с²','(m2-m1)*g/(m1+m2)']},
+ {t:'Закон всемирного тяготения',f:T`F=G\dfrac{m_1m_2}{R^2}`,c:'9-11',s:'Любые два тела притягиваются. Мы друг к другу не липнем — сила ничтожная.',sym:'G = 6,67·10⁻¹¹ Н·м²/кг²; R — расстояние между центрами (м)',e:'Два человека по 70 кг на расстоянии 1 м → **3·10⁻⁷ Н**.',err:'R — расстояние между центрами тел, а не между поверхностями.',k:[['m1','m₁, кг',70],['m2','m₂, кг',70],['R','R, м',1]],o:['F, Н','G*m1*m2/(R*R)'],
+  kids:[
+   {t:'Ускорение свободного падения',f:T`g=\dfrac{GM}{R^2},\quad g'=\dfrac{GM}{(R+h)^2}`,c:'9-11',d:'mg = GMm/R²  ⇒  g = GM/R²; на высоте h расстояние до центра R+h',e:'Земля: g ≈ 9,8; Луна ≈ 1,6; Марс ≈ 3,7 м/с².'},
+   {t:'Первая космическая скорость',f:T`v_1=\sqrt{\dfrac{GM}{R}}\approx7{,}9\ \text{км/с}`,c:'9-11',d:'mv²/R = GMm/R²  ⇒  v₁ = √(GM/R) = √(gR)'}
+  ]},
+ {t:'Динамика движения по окружности',f:T`F_{\text{цс}}=\dfrac{mv^2}{R}`,c:'9-11',s:'Центростремительная сила — не новая сила, а равнодействующая сил, направленная к центру.',sym:'F_цс — равнодействующая, направленная к центру (Н)',e:'Мёртвая петля: вверху N + mg = mv²/R; внизу N − mg = mv²/R. Внизу перегрузка больше.',err:'Нельзя рисовать «центробежную силу» на схеме в инерциальной системе отсчёта.',w:'поворот петля центростремительная'}
+]},
+
+/* ============ 03 СТАТИКА И ГИДРОСТАТИКА ============ */
+{id:'statics',n:'Статика и гидростатика',sub:'Рычаг · Момент · Давление · Паскаль · Архимед',col:'mech',cards:[
+ {t:'Момент силы',f:T`M=F\cdot l`,c:'7-10',s:'Вращающий эффект силы. Длиннее плечо — легче крутить.',sym:'M — момент силы (Н·м); l — плечо, кратчайшее расстояние от оси до линии действия силы (м)',err:'Плечо — не расстояние до точки приложения, а перпендикуляр к линии силы.'},
+ {t:'Условие равновесия рычага',f:T`F_1l_1=F_2l_2`,c:'7-9',s:'Моменты слева и справа равны. Так работают лом и качели.',e:'20 Н · 1 м = 40 Н · 0,5 м.',k:[['F1','F₁, Н',20],['l1','l₁, м',1],['l2','l₂, м',0.5]],o:['F₂, Н','F1*l1/l2'],
+  kids:[
+   {t:'Общие условия равновесия',f:T`\sum\vec F=0,\quad \sum M=0`,c:'9-11',s:'Тело не движется поступательно (сумма сил = 0) и не вращается (сумма моментов = 0).'}
+  ]},
+ {t:'«Золотое правило» механики и КПД',f:T`A_1=A_2,\quad \eta=\dfrac{A_{\text{п}}}{A_{\text{з}}}\cdot100\%`,c:'7-9',s:'Выигрываем в силе — проигрываем в пути, выигрыша в работе нет. Полезная работа всегда меньше затраченной.',sym:'A_п — полезная работа (Дж); A_з — затраченная работа (Дж)',e:'Подняли груз на 2 м, полезная работа 800 Дж, затрачено 1000 Дж → η = **80 %**.',err:'КПД не может быть больше 100 %.'},
+ {t:'Давление',f:T`p=\dfrac{F}{S}`,c:'7-9',s:'Нож острый, лыжи широкие: одна и та же сила на разной площади давит по-разному.',sym:'p — давление (Па = Н/м²); F — сила, перпендикулярная поверхности (Н); S — площадь (м²)',e:'100 Н на 0,02 м² → **5000 Па**.',err:'Площадь надо переводить в м²: 1 см² = 10⁻⁴ м².',k:[['F','F, Н',100],['S','S, м²',0.02]],o:['p, Па','F/S'],
+  kids:[
+   {t:'Давление жидкости',f:T`p=\rho gh`,c:'7-9',s:'Зависит от глубины и плотности, а не от формы сосуда.',sym:'ρ — плотность (кг/м³); h — глубина (м)',e:'Глубина 10 м в воде → **≈ 10⁵ Па** (ещё одна атмосфера).',d:'p = F/S = mg/S = ρShg/S = ρgh',k:[['rho','ρ, кг/м³',1000],['h','h, м',10]],o:['p, Па','rho*g*h']},
+   {t:'Закон Паскаля. Гидравлический пресс',f:T`\dfrac{F_1}{S_1}=\dfrac{F_2}{S_2}`,c:'7-9',s:'Давление передаётся жидкостью по всем направлениям без изменений. Малая сила на малом поршне — большая на большом.',e:'S₁ = 10 см², S₂ = 500 см², F₁ = 100 Н → F₂ = **5000 Н**.',k:[['F1','F₁, Н',100],['S1','S₁, см²',10],['S2','S₂, см²',500]],o:['F₂, Н','F1*S2/S1']},
+   {t:'Сообщающиеся сосуды',f:T`\rho_1h_1=\rho_2h_2`,c:'7-9',s:'В одном сосуде с двумя несмешивающимися жидкостями высоты обратно пропорциональны плотностям.',e:'Масло (800) 10 см → вода (1000) **8 см**.'},
+   {t:'Атмосферное давление',f:T`p_0\approx101\,325\ \text{Па}\approx760\ \text{мм рт. ст.}`,c:'7-9',s:'Давление воздуха падает с высотой: примерно на 1 мм рт. ст. на каждые 12 м подъёма.',err:'Атмосфера давит не только сверху, но и во все стороны.'},
+   {t:'Сила Архимеда',f:T`F_{\text{А}}=\rho_{\text{ж}}\,g\,V_{\text{погр}}`,c:'7-9',s:'Выталкивающая сила равна весу вытесненной жидкости.',sym:'ρ_ж — плотность жидкости (кг/м³); V_погр — объём погружённой части (м³)',e:'1 л в воде → **≈ 10 Н**.',err:'В формулу входит плотность жидкости, а не тела.',d:'Давление снизу больше давления сверху на ρgh; разность сил = ρжgV',k:[['rho','ρж, кг/м³',1000],['V','V, л',1]],o:['F, Н','rho*g*V/1000']},
+   {t:'Условие плавания тел',f:T`\rho_{\text{т}}<\rho_{\text{ж}}\;\text{— всплывает},\;\rho_{\text{т}}=\rho_{\text{ж}}\;\text{— плавает},\;\rho_{\text{т}}>\rho_{\text{ж}}\;\text{— тонет}`,c:'7-9',s:'Если тело плавает, то F_А = mg, а погружённая доля объёма равна ρ_т/ρ_ж.',e:'Лёд (900) в воде (1000): под водой **90 %** объёма.'}
+  ]}
+]},
+
+/* ============ 04 ИМПУЛЬС ============ */
+{id:'momentum',n:'Импульс',sub:'Импульс тела · Закон сохранения · Удары · Реактивное движение',col:'mech',cards:[
+ {t:'Импульс тела',f:T`\vec p=m\vec v`,c:'9-10',s:'«Количество движения». Тяжёлый медленный грузовик и лёгкий быстрый мотоцикл остановить одинаково трудно.',sym:'p — импульс (кг·м/с); m — масса (кг); v — скорость (м/с)',e:'2 кг · 10 м/с = **20 кг·м/с**.',err:'Импульс — вектор: у встречных тел импульсы вычитаются.'},
+ {t:'Импульс силы',f:T`F\,\Delta t=\Delta p`,c:'9-10',s:'Чем дольше действует сила, тем больше меняется импульс. Поэтому при ударе подушка безопаснее руля.',e:'F = 50 Н, Δt = 2 с → Δp = **100 кг·м/с**.'},
+ {t:'Закон сохранения импульса',f:T`m_1\vec v_1+m_2\vec v_2=m_1\vec v_1'+m_2\vec v_2'`,c:'9-10',s:'Бильярдные шары. Импульс «перетекает» от тела к телу, но сумма остаётся той же (в замкнутой системе).',e:'2 кг · 3 м/с слипается с 4 кг (покоится): (2+4)·v′ = 6 → v′ = **1 м/с**.',err:'Не забывать про знаки проекций. Закон верен только если внешние силы пренебрежимо малы.',
+  kids:[
+   {t:'Абсолютно неупругий удар',f:T`v'=\dfrac{m_1v_1+m_2v_2}{m_1+m_2}`,c:'9-10',s:'Тела слипаются и движутся вместе. Часть энергии переходит в тепло.',k:[['m1','m₁, кг',2],['v1','v₁, м/с',3],['m2','m₂, кг',4],['v2','v₂, м/с',0]],o:['v′, м/с','(m1*v1+m2*v2)/(m1+m2)']},
+   {t:'Абсолютно упругий центральный удар',f:T`v_1'=\dfrac{(m_1-m_2)v_1+2m_2v_2}{m_1+m_2}`,c:'10-11',a:1,s:'Сохраняются и импульс, и кинетическая энергия. При равных массах шары обмениваются скоростями.',e:'m₁ = m₂, v₂ = 0 → v₁′ = **0**, v₂′ = v₁.'},
+   {t:'Реактивное движение',f:T`m\vec u=-M\vec v`,c:'9-10',s:'Ракета отбрасывает газ назад и сама получает импульс вперёд.',w:'ракета отдача'},
+   {t:'Формула Циолковского',f:T`\Delta v=u\ln\dfrac{m_0}{m}`,c:'11',a:1,s:'Прирост скорости ракеты определяется скоростью истечения газа и отношением начальной массы к конечной.',sym:'u — скорость истечения газа (м/с); m₀ — начальная масса; m — конечная масса'}
+  ]}
+]},
+
+/* ============ 05 РАБОТА И ЭНЕРГИЯ ============ */
+{id:'energy',n:'Работа и энергия',sub:'Работа · Мощность · Кинетическая и потенциальная энергия',col:'mech',cards:[
+ {t:'Механическая работа',f:T`A=F\,S\cos\alpha`,c:'7-9',s:'Толкнул ящик — совершил работу. Держишь и стоишь — перемещения нет, работы нет.',sym:'A — работа (Дж); F — сила (Н); S — перемещение (м); α — угол между силой и перемещением',e:'50 Н на 10 м → **500 Дж**.',err:'Сила, перпендикулярная перемещению (α = 90°), работы не совершает: например, сила тяжести при движении по горизонтали.',k:[['F','F, Н',50],['S','S, м',10],['al','α, °',0]],o:['A, Дж','F*S*Math.cos(al*Math.PI/180)'],
+  kids:[
+   {t:'Мощность',f:T`N=\dfrac{A}{t}=Fv`,c:'7-9',sym:'N — мощность (Вт); t — время (с)',d:'N = A/t = F·S/t = F·v',e:'Подняли 50 кг на 10 м за 10 с → N ≈ **490 Вт**.',k:[['A','A, Дж',4900],['t','t, с',10]],o:['N, Вт','A/t']},
+   {t:'Кинетическая энергия',f:T`E_k=\dfrac{mv^2}{2}`,c:'7-10',sym:'E_k — кинетическая энергия (Дж)',d:'A = F·S = ma·(v²−v₀²)/(2a) = mv²/2 − mv₀²/2',e:'m = 2 кг, v = 3 м/с → **9 Дж**.',k:[['m','m, кг',2],['v','v, м/с',3]],o:['Ek, Дж','m*v*v/2']},
+   {t:'Потенциальная энергия в поле тяжести',f:T`E_p=mgh`,c:'7-10',s:'Зависит от выбора нулевого уровня; важна только её разность.',d:'A = F_тяж·h = mg·h',e:'1 кг на высоте 10 м → **≈ 100 Дж**.',k:[['m','m, кг',1],['h','h, м',10]],o:['Ep, Дж','m*g*h']},
+   {t:'Энергия упруго деформированной пружины',f:T`E_p=\dfrac{k\,x^2}{2}`,c:'9-11',e:'k = 200 Н/м, x = 0,1 м → **1 Дж**.',k:[['k','k, Н/м',200],['x','x, м',0.1]],o:['Ep, Дж','k*x*x/2']},
+   {t:'Теорема о кинетической энергии',f:T`A=\Delta E_k=\dfrac{mv^2}{2}-\dfrac{mv_0^2}{2}`,c:'9-10',s:'Работа равнодействующей равна изменению кинетической энергии.'}
+  ]},
+ {t:'Закон сохранения энергии',f:T`E_{k1}+E_{p1}=E_{k2}+E_{p2}`,c:'9-10',s:'Энергия не исчезает — переходит из одного вида в другой. Маятник: внизу максимум E_k, вверху — E_p.',e:'Камень падает с 5 м → внизу v = √(2gh) = **10 м/с**.',err:'При наличии трения: E₁ − E₂ = |A_тр| (переходит в тепло).',w:'маятник сохранение'}
+]},
+
+/* ============ 06 ВРАЩЕНИЕ ============ */
+{id:'rotation',n:'Вращательное движение',sub:'Момент инерции · Момент импульса · Энергия вращения',col:'mech',cards:[
+ {t:'Угловая скорость и угловое ускорение',f:T`\omega=\dfrac{\Delta\varphi}{\Delta t},\quad \varepsilon=\dfrac{\Delta\omega}{\Delta t}`,c:'10-11',a:1,s:'Аналоги v и a для вращения.',sym:'φ — угол (рад); ω — угловая скорость (рад/с); ε — угловое ускорение (рад/с²)',e:'Колесо раскрутилось от 0 до 20 рад/с за 4 с → ε = **5 рад/с²**.',err:'Угол в формулах должен быть в радианах.',
+  kids:[{t:'Связь линейных и угловых величин',f:T`v=\omega R,\quad a_\tau=\varepsilon R`,c:'10-11',a:1}]},
+ {t:'Момент инерции',f:T`I=\sum m_ir_i^2`,c:'10-11',a:1,s:'«Масса» для вращения: чем дальше масса от оси, тем труднее раскрутить.',sym:'I — момент инерции (кг·м²)',e:'Груз 2 кг на невесомом стержне 0,5 м от оси → I = 2·0,25 = **0,5 кг·м²**.',
+  tbl:{cols:['Тело','Ось','Момент инерции'],rows:[['Материальная точка','на расстоянии r','mr²'],['Тонкое кольцо, обруч','через центр ⟂ плоскости','mR²'],['Сплошной диск, цилиндр','через центр ⟂ плоскости','mR²/2'],['Сплошной шар','через центр','2mR²/5'],['Тонкий стержень длиной l','через середину','ml²/12'],['Тонкий стержень длиной l','через конец','ml²/3']]},
+  kids:[{t:'Теорема Штейнера',f:T`I=I_c+md^2`,c:'11',a:1,s:'Если ось смещена на d от оси через центр масс.'}]},
+ {t:'Основное уравнение динамики вращения',f:T`M=I\varepsilon`,c:'10-11',a:1,s:'Аналог F = ma для вращения.',sym:'M — суммарный момент сил (Н·м); I — момент инерции; ε — угловое ускорение',e:'M = 10 Н·м, I = 2 кг·м² → ε = **5 рад/с²**.',k:[['M','M, Н·м',10],['I','I, кг·м²',2]],o:['ε, рад/с²','M/I']},
+ {t:'Момент импульса',f:T`L=I\omega,\quad \Delta L=M\Delta t`,c:'10-11',a:1,s:'Если момент внешних сил равен нулю, L сохраняется. Фигурист прижимает руки — I уменьшается, ω растёт.',e:'I₁ = 4, ω₁ = 2 → прижал руки, I₂ = 2 → ω₂ = **4 рад/с**.',w:'фигурист скамья жуковского'},
+ {t:'Кинетическая энергия вращения',f:T`E_k=\dfrac{I\omega^2}{2}`,c:'10-11',a:1,s:'При качении без проскальзывания полная энергия: mv²/2 + Iω²/2.',e:'Диск m = 2 кг, R = 0,5 м, ω = 10 рад/с: I = 0,25, E = **12,5 Дж**.'}
+]},
+
+/* ============ 07 МОЛЕКУЛЯРНАЯ ФИЗИКА ============ */
+{id:'molecular',n:'Молекулярная физика',sub:'МКТ · Газовые законы · Уравнение состояния · Жидкости',col:'therm',cards:[
+ {t:'Количество вещества',f:T`\nu=\dfrac{m}{M}=\dfrac{N}{N_A}`,c:'8-10',s:'«Сколько молей». В одном моле 6,02·10²³ частиц.',sym:'ν — количество вещества (моль); M — молярная масса (кг/моль); N_A = 6,02·10²³ моль⁻¹',e:'36 г воды (M = 18 г/моль) → **2 моль**.',err:'В формулах с R молярную массу берут в кг/моль: M(H₂O) = 0,018 кг/моль.',
+  kids:[{t:'Масса молекулы и концентрация',f:T`m_0=\dfrac{M}{N_A},\quad n=\dfrac{N}{V}`,c:'10-11',sym:'m₀ — масса одной молекулы (кг); n — концентрация (м⁻³)'}]},
+ {t:'Температура',f:T`T=t+273{,}15`,c:'8-10',s:'Абсолютная шкала Кельвина. 0 К — предел, при котором прекращается тепловое движение.',err:'В газовых законах и в p = nkT температура обязательно в Кельвинах.',e:'20 °C = **293 K**.'},
+ {t:'Основное уравнение МКТ',f:T`p=\dfrac13\,n\,m_0\,\overline{v^2}=\dfrac23\,n\,\overline{E_k}`,c:'10-11',s:'Давление газа — результат ударов молекул о стенки.',sym:'n — концентрация молекул (м⁻³); m₀ — масса молекулы; v² — средний квадрат скорости; Ē_k — средняя кинетическая энергия молекулы',
+  kids:[
+   {t:'Средняя кинетическая энергия молекулы',f:T`\overline{E_k}=\dfrac32kT`,c:'10-11',d:'p = (2/3)nĒ и p = nkT  ⇒  Ē = (3/2)kT',sym:'k = 1,38·10⁻²³ Дж/К — постоянная Больцмана'},
+   {t:'Давление газа через концентрацию и температуру',f:T`p=nkT`,c:'10-11',s:'Горячее — давление выше. Баллончик на солнце может взорваться.',e:'Температура выросла вдвое → давление при том же n выросло вдвое.',err:'Это следствие уравнения состояния, а не основное уравнение МКТ.'},
+   {t:'Средняя квадратичная скорость',f:T`v_{\text{кв}}=\sqrt{\dfrac{3kT}{m_0}}=\sqrt{\dfrac{3RT}{M}}`,c:'10-11',d:'m₀v²/2 = 3kT/2',e:'Азот при 300 K: **≈ 517 м/с**.',k:[['T','T, К',300],['M','M, кг/моль',0.028]],o:['v_кв, м/с','Math.sqrt(3*Rg*T/M)']}
+  ]},
+ {t:'Уравнение Менделеева–Клапейрона',f:T`pV=\dfrac{m}{M}RT=\nu RT`,c:'10-11',s:'Связывает давление, объём и температуру газа.',sym:'p — давление (Па); V — объём (м³); R = 8,31 Дж/(моль·К); T — температура (К)',e:'1 моль при 273 K в 22,4 л → p ≈ **101 кПа**.',err:'Объём — в м³ (1 л = 10⁻³ м³), давление — в Па.',d:'p = nkT, n = N/V, N = νN_A, R = kN_A  ⇒  pV = νRT',k:[['nu','ν, моль',1],['T','T, К',273],['V','V, м³',0.0224]],o:['p, Па','nu*Rg*T/V']},
+ {t:'Газовые законы',f:T`\dfrac{pV}{T}=\mathrm{const}`,c:'9-11',s:'Для данной массы газа. Частные случаи — изопроцессы.',e:'T = const, давление выросло в 2 раза → объём уменьшился в 2 раза.',
+  tbl:{cols:['Процесс','Что постоянно','Закон','Название'],rows:[['Изотермический','T, m','pV = const','Бойль–Мариотт'],['Изобарный','p, m','V/T = const','Гей-Люссак'],['Изохорный','V, m','p/T = const','Шарль'],['Объединённый','m','pV/T = const','Клапейрон']]},
+  kids:[{t:'Закон Дальтона',f:T`p=p_1+p_2+\dots`,c:'10-11',s:'Давление смеси газов равно сумме парциальных давлений.'}]},
+ {t:'Относительная влажность',f:T`\varphi=\dfrac{p}{p_{\text{нас}}}\cdot100\%`,c:'8-10',s:'Насколько воздух близок к насыщению парами. При 100 % выпадает роса.',sym:'p — парциальное давление пара; p_нас — давление насыщенного пара при этой температуре',e:'p = 1,2 кПа, p_нас = 2,3 кПа → φ ≈ **52 %**.'},
+ {t:'Поверхностное натяжение',f:T`F=\sigma l,\quad h=\dfrac{2\sigma\cos\theta}{\rho g r}`,c:'10-11',a:1,s:'Поверхность жидкости как упругая плёнка. Капилляр: чем он тоньше, тем выше поднимается вода.',sym:'σ — коэффициент поверхностного натяжения (Н/м); θ — угол смачивания; r — радиус капилляра (м)',e:'Вода (σ = 0,072 Н/м) в капилляре r = 0,5 мм, θ = 0 → h ≈ **2,9 см**.'},
+ {t:'Тепловое расширение',f:T`\Delta l=\alpha\,l_0\,\Delta t,\quad \Delta V=\beta V_0\Delta t`,c:'8-10',s:'Нагретые тела расширяются. Для объёма β ≈ 3α.',sym:'α — коэффициент линейного расширения (1/К); β — объёмного',e:'Стальной рельс 25 м (α = 1,2·10⁻⁵) нагрелся на 40 К → удлинился на **12 мм**.'}
+]},
+
+/* ============ 08 ТЕРМОДИНАМИКА ============ */
+{id:'thermo',n:'Термодинамика',sub:'Теплота · Первое и второе начало · КПД',col:'therm',cards:[
+ {t:'Нагревание и охлаждение',f:T`Q=cm\,\Delta t`,c:'8',s:'Чайник греется дольше кружки — масса больше.',sym:'Q — количество теплоты (Дж); c — удельная теплоёмкость (Дж/(кг·°C)); m — масса (кг)',e:'1 кг воды на 80 °C → **336 кДж**.',err:'При охлаждении Δt отрицательна, Q < 0 — тело отдаёт теплоту.',k:[['cw','c, Дж/(кг·°C)',4200],['m','m, кг',1],['dt','Δt, °C',80]],o:['Q, Дж','cw*m*dt'],
+  kids:[{t:'Уравнение теплового баланса',f:T`Q_{\text{отд}}=Q_{\text{пол}}`,c:'8',s:'Сколько тепла отдали горячие тела — столько получили холодные (без потерь).',e:'200 г воды 80 °C + 300 г воды 20 °C → t = **44 °C**.'}]},
+ {t:'Плавление и кристаллизация',f:T`Q=\lambda m`,c:'8',s:'Пока лёд тает, температура стоит на 0 °C.',sym:'λ — удельная теплота плавления (Дж/кг)',e:'1 кг льда → **330 кДж**.'},
+ {t:'Парообразование и конденсация',f:T`Q=Lm`,c:'8',s:'Испарить воду примерно в 7 раз «дороже», чем растопить лёд.',sym:'L — удельная теплота парообразования (Дж/кг)',e:'1 кг воды при 100 °C → **2300 кДж**.'},
+ {t:'Сгорание топлива',f:T`Q=qm`,c:'8',s:'У бензина очень высокая «энергоплотность».',sym:'q — удельная теплота сгорания (Дж/кг)',e:'1 кг бензина → **46 МДж**.'},
+ {t:'Внутренняя энергия идеального газа',f:T`U=\dfrac{i}{2}\nu RT\;\;(i=3\ \text{для одноатомного})`,c:'10-11',s:'Сумма кинетических энергий молекул. Зависит только от температуры.',sym:'i — число степеней свободы (3 — одноатомный, 5 — двухатомный)',e:'Одноатомный газ, ν = 2 моль, T = 300 K → U ≈ **7,5 кДж**.',d:'На каждую степень свободы приходится kT/2 (теорема о равнораспределении)'},
+ {t:'Первое начало термодинамики',f:T`Q=\Delta U+A`,c:'10-11',s:'Тепло идёт на нагрев газа и на работу газа.',sym:'Q — полученная теплота (Дж); ΔU — изменение внутренней энергии; A — работа газа',e:'Q = 100 Дж, A = 30 Дж → ΔU = **70 Дж**.',err:'A — работа, совершённая газом. Если работу совершают над газом, то A < 0.',
+  kids:[
+   {t:'Работа газа',f:T`A=p\,\Delta V\;\;(p=\mathrm{const})`,c:'10-11',d:'A = F·h = p·S·h = pΔV',err:'Формула верна только при постоянном давлении. В общем случае работа — площадь под графиком p(V).',k:[['p','p, Па',100000],['dV','ΔV, м³',0.002]],o:['A, Дж','p*dV']},
+   {t:'Применение к изопроцессам',f:T`C_V=\tfrac32R,\; C_p=\tfrac52R`,c:'10-11',a:1,s:'Для одноатомного идеального газа.',tbl:{cols:['Процесс','A','ΔU','Q'],rows:[['Изохорный (V = const)','0','(3/2)νRΔT','ΔU'],['Изобарный (p = const)','pΔV = νRΔT','(3/2)νRΔT','(5/2)νRΔT'],['Изотермический (T = const)','νRT ln(V₂/V₁)','0','A'],['Адиабатный (Q = 0)','−ΔU','−A','0']]}}
+  ]},
+ {t:'КПД теплового двигателя',f:T`\eta=\dfrac{Q_1-Q_2}{Q_1}\cdot100\%=\dfrac{A}{Q_1}\cdot100\%`,c:'8-11',s:'У бензинового мотора η ≈ 25–30 % — остальное улетает в «трубу».',sym:'Q₁ — теплота от нагревателя; Q₂ — теплота, отданная холодильнику; A — полезная работа',e:'Q₁ = 1000 Дж, A = 300 Дж → **30 %**.',k:[['A','A, Дж',300],['Q1','Q₁, Дж',1000]],o:['η, %','A/Q1*100'],
+  kids:[{t:'Цикл Карно — максимальный КПД',f:T`\eta_{\max}=1-\dfrac{T_{\text{х}}}{T_{\text{н}}}`,c:'10-11',s:'Это теоретический предел для любой тепловой машины между двумя температурами.',sym:'T_н — температура нагревателя (К); T_х — температура холодильника (К)',e:'T_н = 600 K, T_х = 300 K → η_max = **50 %**.',err:'Температуры берут в Кельвинах.',k:[['Th','T_н, К',600],['Tc','T_х, К',300]],o:['η_max, %','(1-Tc/Th)*100']}]},
+ {t:'Второе начало термодинамики',f:T`\Delta S\ge0`,c:'10-11',a:1,s:'В замкнутой системе энтропия не убывает. Тепло само не переходит от холодного тела к горячему; вечного двигателя 2-го рода нет.',w:'энтропия вечный двигатель необратимость'}
+]},
+
+/* ============ 09 ЭЛЕКТРОСТАТИКА ============ */
+{id:'electrostatics',n:'Электростатика',sub:'Закон Кулона · Поле · Потенциал · Конденсатор',col:'elec',cards:[
+ {t:'Закон сохранения заряда',f:T`q_1+q_2+\dots=\mathrm{const}`,c:'8-10',s:'В замкнутой системе суммарный заряд не меняется. Элементарный заряд e = 1,6·10⁻¹⁹ Кл.'},
+ {t:'Закон Кулона',f:T`F=\dfrac{k\,|q_1||q_2|}{\varepsilon r^2}`,c:'8-11',s:'Одноимённые заряды отталкиваются, разноимённые притягиваются.',sym:'k = 9·10⁹ Н·м²/Кл²; q — заряды (Кл); r — расстояние (м); ε — диэлектрическая проницаемость среды',e:'Два заряда по 1 мкКл на расстоянии 0,1 м → **0,9 Н**.',err:'Заряды надо переводить в Кл: 1 мкКл = 10⁻⁶ Кл.',k:[['q1','q₁, Кл',1e-6],['q2','q₂, Кл',1e-6],['r','r, м',0.1],['eps','ε',1]],o:['F, Н','kC*q1*q2/(eps*r*r)'],
+  kids:[
+   {t:'Напряжённость поля',f:T`E=\dfrac{F}{q}`,c:'8-11',sym:'E — напряжённость (В/м = Н/Кл)',d:'Сила на единичный пробный заряд',
+    kids:[]},
+   {t:'Поле точечного заряда',f:T`E=\dfrac{kq}{\varepsilon r^2}`,c:'10-11',e:'q = 1 нКл на расстоянии 0,3 м → **100 В/м**.',k:[['q','q, Кл',1e-9],['r','r, м',0.3]],o:['E, В/м','kC*q/(r*r)']},
+   {t:'Принцип суперпозиции',f:T`\vec E=\vec E_1+\vec E_2+\dots`,c:'10-11',s:'Поля нескольких зарядов складываются как векторы.'},
+   {t:'Потенциал и работа поля',f:T`\varphi=\dfrac{W_p}{q}=\dfrac{kq}{\varepsilon r},\quad A=q(\varphi_1-\varphi_2)=qU`,c:'10-11',sym:'φ — потенциал (В); U — напряжение, разность потенциалов (В)',e:'q = 2 Кл, U = 5 В → A = **10 Дж**.',err:'Потенциал — скаляр, поля складывать векторно не нужно.'},
+   {t:'Связь напряжения и напряжённости',f:T`U=Ed`,c:'10-11',d:'A = F·d = qEd = qU  ⇒  U = Ed',e:'E = 1000 В/м, d = 2 см → **20 В**.'},
+   {t:'Разгон заряда в поле',f:T`qU=\dfrac{mv^2}{2}`,c:'10-11',s:'Работа поля идёт на кинетическую энергию.',e:'Электрон, U = 100 В → v ≈ **5,9·10⁶ м/с**.',k:[['U','U, В',100]],o:['v, м/с (электрон)','Math.sqrt(2*qe*U/me)']}
+  ]},
+ {t:'Электроёмкость конденсатора',f:T`C=\dfrac{q}{U}`,c:'10-11',s:'«Бачок» для заряда.',sym:'C — ёмкость (Ф); q — заряд (Кл); U — напряжение (В)',e:'100 мкКл, 10 В → **10 мкФ**.',k:[['q','q, мкКл',100],['U','U, В',10]],o:['C, мкФ','q/U'],
+  kids:[
+   {t:'Ёмкость плоского конденсатора',f:T`C=\dfrac{\varepsilon_0\varepsilon S}{d}`,c:'10-11',sym:'ε₀ = 8,85·10⁻¹² Ф/м; S — площадь пластин (м²); d — расстояние между ними (м)',e:'S = 0,01 м², d = 1 мм, ε = 1 → **88,5 пФ**.',k:[['S','S, м²',0.01],['d','d, м',0.001],['eps','ε',1]],o:['C, Ф','e0*eps*S/d']},
+   {t:'Соединение конденсаторов',f:T`C_{\parallel}=C_1+C_2,\quad \dfrac1{C_{\text{посл}}}=\dfrac1{C_1}+\dfrac1{C_2}`,c:'10-11',s:'У конденсаторов — наоборот, чем у резисторов.'},
+   {t:'Энергия конденсатора',f:T`W=\dfrac{CU^2}{2}=\dfrac{q^2}{2C}`,c:'10-11',d:'W = qU/2, q = CU  ⇒  W = CU²/2',e:'C = 10 мкФ, U = 100 В → **0,05 Дж**.',k:[['C','C, мкФ',10],['U','U, В',100]],o:['W, Дж','C*1e-6*U*U/2']}
+  ]}
+]},
+
+/* ============ 10 ЭЛЕКТРИЧЕСКИЙ ТОК ============ */
+{id:'current',n:'Электрический ток',sub:'Закон Ома · Соединения · Мощность · ЭДС · Электролиз',col:'elec',cards:[
+ {t:'Сила тока',f:T`I=\dfrac{q}{t}`,c:'8-10',s:'Как поток воды в трубе — «кулонов в секунду».',sym:'I — сила тока (А); q — заряд (Кл); t — время (с)',e:'20 Кл за 4 с → **5 А**.'},
+ {t:'Закон Ома для участка цепи',f:T`I=\dfrac{U}{R}`,c:'8-10',s:'Больше напряжение — больше ток. Больше сопротивление — меньше ток.',sym:'U — напряжение (В); R — сопротивление (Ом)',e:'12 В / 6 Ом → **2 А**.',k:[['U','U, В',12],['R','R, Ом',6]],o:['I, А','U/R'],
+  kids:[
+   {t:'Сопротивление проводника',f:T`R=\dfrac{\rho l}{S}`,c:'8-10',sym:'ρ — удельное сопротивление (Ом·м); l — длина (м); S — площадь сечения (м²)',e:'Медь (ρ = 1,7·10⁻⁸ Ом·м), l = 100 м, S = 1 мм² → **1,7 Ом**.',k:[['rho','ρ, Ом·мм²/м',0.017],['l','l, м',100],['S','S, мм²',1]],o:['R, Ом','rho*l/S']},
+   {t:'Зависимость сопротивления от температуры',f:T`R=R_0(1+\alpha\Delta t)`,c:'10-11',s:'У металлов сопротивление растёт с нагревом.'}
+  ]},
+ {t:'ЭДС источника',f:T`\varepsilon=\dfrac{A_{\text{ст}}}{q}`,c:'10-11',s:'Работа сторонних сил по перемещению единичного заряда внутри источника.'},
+ {t:'Работа и мощность тока',f:T`A=UIt,\quad P=UI=I^2R=\dfrac{U^2}{R}`,c:'8-10',sym:'A — работа (Дж); P — мощность (Вт)',e:'Лампа 220 В, 0,5 А → **110 Вт**; за 1 час — **0,11 кВт·ч**.',d:'P = A/t = UIt/t = UI; U = IR',k:[['U','U, В',220],['I','I, А',0.5]],o:['P, Вт','U*I'],
+  kids:[
+   {t:'Закон Джоуля–Ленца',f:T`Q=I^2Rt`,c:'8-10',s:'Нагрев проводника током.',e:'I = 2 А, R = 10 Ом, t = 60 с → **2400 Дж**.',d:'A = UIt, U = IR  ⇒  Q = I²Rt'}
+  ]},
+ {t:'Закон Ома для полной цепи',f:T`I=\dfrac{\varepsilon}{R+r}`,c:'10-11',s:'Часть ЭДС «съедается» внутренним сопротивлением источника.',sym:'ε — ЭДС (В); R — внешнее сопротивление; r — внутреннее сопротивление источника (Ом)',e:'ε = 12 В, R = 5 Ом, r = 1 Ом → **2 А**.',k:[['E','ε, В',12],['R','R, Ом',5],['r','r, Ом',1]],o:['I, А','E/(R+r)'],
+  kids:[
+   {t:'Напряжение на клеммах',f:T`U=\varepsilon-Ir`,c:'10-11'},
+   {t:'Ток короткого замыкания',f:T`I_{\text{кз}}=\dfrac{\varepsilon}{r}`,c:'10-11',e:'ε = 12 В, r = 0,1 Ом → **120 А** (опасно!).'},
+   {t:'КПД источника',f:T`\eta=\dfrac{U}{\varepsilon}=\dfrac{R}{R+r}`,c:'10-11',s:'Максимальная мощность на нагрузке — при R = r, но КПД при этом 50 %.'}
+  ]},
+ {t:'Последовательное соединение',f:T`R=R_1+R_2+\dots,\;\; I=\mathrm{const},\;\; U=U_1+U_2`,c:'8-10',s:'Гирлянда: одна лампа перегорела — все погасли.',e:'3 + 5 → **8 Ом**.'},
+ {t:'Параллельное соединение',f:T`\dfrac1R=\dfrac1{R_1}+\dfrac1{R_2}+\dots,\;\; U=\mathrm{const}`,c:'8-10',s:'Как розетки дома — на всех 220 В. Общее R меньше каждого.',e:'6 и 3 Ом → **2 Ом**. Для двух: R = R₁R₂/(R₁+R₂).',err:'Для двух резисторов формула — «произведение на сумму».',k:[['R1','R₁, Ом',6],['R2','R₂, Ом',3]],o:['R, Ом','R1*R2/(R1+R2)']},
+ {t:'Правила Кирхгофа',f:T`\sum I_k=0,\quad \sum I_kR_k=\sum\varepsilon_k`,c:'11',a:1,s:'1-е: сумма токов в узле равна нулю (втекающие «+», вытекающие «−»). 2-е: в любом замкнутом контуре сумма падений напряжения равна сумме ЭДС.'},
+ {t:'Законы Фарадея для электролиза',f:T`m=kIt=\dfrac{M}{zF}\,It`,c:'10-11',a:1,s:'Масса вещества, выделившегося на электроде.',sym:'k — электрохимический эквивалент (кг/Кл); F = 96 485 Кл/моль — постоянная Фарадея; z — валентность',e:'Медь (M = 0,0635 кг/моль, z = 2), I = 1 А, t = 1 ч → **≈ 1,2 г**.'}
+]},
+
+/* ============ 11 МАГНЕТИЗМ ============ */
+{id:'magnetism',n:'Магнетизм и индукция',sub:'Ампер · Лоренц · Индукция · Самоиндукция',col:'mag',cards:[
+ {t:'Магнитное поле тока',f:T`B=\dfrac{\mu_0I}{2\pi r}\;\text{(прямой ток)},\quad B=\mu_0nI\;\text{(соленоид)}`,c:'10-11',s:'Вокруг проводника с током — магнитное поле. В длинной катушке оно однородно.',sym:'B — магнитная индукция (Тл); μ₀ = 4π·10⁻⁷ Гн/м; n — число витков на единицу длины (1/м)',e:'I = 5 А на расстоянии 0,1 м → **10 мкТл**.',k:[['I','I, А',5],['r','r, м',0.1]],o:['B, Тл','mu0*I/(2*Math.PI*r)']},
+ {t:'Сила Ампера',f:T`F_A=BIl\sin\alpha`,c:'9-11',s:'Именно она крутит электродвигатель.',sym:'B — индукция (Тл); I — ток (А); l — длина проводника (м); α — угол между B и током',e:'B = 0,5 Тл, I = 2 А, l = 0,3 м → **0,3 Н**.',k:[['B','B, Тл',0.5],['I','I, А',2],['l','l, м',0.3]],o:['F, Н','B*I*l']},
+ {t:'Сила Лоренца',f:T`F_{\text{Л}}=Bqv\sin\alpha`,c:'10-11',s:'Частица летит через магнитное поле — её «уносит» вбок. Работы сила Лоренца не совершает.',sym:'q — заряд (Кл); v — скорость (м/с)',e:'Электрон со скоростью 10⁶ м/с в поле 0,1 Тл → **1,6·10⁻¹⁴ Н**.',err:'Направление для отрицательного заряда — противоположное правилу левой руки.',k:[['B','B, Тл',0.1],['v','v, м/с',1e6]],o:['F, Н (электрон)','qe*v*B'],
+  kids:[
+   {t:'Радиус траектории',f:T`R=\dfrac{mv}{qB}`,c:'10-11',d:'mv²/R = qvB  ⇒  R = mv/(qB)',e:'Электрон, v = 10⁶ м/с, B = 0,1 Тл → R ≈ **57 мкм**.'},
+   {t:'Период обращения в магнитном поле',f:T`T=\dfrac{2\pi m}{qB}`,c:'10-11',s:'Не зависит от скорости — на этом основан циклотрон.'}
+  ]},
+ {t:'Магнитный поток',f:T`\Phi=BS\cos\alpha`,c:'9-11',s:'«Поток комаров через рамку»: повернул ребром — поток 0.',sym:'Φ — магнитный поток (Вб); S — площадь контура (м²); α — угол между B и нормалью к контуру',e:'B = 0,5 Тл, S = 0,1 м² → **0,05 Вб**.',
+  kids:[
+   {t:'Закон электромагнитной индукции',f:T`\varepsilon=-\dfrac{\Delta\Phi}{\Delta t}`,c:'9-11',s:'Меняется поток — рождается ЭДС. Знак «−» отражает правило Ленца.',e:'Поток изменился на 0,2 Вб за 0,1 с → **2 В**.',k:[['dF','ΔΦ, Вб',0.2],['dt','Δt, с',0.1]],o:['|ε|, В','dF/dt']},
+   {t:'Правило Ленца',f:T`\text{индукционный ток препятствует причине, его вызвавшей}`,c:'9-11',s:'Магнит вдвигают в кольцо — ток создаёт поле, отталкивающее магнит.'},
+   {t:'ЭДС в движущемся проводнике',f:T`\varepsilon=Blv\sin\alpha`,c:'10-11',e:'B = 0,2 Тл, l = 0,5 м, v = 4 м/с → **0,4 В**.',k:[['B','B, Тл',0.2],['l','l, м',0.5],['v','v, м/с',4]],o:['ε, В','B*l*v']},
+   {t:'ЭДС самоиндукции',f:T`\varepsilon_{\text{си}}=-L\dfrac{\Delta I}{\Delta t},\quad \Phi=LI`,c:'10-11',s:'Катушка «сопротивляется» изменению тока.',sym:'L — индуктивность (Гн)',e:'L = 0,5 Гн, ток растёт на 4 А за 0,1 с → **20 В**.'},
+   {t:'Энергия магнитного поля катушки',f:T`W=\dfrac{LI^2}{2}`,c:'10-11',e:'L = 0,5 Гн, I = 4 А → **4 Дж**.'}
+  ]}
+]},
+
+/* ============ 12 ПЕРЕМЕННЫЙ ТОК ============ */
+{id:'ac',n:'Переменный ток',sub:'Действующие значения · Реактивные сопротивления · Трансформатор',col:'mag',cards:[
+ {t:'Гармонический переменный ток',f:T`i=I_m\sin\omega t,\quad \omega=2\pi\nu`,c:'11',s:'В розетке ν = 50 Гц, ω = 314 рад/с.',sym:'I_m — амплитуда тока (А); ν — частота (Гц)',e:'В России напряжение 220 В действующее; амплитуда **≈ 311 В**.',
+  kids:[
+   {t:'Действующие значения',f:T`I=\dfrac{I_m}{\sqrt2},\quad U=\dfrac{U_m}{\sqrt2}`,c:'11',s:'Такое постоянное значение даёт такое же тепловое действие.',k:[['Um','U_m, В',311]],o:['U, В','Um/Math.sqrt(2)']},
+   {t:'ЭДС вращающейся рамки',f:T`\varepsilon=BS\omega\sin\omega t`,c:'11',s:'Принцип работы генератора.'}
+  ]},
+ {t:'Реактивные сопротивления',f:T`X_L=\omega L,\quad X_C=\dfrac{1}{\omega C}`,c:'11',s:'Катушка «не любит» быстрые изменения тока, конденсатор пропускает быстрые токи легче.',sym:'X_L — индуктивное (Ом); X_C — ёмкостное (Ом)',e:'L = 0,1 Гн, ν = 50 Гц → X_L ≈ **31 Ом**.',k:[['L','L, Гн',0.1],['nu','ν, Гц',50]],o:['X_L, Ом','2*Math.PI*nu*L']},
+ {t:'Полное сопротивление и закон Ома',f:T`Z=\sqrt{R^2+(X_L-X_C)^2},\quad I=\dfrac UZ`,c:'11',a:1,s:'Сопротивления R, X_L, X_C складываются «по Пифагору», а не арифметически.',e:'R = 30 Ом, X_L − X_C = 40 Ом → Z = **50 Ом**.',k:[['R','R, Ом',30],['X','X_L−X_C, Ом',40]],o:['Z, Ом','Math.sqrt(R*R+X*X)']},
+ {t:'Резонанс в цепи',f:T`\omega_0=\dfrac1{\sqrt{LC}}`,c:'11',a:1,s:'При ω = ω₀ реактивные сопротивления компенсируются (X_L = X_C), ток максимален.'},
+ {t:'Мощность переменного тока',f:T`P=UI\cos\varphi`,c:'11',a:1,s:'cos φ — коэффициент мощности: насколько ток «попадает» в такт с напряжением.'},
+ {t:'Трансформатор',f:T`k=\dfrac{U_1}{U_2}=\dfrac{N_1}{N_2}\approx\dfrac{I_2}{I_1}`,c:'11',s:'Повышает или понижает напряжение (но не мощность).',sym:'N — число витков в обмотках',e:'N₁ = 1000, N₂ = 100, U₁ = 220 В → U₂ = **22 В**.',k:[['U1','U₁, В',220],['N1','N₁',1000],['N2','N₂',100]],o:['U₂, В','U1*N2/N1'],
+  kids:[{t:'Потери при передаче энергии',f:T`P_{\text{пот}}=I^2R=\dfrac{P^2R}{U^2}`,c:'11',s:'Поэтому ЛЭП работают на сотнях киловольт: чем выше U, тем меньше ток и потери.'}]}
+]},
+
+/* ============ 13 КОЛЕБАНИЯ И ВОЛНЫ ============ */
+{id:'oscillations',n:'Колебания и волны',sub:'Маятники · Контур · Волны · Звук · Доплер',col:'osc',cards:[
+ {t:'Гармонические колебания',f:T`x=A\sin(\omega t+\varphi_0)`,c:'9-11',s:'Маятник качается туда-сюда: A — амплитуда, ω — частота, φ₀ — начальная фаза.',sym:'x — смещение (м); A — амплитуда (м); ω — циклическая частота (рад/с); φ₀ — начальная фаза (рад)',e:'A = 5 см, T = 2 с → ω = **π рад/с**.',
+  kids:[
+   {t:'Скорость и ускорение при колебаниях',f:T`v=A\omega\cos(\omega t+\varphi_0),\;\; a=-\omega^2x`,c:'10-11',s:'В положении равновесия скорость максимальна, а ускорение равно нулю. В крайней точке — наоборот.'},
+   {t:'Энергия колебаний',f:T`E=\dfrac{kA^2}{2}=\dfrac{mv_{\max}^2}{2}`,c:'10-11',s:'Энергия переходит из потенциальной в кинетическую и обратно, сумма постоянна.'}
+  ]},
+ {t:'Математический маятник',f:T`T=2\pi\sqrt{\dfrac lg}`,c:'9-11',s:'Длинный — медленно, короткий — быстро. Масса НЕ влияет!',sym:'l — длина нити (м); g — ускорение свободного падения',e:'l = 1 м → T ≈ **2 с**.',err:'Формула верна только для малых углов (до ~10°).',k:[['l','l, м',1]],o:['T, с','2*Math.PI*Math.sqrt(l/g)']},
+ {t:'Пружинный маятник',f:T`T=2\pi\sqrt{\dfrac mk}`,c:'9-11',s:'Тяжёлый — медленно, жёсткая пружина — быстро.',e:'m = 1 кг, k = 100 Н/м → T ≈ **0,63 с**.',k:[['m','m, кг',1],['k','k, Н/м',100]],o:['T, с','2*Math.PI*Math.sqrt(m/k)']},
+ {t:'Колебательный контур (формула Томсона)',f:T`T=2\pi\sqrt{LC}`,c:'11',s:'Энергия «качается» между конденсатором и катушкой.',sym:'L — индуктивность (Гн); C — ёмкость (Ф)',e:'L = 1 мГн, C = 1 мкФ → T ≈ **0,2 мс** (ν ≈ 5 кГц).',d:'Полная энергия W = CU²/2 + LI²/2 = const',k:[['L','L, мГн',1],['C','C, мкФ',1]],o:['T, с','2*Math.PI*Math.sqrt(L*1e-3*C*1e-6)']},
+ {t:'Затухание и резонанс',f:T`A(t)=A_0e^{-\beta t},\quad \omega_{\text{внеш}}=\omega_0`,c:'9-11',s:'Из-за трения амплитуда падает. Если частота внешней силы совпадает с собственной — амплитуда резко растёт (раскачка качелей, разрушение моста).',w:'резонанс качели'},
+ {t:'Скорость волны',f:T`v=\lambda\nu=\dfrac\lambda T`,c:'9-11',s:'Бросил камень в пруд — волны расходятся. v — скорость гребня, λ — расстояние между гребнями.',sym:'λ — длина волны (м); ν — частота (Гц); T — период (с)',e:'λ = 2 м, ν = 3 Гц → **6 м/с**.',err:'При переходе в другую среду частота не меняется, меняются v и λ.',k:[['lam','λ, м',2],['nu','ν, Гц',3]],o:['v, м/с','lam*nu'],
+  kids:[
+   {t:'Уравнение бегущей волны',f:T`y=A\sin(\omega t-kx),\quad k=\dfrac{2\pi}{\lambda}`,c:'11',a:1,sym:'k — волновое число (рад/м)'},
+   {t:'Стоячие волны',f:T`l=n\dfrac\lambda2`,c:'11',a:1,s:'На струне, закреплённой с двух концов, укладывается целое число полуволн.',e:'Струна 60 см, n = 1 → λ = **1,2 м**.'}
+  ]},
+ {t:'Звук',f:T`v\approx331+0{,}6\,t_{\text{°C}}\ \text{м/с},\quad s=\dfrac{vt}{2}`,c:'9-11',s:'В воздухе ≈ 340 м/с, в воде ≈ 1500, в стали ≈ 5000 м/с. Эхо идёт до преграды и обратно, поэтому делим на 2.',e:'Эхо через 2 с → до преграды **≈ 340 м**.',err:'Звук в вакууме не распространяется.',
+  kids:[{t:'Уровень громкости',f:T`L=10\lg\dfrac{I}{I_0},\quad I_0=10^{-12}\ \text{Вт/м}^2`,c:'10-11',a:1,s:'Шкала в децибелах. Каждые +10 дБ — интенсивность выше в 10 раз.',e:'Интенсивность 10⁻⁶ Вт/м² → **60 дБ**.'}]},
+ {t:'Эффект Доплера',f:T`\nu=\nu_0\dfrac{v\pm v_{\text{пр}}}{v\mp v_{\text{ист}}}`,c:'11',a:1,s:'Сирена скорой помощи звучит выше, пока едет к тебе, и ниже, когда удаляется.',sym:'v — скорость звука; v_пр — скорость приёмника; v_ист — скорость источника',e:'Источник 500 Гц движется к неподвижному приёмнику со скоростью 34 м/с → ν = **≈ 555 Гц**.',err:'Верхние знаки — сближение (частота растёт), нижние — удаление.'}
+]},
+
+/* ============ 14 ОПТИКА ============ */
+{id:'optics',n:'Оптика',sub:'Отражение · Преломление · Линзы · Интерференция · Дифракция',col:'opt',cards:[
+ {t:'Закон отражения',f:T`\alpha=\alpha'`,c:'8-9',s:'Угол падения равен углу отражения. Луч, нормаль и отражённый луч лежат в одной плоскости.',err:'Углы отсчитывают от нормали, а не от поверхности.',
+  kids:[{t:'Плоское зеркало',f:T`d=f`,c:'8-9',s:'Изображение мнимое, прямое, того же размера, на таком же расстоянии за зеркалом.'}]},
+ {t:'Закон преломления (Снеллиус)',f:T`\dfrac{\sin\alpha}{\sin\beta}=\dfrac{n_2}{n_1}=\dfrac{v_1}{v_2}`,c:'8-11',s:'Ложка в стакане «ломается». В воде свет медленнее.',sym:'n — абсолютный показатель преломления; α — угол падения; β — угол преломления',e:'Воздух → вода (n = 1,33), sinα = 0,5 → β ≈ **22°**.',k:[['al','α, °',30],['n1','n₁',1],['n2','n₂',1.33]],o:['β, °','Math.asin(n1*Math.sin(al*Math.PI/180)/n2)*180/Math.PI'],
+  kids:[
+   {t:'Показатель преломления',f:T`n=\dfrac cv`,c:'8-11',s:'Во сколько раз свет в среде медленнее, чем в вакууме.',e:'В стекле n = 1,5 → v = **2·10⁸ м/с**.'},
+   {t:'Полное внутреннее отражение',f:T`\sin\alpha_{\text{пр}}=\dfrac{n_2}{n_1}\;(n_1>n_2)`,c:'10-11',s:'При падении из более плотной среды под углом больше предельного свет не выходит наружу. На этом основаны световоды.',e:'Стекло → воздух: sinα_пр = 1/1,5 → α_пр ≈ **42°**.',k:[['n','n (стекло/алмаз)',1.5]],o:['α_пр, °','Math.asin(1/n)*180/Math.PI']}
+  ]},
+ {t:'Оптическая сила линзы',f:T`D=\dfrac1F`,c:'8-11',s:'Чем меньше фокус, тем сильнее линза. +2 дптр — это F = 0,5 м.',sym:'D — оптическая сила (дптр = 1/м); F — фокусное расстояние (м)',e:'F = 0,5 м → **2 дптр**.',
+  kids:[
+   {t:'Формула тонкой линзы',f:T`\dfrac1F=\dfrac1d+\dfrac1f`,c:'8-11',s:'Правило знаков: F > 0 у собирающей, F < 0 у рассеивающей; f > 0 для действительного изображения, f < 0 для мнимого.',sym:'d — расстояние от предмета до линзы; f — от линзы до изображения (м)',e:'F = 0,2 м, d = 0,3 м → f = **0,6 м**.',err:'Расстояния в формуле берут в одних единицах (все в м или все в см).',k:[['F','F, м',0.2],['d','d, м',0.3]],o:['f, м','1/(1/F-1/d)']},
+   {t:'Увеличение линзы',f:T`\Gamma=\dfrac Hh=\dfrac fd`,c:'8-11',s:'Отношение размера изображения к размеру предмета.',e:'f = 0,6 м, d = 0,3 м → Γ = **2**.'},
+   {t:'Линзы вплотную',f:T`D=D_1+D_2`,c:'9-11',s:'Оптические силы складываются.'},
+   {t:'Формула линзы через радиусы',f:T`\dfrac1F=(n-1)\left(\dfrac1{R_1}+\dfrac1{R_2}\right)`,c:'11',a:1,s:'Фокус зависит от показателя преломления стекла и кривизны поверхностей.'}
+  ]},
+ {t:'Сферическое зеркало',f:T`\dfrac1F=\dfrac1d+\dfrac1f,\quad F=\dfrac R2`,c:'9-11',a:1,s:'Вогнутое зеркало собирает лучи (F > 0), выпуклое — рассеивает (F < 0).',sym:'R — радиус кривизны зеркала (м)'},
+ {t:'Дисперсия света',f:T`n=n(\lambda)`,c:'9-11',s:'Показатель преломления зависит от длины волны: красный преломляется слабее, фиолетовый — сильнее. Так получается радуга.'},
+ {t:'Интерференция',f:T`\Delta d=k\lambda\;(\max),\quad \Delta d=(2k+1)\dfrac\lambda2\;(\min)`,c:'11',s:'Гребень + гребень = ярко; гребень + впадина = темно.',sym:'Δd — разность хода волн (м); k = 0, 1, 2, …',e:'k = 2, λ = 500 нм → Δd = **1 мкм** (максимум).',
+  kids:[{t:'Тонкие плёнки',f:T`2nh\cos\beta=(k+\tfrac12)\lambda\;(\text{max в отражённом свете})`,c:'11',a:1,s:'Радужные пятна на мыльной плёнке и бензиновых лужах.'}]},
+ {t:'Дифракционная решётка',f:T`d\sin\varphi=k\lambda`,c:'11',s:'Свет проходит через щели — на экране радужные полосы.',sym:'d — период решётки (м); φ — угол на максимум; k — порядок спектра',e:'d = 2·10⁻⁶ м, k = 1, λ = 500 нм → φ ≈ **14,5°**.',k:[['d','d, мкм',2],['lam','λ, нм',500],['k','k',1]],o:['φ, °','Math.asin(k*lam*1e-9/(d*1e-6))*180/Math.PI']},
+ {t:'Поляризация. Закон Брюстера',f:T`\tan\alpha_B=n`,c:'11',a:1,s:'Отражённый свет полностью поляризован, если угол падения равен углу Брюстера. На этом основаны поляризационные очки.',e:'Стекло (n = 1,5) → α_Б ≈ **56°**.'}
+]},
+
+/* ============ 15 КВАНТОВАЯ ФИЗИКА ============ */
+{id:'quantum',n:'Квантовая физика',sub:'Фотон · Фотоэффект · Волны де Бройля · Излучение',col:'quant',cards:[
+ {t:'Энергия фотона',f:T`E=h\nu=\dfrac{hc}{\lambda}`,c:'11',s:'У фиолетового фотона энергии больше, чем у красного.',sym:'h = 6,63·10⁻³⁴ Дж·с; ν — частота (Гц); λ — длина волны (м); c = 3·10⁸ м/с',e:'λ = 500 нм → **4·10⁻¹⁹ Дж ≈ 2,5 эВ**.',err:'Удобное правило: E(эВ) ≈ 1240 / λ(нм).',k:[['lam','λ, нм',500]],o:['E, Дж','hp*c/(lam*1e-9)'],
+  kids:[
+   {t:'Импульс фотона',f:T`p=\dfrac h\lambda=\dfrac Ec`,c:'11',s:'У фотона нет массы покоя, но есть импульс. Поэтому свет давит на поверхность.'},
+   {t:'Давление света',f:T`p=\dfrac{I}{c}(1+\rho)`,c:'11',a:1,s:'ρ = 1 — зеркальная поверхность, ρ = 0 — полностью поглощающая.',sym:'I — интенсивность (Вт/м²); ρ — коэффициент отражения',e:'Солнечный свет у Земли, I ≈ 1400 Вт/м², чёрная поверхность → **≈ 4,7·10⁻⁶ Па**.'}
+  ]},
+ {t:'Уравнение Эйнштейна для фотоэффекта',f:T`h\nu=A_{\text{вых}}+\dfrac{mv^2}{2}`,c:'11',s:'Энергия фотона = работа выхода + кинетическая энергия электрона.',sym:'A_вых — работа выхода (Дж или эВ)',e:'4·10⁻¹⁹ Дж − 3·10⁻¹⁹ Дж → E_k = **10⁻¹⁹ Дж**.',err:'Фотоэффект идёт только если hν > A_вых — вне зависимости от интенсивности света.',
+  kids:[
+   {t:'Красная граница фотоэффекта',f:T`\nu_{\text{кр}}=\dfrac{A_{\text{вых}}}{h},\quad \lambda_{\text{кр}}=\dfrac{hc}{A_{\text{вых}}}`,c:'11',d:'При hν = A_вых скорость вылетающего электрона равна нулю'},
+   {t:'Задерживающее напряжение',f:T`eU_{\text{з}}=\dfrac{mv_{\max}^2}{2}`,c:'11',s:'Напряжение, которое останавливает самые быстрые фотоэлектроны.',e:'E_k = 1,6·10⁻¹⁹ Дж (1 эВ) → U_з = **1 В**.'}
+  ]},
+ {t:'Волны де Бройля',f:T`\lambda=\dfrac hp=\dfrac{h}{mv}`,c:'11',s:'У любой частицы есть волновые свойства. Для мячей длина волны ничтожна, для электронов — сравнима с атомами.',e:'Электрон, v = 10⁶ м/с → λ ≈ **0,73 нм**.',k:[['v','v, м/с',1e6]],o:['λ, м (электрон)','hp/(me*v)']},
+ {t:'Соотношение неопределённостей Гейзенберга',f:T`\Delta x\,\Delta p\ge\dfrac\hbar2`,c:'11',a:1,s:'Нельзя одновременно точно знать и положение, и импульс частицы.',sym:'ħ = h/2π ≈ 1,05·10⁻³⁴ Дж·с'},
+ {t:'Тепловое излучение',f:T`R=\sigma T^4,\quad \lambda_{\max}=\dfrac bT`,c:'11',a:1,s:'Закон Стефана–Больцмана: мощность излучения с 1 м² растёт как T⁴. Закон Вина: чем горячее тело, тем короче длина волны максимума.',sym:'σ = 5,67·10⁻⁸ Вт/(м²·К⁴); b = 2,9·10⁻³ м·К',e:'Солнце, T ≈ 5800 K → λ_max ≈ **500 нм** (жёлто-зелёный).'}
+]},
+
+/* ============ 16 ЯДЕРНАЯ ФИЗИКА ============ */
+{id:'nuclear',n:'Ядерная физика',sub:'Состав ядра · Энергия связи · Радиоактивность',col:'nuc',cards:[
+ {t:'Состав ядра',f:T`A=Z+N`,c:'9-11',s:'Массовое число равно числу протонов плюс числу нейтронов.',sym:'A — массовое число; Z — зарядовое число (число протонов); N — число нейтронов',e:'¹⁴₆C: Z = 6, A = 14 → N = **8**.'},
+ {t:'Дефект массы и энергия связи',f:T`\Delta m=Zm_p+Nm_n-M_{\text{я}},\quad E_{\text{св}}=\Delta m\,c^2`,c:'9-11',s:'Целое ядро легче суммы частей. Разница масс — это энергия связи.',e:'Δm = 1,66·10⁻³⁰ кг → **1,5·10⁻¹³ Дж**. 1 а.е.м. ↔ **931,5 МэВ**.',err:'Берут массу ядра, а не атома (или атомные массы с учётом электронов).',k:[['dm','Δm, кг',1.66e-30],['c0','c, м/с',2.998e8]],o:['E_св, Дж','dm*c0*c0']},
+ {t:'Закон радиоактивного распада',f:T`N=N_0\cdot2^{-t/T_{1/2}}`,c:'9-11',s:'Каждые T½ остаётся половина ядер. Через T½ — ½, через 2T½ — ¼.',sym:'T½ — период полураспада (с)',e:'t = 2T½ → останется **25 %**.',k:[['N0','N₀',1000],['t','t',20],['T','T½',10]],o:['N','N0*Math.pow(2,-t/T)'],
+  kids:[
+   {t:'Постоянная распада и активность',f:T`\lambda=\dfrac{\ln2}{T_{1/2}},\quad A=\lambda N`,c:'11',a:1,sym:'λ — постоянная распада (1/с); A — активность (Бк = 1/с)',e:'T½ = 10 с → λ ≈ **0,069 с⁻¹**.'}
+  ]},
+ {t:'Радиоактивные превращения',f:T`{}^A_Z X\to{}^{A-4}_{Z-2}Y+{}^4_2\text{He}`,c:'9-11',s:'При каждом распаде сохраняются суммарный заряд и массовое число.',tbl:{cols:['Тип','Что вылетает','Z ядра','A ядра'],rows:[['α-распад','ядро ⁴₂He','−2','−4'],['β⁻-распад','электрон (+ антинейтрино)','+1','0'],['β⁺-распад','позитрон (+ нейтрино)','−1','0'],['γ-излучение','фотон','0','0']]}},
+ {t:'Ядерные реакции и энергетический выход',f:T`Q=\left(\sum M_{\text{до}}-\sum M_{\text{после}}\right)c^2`,c:'11',a:1,s:'Если масса уменьшилась — энергия выделилась (Q > 0), реакция экзотермическая. Деление урана и синтез водорода выделяют энергию.',e:'При делении одного ядра ²³⁵U выделяется около **200 МэВ**.'},
+ {t:'Поглощённая доза излучения',f:T`D=\dfrac Em`,c:'9-11',s:'Энергия излучения, поглощённая единицей массы вещества.',sym:'D — доза (Гр = Дж/кг)',e:'0,5 Дж поглощено телом 50 кг → **0,01 Гр**.'}
+]},
+
+/* ============ 17 СТО ============ */
+{id:'sto',n:'Основы СТО',sub:'Релятивистские эффекты · Энергия и импульс',col:'quant',cards:[
+ {t:'Постулаты СТО',f:T`c=\mathrm{const}`,c:'11',s:'1) Законы физики одинаковы во всех ИСО. 2) Скорость света в вакууме одинакова для всех наблюдателей и не зависит от скорости источника.',w:'эйнштейн постулат относительности'},
+ {t:'Релятивистский множитель',f:T`\gamma=\dfrac{1}{\sqrt{1-v^2/c^2}}`,c:'11',s:'Показывает, насколько заметны релятивистские эффекты. При v = 0,1c он ≈ 1,005, а при v = 0,9c — 2,3.',e:'v = 0,8c → γ = **1,67**.',k:[['b','β = v/c',0.8]],o:['γ','1/Math.sqrt(1-b*b)'],
+  kids:[
+   {t:'Замедление времени',f:T`\Delta t=\gamma\,\Delta t_0=\dfrac{\Delta t_0}{\sqrt{1-v^2/c^2}}`,c:'11',s:'На быстрой ракете часы идут медленнее, чем на Земле.',sym:'Δt₀ — собственное время (в системе, где часы покоятся)',e:'v = 0,8c: на ракете 1 год, на Земле **1,67 года**.',k:[['dt0','Δt₀, лет',1],['b','β = v/c',0.8]],o:['Δt, лет','dt0/Math.sqrt(1-b*b)']},
+   {t:'Сокращение длины',f:T`l=l_0\sqrt{1-v^2/c^2}`,c:'11',s:'Быстрый объект «сплющивается» вдоль движения.',sym:'l₀ — собственная длина (в системе, где тело покоится)',e:'Корабль 100 м при v = 0,6c → **80 м**.'},
+   {t:'Релятивистский закон сложения скоростей',f:T`u=\dfrac{u'+v}{1+u'v/c^2}`,c:'11',s:'Скорость света сложением не превзойти.',e:'Два корабля по 0,5c навстречу → **0,8c**, а не c.'}
+  ]},
+ {t:'Энергия покоя и полная энергия',f:T`E_0=mc^2,\quad E=\gamma mc^2`,c:'11',s:'Даже в покое тело обладает огромной энергией. 1 кг ↔ 9·10¹⁶ Дж.',sym:'m — масса покоя (кг)',err:'Релятивистской «массы» школа не использует: масса покоя постоянна, растёт энергия. Чтобы разогнать тело до c, понадобилась бы бесконечная энергия.',
+  kids:[
+   {t:'Кинетическая энергия',f:T`E_k=(\gamma-1)mc^2`,c:'11',s:'При малых скоростях переходит в mv²/2.'},
+   {t:'Релятивистский импульс',f:T`p=\gamma mv`,c:'11',a:1},
+   {t:'Связь энергии и импульса',f:T`E^2=(pc)^2+(mc^2)^2`,c:'11',a:1,s:'Для фотона (m = 0): E = pc.'},
+   {t:'Преобразования Лоренца',f:T`x'=\gamma(x-vt),\quad t'=\gamma\left(t-\dfrac{vx}{c^2}\right)`,c:'11',a:1,s:'Связывают координаты и время одного события в двух ИСО.'}
+  ]}
+]},
+
+/* ============ 18 АСТРОНОМИЯ ============ */
+{id:'astronomy',n:'Астрономия',sub:'Законы Кеплера · Космические скорости · Звёзды · Космология',col:'astro',cards:[
+ {t:'Первый закон Кеплера',f:T`\text{орбита — эллипс, Солнце в фокусе}`,c:'9-11',s:'Планеты движутся по эллипсам. Ближайшая точка орбиты — перигелий, дальняя — афелий.'},
+ {t:'Второй закон Кеплера',f:T`\dfrac{\Delta S}{\Delta t}=\mathrm{const}`,c:'9-11',s:'Радиус-вектор планеты за равные времена заметает равные площади. Вблизи Солнца планета движется быстрее.',e:'v_п·r_п = v_а·r_а — в перигелии скорость больше, чем в афелии.'},
+ {t:'Третий закон Кеплера',f:T`\dfrac{T^2}{a^3}=\dfrac{4\pi^2}{GM}`,c:'9-11',s:'Квадрат периода пропорционален кубу большой полуоси. Дальше от Солнца — медленнее.',sym:'T — период обращения (с, год); a — большая полуось орбиты (м, а.е.); M — масса центрального тела',e:'Если a больше земной в 4 раза → T = √(4³) = **8 лет**.',k:[['a','a, а.е. (вокруг Солнца)',4]],o:['T, лет','Math.pow(a,1.5)'],
+  kids:[
+   {t:'Период обращения',f:T`T=2\pi\sqrt{\dfrac{a^3}{GM}}`,c:'10-11'},
+   {t:'Уточнённый третий закон',f:T`\dfrac{T^2}{a^3}=\dfrac{4\pi^2}{G(M+m)}`,c:'11',a:1,s:'Учитываем массу планеты m, а не только Солнца M. Нужен для двойных звёзд.'}
+  ]},
+ {t:'Космические скорости',f:T`v_1=\sqrt{\dfrac{GM}{R}},\; v_2=\sqrt{\dfrac{2GM}{R}}=\sqrt2\,v_1`,c:'9-11',s:'v₁ — круговая орбита у поверхности (Земля: 7,9 км/с). v₂ — навсегда покинуть планету (11,2 км/с). Третья (v₃ ≈ 16,7 км/с) — выйти из Солнечной системы с Земли.',sym:'G — гравитационная постоянная; M — масса планеты (кг); R — радиус (м)',e:'Земля: M = 5,97·10²⁴ кг, R = 6371 км → v₁ ≈ **7,9 км/с**.',k:[['M','M, кг',5.97e24],['R','R, м',6.371e6]],o:['v₁, м/с','Math.sqrt(G*M/R)'],
+  kids:[
+   {t:'Скорость на круговой орбите',f:T`v=\sqrt{\dfrac{GM}{r}}`,c:'10-11',s:'Чем выше орбита, тем медленнее спутник.',err:'r — расстояние от центра планеты, а не высота над поверхностью.'},
+   {t:'Скорость на эллиптической орбите',f:T`v=\sqrt{GM\left(\dfrac2r-\dfrac1a\right)}`,c:'11',a:1,s:'Ближе к Солнцу — быстрее, дальше — медленнее (2-й закон Кеплера).'},
+   {t:'Геостационарная орбита',f:T`r=\left(\dfrac{GMT^2}{4\pi^2}\right)^{1/3}`,c:'10-11',a:1,s:'Спутник «висит» над одной точкой экватора. Период = 24 ч.',e:'r ≈ **42 164 км** от центра Земли (≈ 35 786 км над поверхностью).'}
+  ]},
+ {t:'Звёздные параметры',f:T`L=4\pi R^2\sigma T^4`,c:'11',a:1,s:'Светимость звезды зависит от радиуса и температуры.',sym:'L — светимость (Вт); R — радиус звезды; T — температура поверхности (К)',e:'Звезда вдвое горячее Солнца того же размера светит в **16 раз** ярче.',
+  kids:[
+   {t:'Звёздные величины',f:T`m_1-m_2=-2{,}5\lg\dfrac{E_1}{E_2}`,c:'11',a:1,s:'Чем меньше m, тем ярче звезда. Разница в 5 звёздных величин — разница блеска в 100 раз.'},
+   {t:'Годичный параллакс',f:T`d[\text{пк}]=\dfrac{1}{\pi''}`,c:'11',s:'Расстояние до звёзд по смещению на фоне далёких звёзд.',e:'π = 0,1″ → d = **10 пк** ≈ 32,6 св. года.'}
+  ]},
+ {t:'Закон Хаббла',f:T`v=H\,d`,c:'11',a:1,s:'Далёкие галактики «разбегаются» тем быстрее, чем дальше. Расширение Вселенной.',sym:'H ≈ 70 км/(с·Мпк) — постоянная Хаббла; d — расстояние (Мпк)',e:'d = 100 Мпк → v ≈ **7000 км/с**.',k:[['d','d, Мпк',100]],o:['v, км/с (H=70)','70*d']},
+ {t:'Радиус Шварцшильда',f:T`r_s=\dfrac{2GM}{c^2}`,c:'11',a:1,s:'Если сжать тело до такого радиуса, оно станет чёрной дырой: не выпустит даже свет.',e:'Для Солнца r_s ≈ **3 км**, для Земли ≈ **9 мм**.',k:[['M','M, кг',1.989e30]],o:['r_s, м','2*G*M/(c*c)']}
+]},
+
+/* ============ 19 ЭЛЕКТРОМАГНИТНЫЕ ВОЛНЫ ============ */
+{id:'emwaves',n:'Электромагнитные волны',sub:'Скорость · Длина волны · Шкала ЭМВ',col:'em',cards:[
+ {t:'Скорость ЭМВ',f:T`c=\dfrac1{\sqrt{\mu_0\varepsilon_0}}\approx3\cdot10^8\ \text{м/с}`,c:'11',s:'Радиоволны, свет, рентген — всё это ЭМВ, просто разной частоты. В вакууме все летят со скоростью света.',sym:'ε₀ = 8,85·10⁻¹² Ф/м; μ₀ = 4π·10⁻⁷ Гн/м',
+  kids:[{t:'Скорость в среде',f:T`v=\dfrac{c}{\sqrt{\varepsilon\mu}}=\dfrac cn`,c:'11'}]},
+ {t:'Связь длины волны и частоты',f:T`c=\lambda\nu,\quad \lambda=\dfrac c\nu`,c:'9-11',s:'Чем выше частота, тем короче волна.',e:'ν = 100 МГц → λ = 3·10⁸ / 10⁸ = **3 м**.',err:'Частоту — в Гц, не в МГц: 100 МГц = 10⁸ Гц.',k:[['nu','ν, МГц',100]],o:['λ, м','c/(nu*1e6)']},
+ {t:'Период ЭМВ',f:T`T=\dfrac1\nu=\dfrac\lambda c`,c:'9-11',s:'Время одного полного колебания.'},
+ {t:'Связь E и B',f:T`E=cB`,c:'11',s:'В электромагнитной волне электрическое и магнитное поля колеблются синфазно. Не бывает «только электрической» волны.',err:'E и B перпендикулярны друг другу и направлению распространения.'},
+ {t:'Радиолокация',f:T`s=\dfrac{ct}{2}`,c:'9-11',s:'Сигнал идёт до цели и обратно, поэтому делим на 2.',e:'Эхо вернулось через 200 мкс → цель на расстоянии **30 км**.',k:[['t','t, мкс',200]],o:['s, м','c*t*1e-6/2']},
+ {t:'Радиоприём (настройка контура)',f:T`\nu=\dfrac{1}{2\pi\sqrt{LC}}`,c:'11',s:'Меняя ёмкость конденсатора, настраивают контур приёмника на нужную станцию (резонанс).',e:'L = 1 мкГн, C = 100 пФ → ν ≈ **15,9 МГц**.'},
+ {t:'Шкала электромагнитных волн',f:T`\text{радио}\to\text{ИК}\to\text{свет}\to\text{УФ}\to\text{рентген}\to\gamma`,c:'11',tbl:{cols:['Диапазон','Длина волны','Применение / источник'],rows:[['Радиоволны','> 1 мм','связь, радио, ТВ, радиолокация'],['Микроволны','1 мм – 1 м','Wi-Fi, СВЧ-печь, радар'],['Инфракрасное','760 нм – 1 мм','тепловое излучение, пульты ДУ'],['Видимый свет','380–760 нм','красный → фиолетовый'],['Ультрафиолет','10–380 нм','загар, обеззараживание'],['Рентген','0,01–10 нм','медицина, дефектоскопия'],['γ-излучение','< 0,01 нм','ядерные процессы, космос']]}}
+]},
+
+/* ============ 20 СТАТИСТИЧЕСКАЯ ФИЗИКА ============ */
+{id:'statphys',n:'Статистическая физика',sub:'Распределение Максвелла · Больцман · Барометрическая формула',col:'stat',cards:[
+ {t:'Распределение Максвелла по скоростям',f:T`f(v)=4\pi v^2\left(\dfrac{m}{2\pi kT}\right)^{3/2}e^{-mv^2/2kT}`,c:'11',a:1,s:'Не все молекулы летят с одной скоростью: большинство — около средней, но есть и очень быстрые, и очень медленные. График — «горб». Чем выше T, тем он правее и ниже.',sym:'f(v) — доля молекул со скоростью около v на единицу скорости; m — масса молекулы',e:'Интерактивный график — в «Лаборатории» ниже.',w:'горб лаборатория'},
+ {t:'Характерные скорости',f:T`v_{\text{вер}}=\sqrt{\dfrac{2kT}{m}},\;\langle v\rangle=\sqrt{\dfrac{8kT}{\pi m}},\;v_{\text{кв}}=\sqrt{\dfrac{3kT}{m}}`,c:'11',a:1,s:'Наиболее вероятная — пик графика. Средняя — арифметическое среднее. Среднеквадратичная — входит в E_k. Соотношение: 1 : 1,13 : 1,22.',sym:'m — масса молекулы (кг); вместо k/m можно писать R/M',e:'N₂ при 300 K: v_вер ≈ **422**, ⟨v⟩ ≈ **476**, v_кв ≈ **517 м/с**.',k:[['T','T, К',300],['M','M, кг/моль',0.028]],o:['v_вер, м/с','Math.sqrt(2*Rg*T/M)']},
+ {t:'Теорема о равнораспределении',f:T`\overline{E}=\dfrac i2kT`,c:'11',a:1,s:'На каждую степень свободы приходится в среднем kT/2 энергии.',e:'Одноатомный газ: i = 3. Двухатомный при комнатной T: i = 5.'},
+ {t:'Распределение Больцмана',f:T`n=n_0e^{-E_p/kT}`,c:'11',a:1,s:'Концентрация частиц в потенциальном поле убывает экспоненциально с ростом энергии.',
+  kids:[{t:'Барометрическая формула',f:T`p=p_0e^{-Mgh/RT}`,c:'10-11',s:'Как давление воздуха убывает с высотой. В горах воздух разрежён — поэтому там трудно дышать.',e:'M = 0,029 кг/моль, T = 273 K, h = 5500 м → давление **≈ вдвое меньше**, чем у моря.',k:[['h','h, м',5500],['T','T, К',273]],o:['p/p₀','Math.exp(-0.029*g*h/(Rg*T))']}]},
+ {t:'Энтропия (формула Больцмана)',f:T`S=k\ln W`,c:'11',a:1,s:'Чем больше способов реализовать состояние (W), тем выше энтропия. Беспорядок — это просто более вероятное состояние.'}
+]},
+
+/* ============ 21 МЕХАНИКА СПЛОШНЫХ СРЕД ============ */
+{id:'fluids',n:'Механика сплошных сред',sub:'Неразрывность · Бернулли · Вязкость · Деформации',col:'fluid',cards:[
+ {t:'Уравнение неразрывности',f:T`S_1v_1=S_2v_2=\mathrm{const}`,c:'10-11',a:1,s:'Где труба уже — вода течёт быстрее. Из шланга с зажатым концом бьёт сильнее.',e:'Сечение уменьшилось вдвое → скорость выросла в **2 раза**.',
+  kids:[{t:'Расход жидкости',f:T`Q=vS=\mathrm{const}`,c:'10-11',a:1,sym:'Q — объёмный расход (м³/с)'}]},
+ {t:'Уравнение Бернулли',f:T`\dfrac{\rho v^2}{2}+\rho gh+p=\mathrm{const}`,c:'11',a:1,s:'Где скорость выше — давление ниже. Поэтому крыло самолёта создаёт подъёмную силу: сверху воздух быстрее, давление меньше.',sym:'ρv²/2 — динамическое давление; ρgh — гидростатическое; p — статическое',e:'Горизонтальная труба: скорость выросла 2 → 4 м/с (вода) → давление упало на **ρ(v₂²−v₁²)/2 = 6 кПа**.',err:'Верно для идеальной (невязкой, несжимаемой) жидкости вдоль линии тока.',
+  kids:[{t:'Формула Торричелли',f:T`v=\sqrt{2gh}`,c:'10-11',a:1,s:'Скорость вытекания из малого отверстия на глубине h — такая же, как у свободно упавшей капли.',e:'Отверстие на 0,8 м ниже уровня → **≈ 4 м/с**.',k:[['h','h, м',0.8]],o:['v, м/с','Math.sqrt(2*g*h)']}]},
+ {t:'Вязкое трение (закон Стокса)',f:T`F=6\pi\eta rv`,c:'11',a:1,s:'Сила сопротивления шарика в вязкой жидкости. Тело падает с постоянной скоростью, когда сила тяжести уравновешивается Архимедом и Стоксом.',sym:'η — вязкость (Па·с); r — радиус шарика (м)',
+  kids:[{t:'Число Рейнольдса',f:T`\mathrm{Re}=\dfrac{\rho vd}{\eta}`,c:'11',a:1,s:'Показывает режим течения: при малых Re — ламинарное (гладкое), при больших — турбулентное.'}]},
+ {t:'Упругая деформация',f:T`\sigma=E\varepsilon,\quad \sigma=\dfrac FS,\;\varepsilon=\dfrac{\Delta l}{l}`,c:'10-11',a:1,s:'Механическое напряжение пропорционально относительному удлинению.',sym:'σ — напряжение (Па); ε — относительная деформация; E — модуль Юнга (Па)',e:'Сталь: E ≈ 2·10¹¹ Па. Стержень 1 м, S = 1 мм², F = 200 Н → Δl = **1 мм**.'}
+]},
+
+/* ============ 22 ТЕОРИЯ БОРА ============ */
+{id:'bohr',n:'Атомная физика (теория Бора)',sub:'Постулаты · Уровни энергии · Спектральные серии',col:'bohr',cards:[
+ {t:'Первый постулат Бора',f:T`m v r=n\hbar`,c:'11',s:'Электрон может находиться только на определённых «разрешённых» орбитах, как на ступеньках лестницы.',sym:'ħ = h/2π; n = 1, 2, 3… — номер орбиты',err:'Это модель водородоподобного атома. Современная картина — электронные облака (квантовая механика).'},
+ {t:'Второй постулат Бора',f:T`h\nu=E_{n_2}-E_{n_1}`,c:'11',s:'Электрон «прыгает» вниз — атом излучает фотон. Прыгает вверх — поглощает.',e:'Переход 2 → 1 в водороде → фотон **122 нм** (УФ).'},
+ {t:'Энергия электрона на n-й орбите',f:T`E_n=-\dfrac{13{,}6}{n^2}\ \text{эВ}`,c:'11',s:'Чем больше n, тем выше (ближе к нулю) энергия. n = 1 — основное состояние (−13,6 эВ). Энергия ионизации водорода — 13,6 эВ.',e:'n = 2 → E = −13,6/4 = **−3,4 эВ**.',k:[['n','n',2]],o:['E, эВ','-13.6/(n*n)'],
+  kids:[
+   {t:'Радиус n-й орбиты',f:T`r_n=n^2r_1,\quad r_1\approx0{,}529\cdot10^{-10}\ \text{м}`,c:'11',s:'Орбиты растут как квадраты номеров: 1, 4, 9, 16…',k:[['n','n',3]],o:['r, Å','0.529*n*n']},
+   {t:'Скорость электрона на орбите',f:T`v_n=\dfrac{2{,}19\cdot10^6}{n}\ \text{м/с}`,c:'11',a:1,s:'На более далёких орбитах электрон движется медленнее.'}
+  ]},
+ {t:'Обобщённая формула Бальмера',f:T`\dfrac1\lambda=R\left(\dfrac{1}{n_1^2}-\dfrac{1}{n_2^2}\right)`,c:'11',s:'Длина волны излучения при переходе с уровня n₂ на n₁.',sym:'R ≈ 1,097·10⁷ м⁻¹ — постоянная Ридберга; n₂ > n₁',e:'n₁ = 2, n₂ = 3 → λ ≈ **656 нм** (красная линия H_α).',k:[['n1','n₁',2],['n2','n₂',3]],o:['λ, нм','1e9/(1.097e7*(1/(n1*n1)-1/(n2*n2)))'],
+  tbl:{cols:['Серия','Конечный уровень n₁','Диапазон'],rows:[['Лаймана','1','ультрафиолет'],['Бальмера','2','видимый (H_α 656, H_β 486, H_γ 434 нм)'],['Пашена','3','инфракрасный'],['Брэкета','4','инфракрасный'],['Пфунда','5','инфракрасный']]},
+  kids:[{t:'Число спектральных линий',f:T`N=\dfrac{n(n-1)}{2}`,c:'11',a:1,s:'Сколько разных переходов возможно из состояния n вниз.',e:'С n = 4 возможны **6** линий.'}]}
+]},
+
+/* ============ 23 ЛАБОРАТОРИЯ ============ */
+{id:'lab',n:'Интерактивная лаборатория',sub:'Подвигай ползунки — формулы оживут',col:'lab',lab:true},
+
+/* ============ 24 ТАБЛИЦЫ ============ */
+{id:'tables',n:'Справочные таблицы',sub:'Константы · Приставки · Единицы · Плотности · Теплоты · Планеты',col:'tab',cards:[
+ {t:'Физические постоянные',c:'7-11',tbl:{cols:['Величина','Обозначение','Значение'],rows:[['Гравитационная постоянная','G','6,674·10⁻¹¹ Н·м²/кг²'],['Ускорение свободного падения','g','9,81 м/с² (в задачах ≈ 10)'],['Скорость света','c','2,998·10⁸ м/с (≈ 3·10⁸)'],['Постоянная Планка','h','6,626·10⁻³⁴ Дж·с'],['Приведённая постоянная Планка','ħ','1,055·10⁻³⁴ Дж·с'],['Элементарный заряд','e','1,602·10⁻¹⁹ Кл'],['Масса электрона','mₑ','9,109·10⁻³¹ кг'],['Масса протона','m_p','1,673·10⁻²⁷ кг'],['Масса нейтрона','m_n','1,675·10⁻²⁷ кг'],['Постоянная Авогадро','N_A','6,022·10²³ моль⁻¹'],['Универсальная газовая постоянная','R','8,314 Дж/(моль·К)'],['Постоянная Больцмана','k','1,381·10⁻²³ Дж/К'],['Постоянная Стефана–Больцмана','σ','5,67·10⁻⁸ Вт/(м²·К⁴)'],['Постоянная Вина','b','2,898·10⁻³ м·К'],['Постоянная Кулона','k','8,99·10⁹ Н·м²/Кл²'],['Электрическая постоянная','ε₀','8,854·10⁻¹² Ф/м'],['Магнитная постоянная','μ₀','4π·10⁻⁷ Гн/м'],['Постоянная Фарадея','F','96 485 Кл/моль'],['Постоянная Ридберга','R','1,097·10⁷ м⁻¹'],['Боровский радиус','r₁','0,529·10⁻¹⁰ м'],['Атомная единица массы','1 а.е.м.','1,661·10⁻²⁷ кг = 931,5 МэВ/c²'],['Нормальное атмосферное давление','p₀','101 325 Па = 760 мм рт. ст.'],['Абсолютный ноль','0 K','−273,15 °C']]}},
+ {t:'Приставки СИ',c:'7-11',tbl:{cols:['Приставка','Обозн.','Множитель','Приставка','Обозн.','Множитель'],rows:[['тера','Т','10¹²','деци','д','10⁻¹'],['гига','Г','10⁹','санти','с','10⁻²'],['мега','М','10⁶','милли','м','10⁻³'],['кило','к','10³','микро','мк','10⁻⁶'],['гекто','г','10²','нано','н','10⁻⁹'],['дека','да','10¹','пико','п','10⁻¹²']]}},
+ {t:'Перевод единиц и внесистемные единицы',c:'7-11',tbl:{cols:['Величина','Соотношение'],rows:[['Скорость','1 км/ч = 0,278 м/с; 36 км/ч = 10 м/с'],['Объём','1 л = 10⁻³ м³ = 1 дм³; 1 мл = 1 см³'],['Плотность','1 г/см³ = 1000 кг/м³'],['Площадь','1 см² = 10⁻⁴ м²; 1 мм² = 10⁻⁶ м²'],['Давление','1 атм = 101 325 Па; 1 бар = 10⁵ Па; 1 мм рт. ст. ≈ 133 Па'],['Энергия','1 кВт·ч = 3,6·10⁶ Дж; 1 кал = 4,19 Дж; 1 эВ = 1,6·10⁻¹⁹ Дж'],['Мощность','1 л. с. = 735,5 Вт'],['Температура','T (К) = t (°C) + 273'],['Индукция','1 Гс = 10⁻⁴ Тл'],['Длина (астрономия)','1 а.е. = 1,496·10¹¹ м; 1 св. год = 9,46·10¹⁵ м; 1 пк = 3,086·10¹⁶ м = 3,26 св. года']]}},
+ {t:'Размерности единиц СИ',c:'7-11',tbl:{cols:['Величина','Единица','Через основные'],rows:[['Сила','Н','кг·м/с²'],['Работа, энергия','Дж','Н·м = кг·м²/с²'],['Мощность','Вт','Дж/с'],['Давление','Па','Н/м²'],['Частота','Гц','1/с'],['Заряд','Кл','А·с'],['Напряжение','В','Дж/Кл'],['Сопротивление','Ом','В/А'],['Ёмкость','Ф','Кл/В'],['Магнитная индукция','Тл','Н/(А·м)'],['Магнитный поток','Вб','Тл·м²'],['Индуктивность','Гн','Вб/А'],['Активность','Бк','1/с'],['Доза','Гр','Дж/кг']]}},
+ {t:'Плотности веществ',c:'7-9',tbl:{cols:['Вещество','ρ, кг/м³','Вещество','ρ, кг/м³'],rows:[['Вода','1000','Алюминий','2700'],['Морская вода','1030','Железо, сталь','7800'],['Лёд','900','Медь','8900'],['Спирт','800','Свинец','11 300'],['Керосин','800','Ртуть','13 600'],['Бензин','710','Серебро','10 500'],['Подсолнечное масло','930','Золото','19 300'],['Воздух (0 °C)','1,29','Стекло','2500']]}},
+ {t:'Удельные теплоёмкости',c:'8',tbl:{cols:['Вещество','c, Дж/(кг·°C)','Вещество','c, Дж/(кг·°C)'],rows:[['Вода','4200','Алюминий','920'],['Лёд','2100','Железо','460'],['Водяной пар','2000','Медь','380'],['Спирт','2400','Свинец','130'],['Подсолнечное масло','1700','Стекло','840'],['Воздух','1000','Ртуть','140']]}},
+ {t:'Теплоты плавления, парообразования и сгорания',c:'8',tbl:{cols:['Вещество','t плавления, °C','λ, кДж/кг','Вещество','L, кДж/кг','Топливо','q, МДж/кг'],rows:[['Лёд','0','330','Вода','2300','Бензин','46'],['Алюминий','660','390','Спирт','840','Керосин','46'],['Медь','1085','210','Эфир','350','Дизельное топливо','42'],['Железо','1538','270','Ртуть','285','Природный газ','44'],['Свинец','327','25','','','Каменный уголь','27'],['Олово','232','59','','','Дрова','10']]}},
+ {t:'Удельное электрическое сопротивление',c:'8-10',tbl:{cols:['Вещество','ρ, Ом·мм²/м','Вещество','ρ, Ом·мм²/м'],rows:[['Серебро','0,016','Сталь','0,15'],['Медь','0,017','Вольфрам','0,055'],['Алюминий','0,028','Константан','0,5'],['Железо','0,10','Нихром','1,1']]}},
+ {t:'Показатели преломления и диэлектрические проницаемости',c:'8-11',tbl:{cols:['Среда','n','Вещество','ε'],rows:[['Воздух','1,0003','Вакуум','1'],['Вода','1,33','Воздух','1,0006'],['Спирт','1,36','Парафин','2,1'],['Стекло','≈ 1,5','Керосин','2'],['Алмаз','2,42','Стекло','5–7'],['Лёд','1,31','Вода','81']]}},
+ {t:'Данные о телах Солнечной системы',c:'9-11',tbl:{cols:['Тело','M, кг','R, км','g, м/с²','v₂, км/с','a, а.е.','T, лет'],rows:[['Солнце','1,989·10³⁰','696 000','274','618','—','—'],['Меркурий','3,3·10²³','2440','3,7','4,3','0,387','0,241'],['Венера','4,87·10²⁴','6052','8,9','10,4','0,723','0,615'],['Земля','5,97·10²⁴','6371','9,8','11,2','1,000','1,000'],['Луна','7,35·10²²','1737','1,62','2,4','—','—'],['Марс','6,42·10²³','3390','3,7','5,0','1,524','1,88'],['Юпитер','1,90·10²⁷','69 900','24,8','59,5','5,20','11,86'],['Сатурн','5,68·10²⁶','58 200','10,4','35,5','9,54','29,5']]}}
+]}
+];
+</script>
+
+<!-- ===================== ПРИЛОЖЕНИЕ ===================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  'use strict';
+
+  var CONSTS = {G:6.674e-11, g:9.8, kC:8.99e9, kB:1.381e-23, hp:6.626e-34, c:2.998e8, e0:8.854e-12, mu0:1.2566e-6, qe:1.602e-19, me:9.109e-31, NA:6.022e23, Rg:8.314, sigma:5.67e-8};
+  var main = document.getElementById('main');
+  var tocEl = document.getElementById('toc');
+  var jump = document.getElementById('jump');
+  var resultInfo = document.getElementById('resultInfo');
+  var searchInput = document.getElementById('search');
+
+  /* ---------- утилиты ---------- */
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmt(s){ return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>'); }
+  function norm(s){ return String(s).toLowerCase().replace(/ё/g,'е'); }
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function pad(n){ return n < 10 ? '0'+n : ''+n; }
+  function el(tag, cls, html){ var e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
+  var store = {
+    get: function(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  };
+  function parseGrades(c){
+    if (!c) return [7,8,9,10,11];
+    var p = String(c).split('-').map(Number), a = p[0], b = p[1] || p[0], r = [];
+    for (var i = a; i <= b; i++) r.push(i);
+    return r;
+  }
+  function gradeLabel(g){ return g.length === 5 ? '' : (g.length === 1 ? g[0] : g[0]+'–'+g[g.length-1]) + ' кл'; }
+  function setTex(node, tex){
+    if (window.katex) { try { window.katex.render(tex, node, {throwOnError:false}); return; } catch(e){} }
+    node.textContent = tex;
+  }
+  function num(x){
+    if (!isFinite(x)) return '—';
+    if (x === 0) return '0';
+    var a = Math.abs(x);
+    if (a < 1e-3 || a >= 1e6) {
+      var p = x.toExponential(3).split('e');
+      var m = String(parseFloat(p[0])).replace('.', ',');
+      return m + '·10<sup>' + String(parseInt(p[1],10)).replace('-','−') + '</sup>';
+    }
+    return String(parseFloat(x.toPrecision(4))).replace('.', ',');
+  }
+
+  /* ---------- построение ---------- */
+  var cards = [], byId = {}, secs = [];
+  var favs = store.get('fiz-favs') || [];
+  var openSaved = store.get('fiz-open') || [];
+
+  function row(cls, label, html){
+    return '<div class="frow ' + cls + '"><span class="flabel">' + label + '</span><span>' + html + '</span></div>';
+  }
+
+  function buildCalc(cd){
+    var box = el('div', 'calc');
+    var names = cd.k.map(function(v){ return v[0]; });
+    var consts = Object.keys(CONSTS).filter(function(n){ return names.indexOf(n) < 0; });
+    var fn;
+    try { fn = new Function(names.concat(consts).join(','), 'return (' + cd.o[1] + ');'); } catch(e){ return null; }
+    var grid = el('div', 'cgrid'), inputs = [];
+    box.appendChild(el('div', 'ctitle', '🧮 Калькулятор'));
+    cd.k.forEach(function(v){
+      var lab = el('label', '', esc(v[1]));
+      var inp = document.createElement('input');
+      inp.type = 'number'; inp.step = 'any'; inp.value = v[2]; inp.setAttribute('aria-label', v[1]);
+      lab.appendChild(inp); grid.appendChild(lab); inputs.push(inp);
+    });
+    var out = el('div', 'cout');
+    grid.appendChild(out); box.appendChild(grid);
+    function calc(){
+      var vals = inputs.map(function(i){ return parseFloat(i.value); });
+      var cv = consts.map(function(n){ return CONSTS[n]; });
+      var r; try { r = fn.apply(null, vals.concat(cv)); } catch(e){ r = NaN; }
+      out.innerHTML = esc(cd.o[0]) + ' = ' + num(r);
+    }
+    inputs.forEach(function(i){ i.addEventListener('input', calc); });
+    calc();
+    return box;
+  }
+
+  function buildTable(tbl){
+    var h = '<div class="tblwrap"><table class="tb"><thead><tr>' + tbl.cols.map(function(c){ return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>';
+    tbl.rows.forEach(function(r){ h += '<tr>' + r.map(function(c){ return '<td>' + esc(c) + '</td>'; }).join('') + '</tr>'; });
+    return h + '</tbody></table></div>';
+  }
+
+  function buildNode(cd, sec, id, parent){
+    var rec = { id:'f-'+id, data:cd, sec:sec, parent:parent, kids:[], state:null, self:true };
+    rec.grades = cd.c ? parseGrades(cd.c) : (parent ? parent.grades : parseGrades(null));
+    rec.adv = cd.a !== undefined ? !!cd.a : false;
+    var textParts = [cd.t, cd.f ? cd.f.replace(/\\/g,' ') : '', cd.s, cd.e, cd.sym, cd.err, cd.d, cd.w];
+    if (cd.tbl) textParts.push(cd.tbl.cols.join(' ')); if (cd.tbl) cd.tbl.rows.forEach(function(r){ textParts.push(r.join(' ')); });
+    rec.idx = norm(textParts.filter(Boolean).join(' '));
+
+    var node = el('div', 'node');
+    var card = el('div', 'fcard'); card.id = rec.id;
+    var bar = el('div', 'fbar');
+    var head = document.createElement('button');
+    head.type = 'button'; head.className = 'fhead'; head.setAttribute('aria-expanded', 'false'); head.setAttribute('aria-controls', 'b-' + id);
+    var tags = '';
+    var gl = gradeLabel(rec.grades); if (gl) tags += '<span class="tag">' + gl + '</span>';
+    if (rec.adv) tags += '<span class="tag adv">углубл.</span>';
+    head.innerHTML = '<span class="ftitle"><span class="tt">' + esc(cd.t) + '</span>' + tags + '</span><span class="fformula"></span><span class="chev" aria-hidden="true">▼</span>';
+    if (cd.f) setTex(head.querySelector('.fformula'), cd.f);
+    bar.appendChild(head);
+    var star = el('button', 'mini star', '☆'); star.type = 'button'; star.title = 'В избранное'; star.setAttribute('aria-label', 'В избранное');
+    var link = el('button', 'mini link', '🔗'); link.type = 'button'; link.title = 'Скопировать ссылку'; link.setAttribute('aria-label', 'Скопировать ссылку на формулу');
+    bar.appendChild(star); bar.appendChild(link);
+    card.appendChild(bar);
+
+    var body = el('div', 'fbody'); body.id = 'b-' + id;
+    var inner = el('div', 'inner');
+    var h = '';
+    if (cd.s)   h += row('', '🧠', '<b>По-простому.</b> ' + fmt(cd.s));
+    if (cd.sym) h += row('sym', '📌', '<b>Обозначения и единицы.</b> ' + fmt(cd.sym));
+    if (cd.e)   h += row('example', '✏️', '<b>Пример.</b> ' + fmt(cd.e));
+    if (cd.err) h += row('warn', '⚠️', '<b>Типичная ошибка.</b> ' + fmt(cd.err));
+    if (cd.d)   h += '<div class="frow deriv"><span class="arrow">↳</span><span>' + fmt(cd.d) + '</span></div>';
+    inner.innerHTML = h;
+    if (cd.tbl) inner.insertAdjacentHTML('beforeend', buildTable(cd.tbl));
+    if (cd.k) { var cb = buildCalc(cd); if (cb) inner.appendChild(cb); }
+    body.appendChild(inner); card.appendChild(body);
+    node.appendChild(card);
+
+    rec.node = node; rec.card = card; rec.head = head; rec.star = star; rec.titleEl = head.querySelector('.tt'); rec.title = cd.t;
+    cards.push(rec); byId[rec.id] = rec;
+    if (parent) parent.kids.push(rec);
+
+    if (cd.kids && cd.kids.length) {
+      var sub = el('div', 'subtree');
+      cd.kids.forEach(function(k, j){ sub.appendChild(buildNode(k, sec, id + '-' + j, rec)); });
+      node.appendChild(sub);
+    }
+    return node;
+  }
+
+  SECTIONS.forEach(function(sec, si){
+    var num_ = si + 1;
+    var secEl = el('section', 'section'); secEl.id = 'sec-' + sec.id; secEl.style.setProperty('--c', 'var(--c-' + sec.col + ')');
+    secEl.innerHTML = '<div class="section-head"><div class="section-num">' + pad(num_) + '</div><div><h2>' + esc(sec.n) + '</h2><p>' + esc(sec.sub) + '</p></div></div>';
+    var count = 0;
+    if (sec.lab) {
+      secEl.appendChild(document.getElementById('labTpl').content.cloneNode(true));
+      secEl.id = 'lab';
+    } else {
+      var tree = el('div', 'tree');
+      sec.cards.forEach(function(cd, i){ tree.appendChild(buildNode(cd, sec, sec.id + '-' + i, null)); });
+      secEl.appendChild(tree);
+    }
+    main.appendChild(secEl);
+    var before = cards.filter(function(c){ return c.sec === sec; }).length;
+    secs.push({ el: secEl, sec: sec, lab: !!sec.lab, count: before, num: num_ });
+
+    var a = el('a', '', '<span class="tn">' + pad(num_) + '</span><span class="tt">' + esc(sec.n) + '</span><span class="tc">' + (sec.lab ? '3' : before) + '</span>');
+    a.href = '#' + secEl.id; a.style.setProperty('--c', 'var(--c-' + sec.col + ')');
+    tocEl.appendChild(a);
+    var opt = document.createElement('option'); opt.value = secEl.id; opt.textContent = pad(num_) + ' · ' + sec.n; jump.appendChild(opt);
+  });
+
+  var total = cards.length;
+  document.getElementById('eyebrow').textContent = '🌳 ' + SECTIONS.length + ' разделов · ' + total + ' формул и справочных карточек · 7–11 класс';
+  document.getElementById('footTitle').textContent = 'Справочник формул · ' + SECTIONS.length + ' разделов · ' + total + ' карточек';
+
+  /* ---------- состояние ---------- */
+  var q = '', tokens = [], gradeF = 0, levelF = 'all', favOnly = false, allOpen = false;
+  var favBtn = document.getElementById('favOnly'), favCount = document.getElementById('favCount');
+
+  function refreshOpen(c){
+    var o = c.state !== null ? c.state : (!!q && c.self && c.textHit);
+    c.card.classList.toggle('open', o);
+    c.head.setAttribute('aria-expanded', o ? 'true' : 'false');
+  }
+  function saveOpen(){ store.set('fiz-open', cards.filter(function(c){ return c.state === true; }).map(function(c){ return c.id; })); }
+  function saveFavs(){ store.set('fiz-favs', favs); favCount.textContent = favs.length; }
+  function refreshStar(c){
+    var on = favs.indexOf(c.id) >= 0;
+    c.star.textContent = on ? '★' : '☆'; c.star.classList.toggle('on', on); c.star.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
+  function textMatch(c){
+    for (var i = 0; i < tokens.length; i++) {
+      var t = tokens[i];
+      if (t.length <= 3) { if (!new RegExp('(^|[^а-яa-z0-9])' + escRe(t)).test(c.idx)) return false; }
+      else if (c.idx.indexOf(t) < 0) return false;
+    }
+    return true;
+  }
+  function markTitle(c){
+    if (!tokens.length) { c.titleEl.textContent = c.title; return; }
+    var s = esc(c.title);
+    tokens.forEach(function(t){
+      var re = new RegExp('(' + escRe(t).replace(/[её]/g, '[её]') + ')', 'gi');
+      s = s.replace(re, '<mark>$1</mark>');
+    });
+    c.titleEl.innerHTML = s;
+  }
+
+  function apply(){
+    var anyFilter = !!q || gradeF || levelF !== 'all' || favOnly;
+    var found = 0;
+    cards.forEach(function(c){
+      var ok = true;
+      c.textHit = true;
+      if (q) { c.textHit = textMatch(c); ok = ok && c.textHit; }
+      if (gradeF) ok = ok && c.grades.indexOf(gradeF) >= 0;
+      if (levelF === 'adv') ok = ok && c.adv;
+      if (levelF === 'base') ok = ok && !c.adv;
+      if (favOnly) ok = ok && favs.indexOf(c.id) >= 0;
+      c.self = ok;
+    });
+    cards.forEach(function(c){
+      var kidVis = c.kids.some(function(k){ return k.self || k.vis; });
+      c.vis = c.self || kidVis;
+    });
+    // вложенность глубже одного уровня
+    for (var pass = 0; pass < 3; pass++) cards.forEach(function(c){ if (!c.vis) c.vis = c.kids.some(function(k){ return k.vis; }); });
+    cards.forEach(function(c){
+      var show = !anyFilter || c.vis;
+      c.node.style.display = show ? '' : 'none';
+      c.card.style.display = (!anyFilter || c.self) ? '' : '';
+      c.card.classList.toggle('ctx', anyFilter && !c.self && c.vis);
+      if (anyFilter && c.self) found++;
+      markTitle(c); refreshOpen(c);
+    });
+    secs.forEach(function(s){
+      var vis;
+      if (s.lab) vis = !anyFilter;
+      else vis = !anyFilter || cards.some(function(c){ return c.sec === s.sec && c.vis; });
+      s.el.style.display = vis ? '' : 'none';
+    });
+    tocEl.style.display = anyFilter ? 'none' : '';
+    resultInfo.classList.toggle('show', anyFilter);
+    resultInfo.textContent = anyFilter ? (found ? 'Найдено: ' + found + ' карточек' : 'Ничего не найдено. Попробуй другое слово или сбрось фильтры.') : '';
+  }
+
+  /* ---------- события ---------- */
+  main.addEventListener('click', function(e){
+    var t = e.target;
+    var head = t.closest && t.closest('.fhead');
+    var star = t.closest && t.closest('.star');
+    var link = t.closest && t.closest('.link');
+    var cardEl = t.closest && t.closest('.fcard');
+    if (!cardEl) return;
+    var c = byId[cardEl.id]; if (!c) return;
+    if (head) {
+      var isOpen = c.card.classList.contains('open');
+      c.state = !isOpen; refreshOpen(c); saveOpen();
+    } else if (star) {
+      var i = favs.indexOf(c.id);
+      if (i >= 0) favs.splice(i, 1); else favs.push(c.id);
+      saveFavs(); refreshStar(c); if (favOnly) apply();
+    } else if (link) {
+      var url = location.href.split('#')[0] + '#' + c.id;
+      var done = function(){ link.textContent = '✓'; setTimeout(function(){ link.textContent = '🔗'; }, 1200); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function(){ location.hash = c.id; done(); });
+      else { location.hash = c.id; done(); }
+    }
+  });
+
+  searchInput.addEventListener('input', function(){
+    q = norm(this.value.trim());
+    tokens = q ? q.split(/\s+/) : [];
+    cards.forEach(function(c){ if (c.state === false) c.state = null; });
+    apply();
+  });
+  document.addEventListener('keydown', function(e){
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (e.key === '/' && tag !== 'INPUT' && tag !== 'SELECT' && tag !== 'TEXTAREA') { e.preventDefault(); searchInput.focus(); searchInput.select(); }
+    if (e.key === 'Escape' && document.activeElement === searchInput) { searchInput.value = ''; searchInput.dispatchEvent(new Event('input')); searchInput.blur(); }
+  });
+
+  document.getElementById('filters').addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('.chip'); if (!b) return;
+    if (b.hasAttribute('data-g')) {
+      gradeF = parseInt(b.getAttribute('data-g'), 10);
+      [].forEach.call(document.querySelectorAll('.chip[data-g]'), function(x){ x.classList.toggle('on', x === b); });
+    } else {
+      levelF = b.getAttribute('data-l');
+      [].forEach.call(document.querySelectorAll('.chip[data-l]'), function(x){ x.classList.toggle('on', x === b); });
+    }
+    apply();
+  });
+
+  favBtn.addEventListener('click', function(){
+    favOnly = !favOnly; favBtn.classList.toggle('on', favOnly); favBtn.setAttribute('aria-pressed', favOnly ? 'true' : 'false'); apply();
+  });
+  var trainBtn = document.getElementById('trainBtn');
+  trainBtn.addEventListener('click', function(){
+    var on = document.body.classList.toggle('train');
+    trainBtn.classList.toggle('on', on); trainBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  var expandBtn = document.getElementById('toggleExpand');
+  expandBtn.addEventListener('click', function(){
+    allOpen = !allOpen;
+    cards.forEach(function(c){ c.state = allOpen ? true : null; refreshOpen(c); });
+    saveOpen();
+    expandBtn.textContent = allOpen ? '📕 Свернуть всё' : '📖 Развернуть всё';
+  });
+  document.getElementById('printBtn').addEventListener('click', function(){ window.print(); });
+  jump.addEventListener('change', function(){
+    if (!this.value) return;
+    var t = document.getElementById(this.value); if (t) t.scrollIntoView({behavior:'smooth', block:'start'});
+    this.value = '';
+  });
+
+  var themeBtn = document.getElementById('themeToggle');
+  themeBtn.textContent = (document.documentElement.getAttribute('data-theme') === 'dark') ? '☀️' : '🌙';
+  themeBtn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    themeBtn.textContent = next === 'dark' ? '☀️' : '🌙';
+    try { localStorage.setItem('fiz-theme', next); } catch(e){}
+    window.dispatchEvent(new Event('themechange'));
+  });
+
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){ toTop.classList.toggle('show', window.scrollY > 500); }, {passive:true});
+  toTop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+
+  /* ---------- восстановление состояния ---------- */
+  cards.forEach(function(c){ refreshStar(c); });
+  favCount.textContent = favs.length;
+  openSaved.forEach(function(id){ var c = byId[id]; if (c) { c.state = true; } });
+  function gotoHash(){
+    var h = decodeURIComponent((location.hash || '').slice(1));
+    var c = byId[h];
+    if (!c) return;
+    c.state = true; refreshOpen(c); saveOpen();
+    c.card.scrollIntoView({block:'center'});
+    c.card.classList.add('flash'); setTimeout(function(){ c.card.classList.remove('flash'); }, 1800);
+  }
+  apply();
+  window.addEventListener('hashchange', gotoHash);
+  gotoHash();
+
+  /* ---------- лаборатория ---------- */
+  (function initLab(){
+    var $ = function(i){ return document.getElementById(i); };
+    function css(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+    function acc(){ return 'hsl(' + (css('--c-lab') || '25 90% 50%').split(/\s+/).join(',') + ')'; }
+    function setup(id){ var cv = $(id); if (!cv || !cv.getContext) return null; var ctx = cv.getContext('2d'); return ctx ? {cv:cv, ctx:ctx, W:cv.width, H:cv.height} : null; }
+    function axes(o){ o.ctx.clearRect(0,0,o.W,o.H); o.ctx.lineWidth = 1; o.ctx.font = '11px Inter, sans-serif'; }
+    var P = setup('cvProj'), M = setup('cvMax'), L = setup('cvLens');
+
+    function proj(){
+      if (!P) return;
+      var v0 = +$('rv0').value, ad = +$('rAl').value, al = ad*Math.PI/180, g = +$('sG').value;
+      $('vv0').textContent = v0; $('vAl').textContent = ad;
+      var T_ = 2*v0*Math.sin(al)/g, Lr = v0*v0*Math.sin(2*al)/g, Hh = Math.pow(v0*Math.sin(al),2)/(2*g);
+      var ctx = P.ctx, W = P.W, H = P.H, pd = 36, Lm = 1600/g;
+      var sc = Math.min((W-2*pd)/Lm, (H-2*pd)/(Lm/2));
+      axes(P);
+      var y0 = H - pd, x0 = pd, text = css('--text'), mut = css('--muted'), bd = css('--border-strong');
+      ctx.strokeStyle = bd; ctx.fillStyle = mut;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(W-pd/2, y0); ctx.moveTo(x0, y0); ctx.lineTo(x0, pd/2); ctx.stroke();
+      var steps = [5,10,20,50,100,200], st = 5; for (var i = 0; i < steps.length; i++) { st = steps[i]; if (Lm/st <= 10) break; }
+      for (var x = 0; x <= Lm; x += st) { ctx.fillText(x + ' м', x0 + x*sc - 8, y0 + 16); ctx.beginPath(); ctx.moveTo(x0 + x*sc, y0); ctx.lineTo(x0 + x*sc, y0 + 4); ctx.stroke(); }
+      ctx.strokeStyle = acc(); ctx.lineWidth = 2.5; ctx.beginPath();
+      for (var k = 0; k <= 80; k++) {
+        var t = T_*k/80, px = x0 + v0*Math.cos(al)*t*sc, py = y0 - (v0*Math.sin(al)*t - g*t*t/2)*sc;
+        if (k === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+      ctx.fillStyle = acc(); ctx.beginPath(); ctx.arc(x0 + Lr/2*sc, y0 - Hh*sc, 4, 0, 7); ctx.fill();
+      ctx.fillStyle = text; ctx.fillText('H = ' + Hh.toFixed(1) + ' м', x0 + Lr/2*sc + 8, y0 - Hh*sc - 6);
+      ctx.beginPath(); ctx.arc(x0 + Lr*sc, y0, 4, 0, 7); ctx.fill();
+      $('oProj').textContent = 'L = ' + Lr.toFixed(1) + ' м   H = ' + Hh.toFixed(1) + ' м   T = ' + T_.toFixed(2) + ' с';
+    }
+
+    function maxw(){
+      if (!M) return;
+      var Tt = +$('rT').value, Mm = +$('sM').value, kB = 1.381e-23, NA = 6.022e23, R = 8.314;
+      $('vT').textContent = Tt;
+      var m = Mm/NA;
+      function f(v, mm, TT){ return 4*Math.PI*Math.pow(mm/(2*Math.PI*kB*TT),1.5)*v*v*Math.exp(-mm*v*v/(2*kB*TT)); }
+      var mO = 0.032/NA, vp0 = Math.sqrt(2*kB*100/mO), fmax = f(vp0, mO, 100)*1.1;
+      var ctx = M.ctx, W = M.W, H = M.H, pd = 36, vmax = 3500;
+      axes(M);
+      var y0 = H - pd, x0 = pd, mut = css('--muted'), bd = css('--border-strong'), text = css('--text');
+      ctx.strokeStyle = bd; ctx.fillStyle = mut;
+      ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(W-pd/2, y0); ctx.moveTo(x0, y0); ctx.lineTo(x0, pd/2); ctx.stroke();
+      for (var v = 0; v <= vmax; v += 500) { var px = x0 + v/vmax*(W-2*pd); ctx.fillText(v, px - 8, y0 + 16); ctx.beginPath(); ctx.moveTo(px, y0); ctx.lineTo(px, y0+4); ctx.stroke(); }
+      ctx.fillText('v, м/с', W-pd-24, y0 - 6);
+      ctx.strokeStyle = acc(); ctx.lineWidth = 2.5; ctx.beginPath();
+      for (var i = 0; i <= 220; i++) {
+        var vv = vmax*i/220, X = x0 + vv/vmax*(W-2*pd), Y = y0 - f(vv, m, Tt)/fmax*(H-2*pd);
+        if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+      }
+      ctx.stroke();
+      var vp = Math.sqrt(2*R*Tt/Mm), va = Math.sqrt(8*R*Tt/(Math.PI*Mm)), vk = Math.sqrt(3*R*Tt/Mm);
+      var marks = [[vp,'v_вер'],[va,'⟨v⟩'],[vk,'v_кв']];
+      ctx.setLineDash([4,4]); ctx.lineWidth = 1;
+      marks.forEach(function(mk, j){
+        var X = x0 + mk[0]/vmax*(W-2*pd); ctx.strokeStyle = mut; ctx.beginPath(); ctx.moveTo(X, y0); ctx.lineTo(X, pd + 6); ctx.stroke();
+        ctx.fillStyle = text; ctx.fillText(mk[1], X + 3, pd + 12 + j*13);
+      });
+      ctx.setLineDash([]);
+      $('oMax').textContent = 'v_вер = ' + vp.toFixed(0) + '   ⟨v⟩ = ' + va.toFixed(0) + '   v_кв = ' + vk.toFixed(0) + ' м/с';
+    }
+
+    function lens(){
+      if (!L) return;
+      var F = +$('rF').value, d = +$('rD').value, h = 8;
+      $('vF').textContent = F; $('vD').textContent = d;
+      var ctx = L.ctx, W = L.W, H = L.H, s = 5, cx = W/2, cy = H/2;
+      axes(L);
+      var text = css('--text'), mut = css('--muted'), bd = css('--border-strong'), A = acc();
+      function X(x){ return cx + x*s; } function Y(y){ return cy - y*s; }
+      function seg(x1,y1,x2,y2,col,dash){ ctx.strokeStyle = col; ctx.lineWidth = dash ? 1.2 : 1.8; ctx.setLineDash(dash ? [5,4] : []); ctx.beginPath(); ctx.moveTo(X(x1),Y(y1)); ctx.lineTo(X(x2),Y(y2)); ctx.stroke(); ctx.setLineDash([]); }
+      function arrow(x, y, col, dash){ seg(x,0,x,y,col,dash); var up = y >= 0 ? 1 : -1; ctx.fillStyle = col; ctx.beginPath(); ctx.moveTo(X(x),Y(y)); ctx.lineTo(X(x)-4, Y(y)+up*8); ctx.lineTo(X(x)+4, Y(y)+up*8); ctx.fill(); }
+      seg(-W/2/s, 0, W/2/s, 0, bd);
+      seg(0, -H/2/s+2, 0, H/2/s-2, text);
+      ctx.fillStyle = mut;
+      [-F, F].forEach(function(x){ seg(x,-1,x,1,mut); ctx.fillText(x < 0 ? '−F' : 'F', X(x)-6, Y(0)+16); });
+      var xe = W/2/s;
+      var hasImg = Math.abs(d - F) > 0.01;
+      var f = hasImg ? 1/(1/F - 1/d) : Infinity;
+      var yl = hasImg ? h*F/(F-d) : 0;
+      var cols = ['#ef4444', A, '#3b82f6'];
+      seg(-d, h, 0, h, cols[0]); seg(0, h, xe, h*(1 - xe/F), cols[0]);
+      seg(-d, h, xe, -h*xe/d, cols[1]);
+      if (hasImg) { seg(-d, h, 0, yl, cols[2]); seg(0, yl, xe, yl, cols[2]); }
+      else { seg(-d, h, 0, h*F/(F-d+1e-9), cols[2]); }
+      if (hasImg && f < 0) {
+        seg(0, h, f, h*(1 - f/F), cols[0], true);
+        seg(-d, h, f, -h*f/d, cols[1], true);
+        seg(0, yl, f, yl, cols[2], true);
+      }
+      arrow(-d, h, text, false);
+      var txt;
+      if (hasImg) {
+        var hi = -h*f/d;
+        arrow(f, hi, f > 0 ? '#16a34a' : '#16a34a', f < 0);
+        var G = Math.abs(f/d);
+        txt = 'f = ' + f.toFixed(1) + ' см   Γ = ' + G.toFixed(2) + '   ' + (f > 0 ? 'действительное, перевёрнутое' : 'мнимое, прямое') + ', ' + (G > 1.02 ? 'увеличенное' : (G < 0.98 ? 'уменьшенное' : 'равное'));
+      } else txt = 'd = F: лучи выходят параллельно, изображения нет (на бесконечности)';
+      $('oLens').textContent = txt;
+    }
+
+    ['rv0','rAl','sG'].forEach(function(i){ var n = $(i); if (n) n.addEventListener('input', proj); });
+    ['rT','sM'].forEach(function(i){ var n = $(i); if (n) n.addEventListener('input', maxw); });
+    ['rF','rD'].forEach(function(i){ var n = $(i); if (n) n.addEventListener('input', lens); });
+    function all(){ proj(); maxw(); lens(); }
+    window.addEventListener('themechange', all);
+    all();
+  })();
+});
+</script>
+</body>
+</html>
