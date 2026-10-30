@@ -1082,7 +1082,7 @@ document.addEventListener('DOMContentLoaded', function () {
     for (var i = a; i <= b; i++) r.push(i);
     return r;
   }
-  function gradeLabel(g){ return g.length === 5 ? '' : (g.length === 1 ? g[0] : g[0]+'–'+g[g.length-1]) + ' кл'; }
+  function gradeLabel(g){ return g.length === 5 ? '' : (g.length === 1 ? g[0] : g[0]+'–'+g[g.length-1]) + (UI_STRINGS[currentLang] ? UI_STRINGS[currentLang].grade : ' кл'); }
   function setTex(node, tex){
     if (window.katex) { try { window.katex.render(tex, node, {throwOnError:false}); return; } catch(e){} }
     node.textContent = tex;
@@ -1115,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var fn;
     try { fn = new Function(names.concat(consts).join(','), 'return (' + cd.o[1] + ');'); } catch(e){ return null; }
     var grid = el('div', 'cgrid'), inputs = [];
-    box.appendChild(el('div', 'ctitle', '🧮 Калькулятор'));
+    box.appendChild(el('div', 'ctitle', '🧮 ' + L.calc));
     cd.k.forEach(function(v){
       var lab = el('label', '', esc(v[1]));
       var inp = document.createElement('input');
@@ -1168,10 +1168,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var body = el('div', 'fbody'); body.id = 'b-' + id;
     var inner = el('div', 'inner');
     var h = '';
-    if (cd.s)   h += row('', '🧠', '<b>По-простому.</b> ' + fmt(cd.s));
-    if (cd.sym) h += row('sym', '📌', '<b>Обозначения и единицы.</b> ' + fmt(cd.sym));
-    if (cd.e)   h += row('example', '✏️', '<b>Пример.</b> ' + fmt(cd.e));
-    if (cd.err) h += row('warn', '⚠️', '<b>Типичная ошибка.</b> ' + fmt(cd.err));
+    var L = UI_STRINGS[currentLang];
+    if (cd.s)   h += row('', '🧠', '<b>' + L.simple + '</b> ' + fmt(cd.s));
+    if (cd.sym) h += row('sym', '📌', '<b>' + L.sym + '</b> ' + fmt(cd.sym));
+    if (cd.e)   h += row('example', '✏️', '<b>' + L.ex + '</b> ' + fmt(cd.e));
+    if (cd.err) h += row('warn', '⚠️', '<b>' + L.err + '</b> ' + fmt(cd.err));
     if (cd.d)   h += '<div class="frow deriv"><span class="arrow">↳</span><span>' + fmt(cd.d) + '</span></div>';
     inner.innerHTML = h;
     if (cd.tbl) inner.insertAdjacentHTML('beforeend', buildTable(cd.tbl));
@@ -1518,22 +1519,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const UI_STRINGS = {
     ru: {
-      search: "🔍 Поиск: скорость, Ом, фотон, Кеплер...  (нажми /)",
+      search: "🔍 Поиск: скорость, Ом, фотон...  (нажми /)",
       expand: "📖 Развернуть всё",
       collapse: "📕 Свернуть всё",
       langBtn: "🇬🇧 EN",
       jump: "📑 Разделы…",
       fav: "⭐ Избранное",
-      train: "🎓 Тренировка"
+      train: "🎓 Тренировка",
+      simple: "По-простому.",
+      sym: "Обозначения и единицы.",
+      ex: "Пример.",
+      err: "Типичная ошибка.",
+      calc: "Калькулятор",
+      grade: " кл",
+      heroTitle: "Все формулы физики — <em>с выводом, примерами и калькуляторами</em>",
+      heroLede: "Механика, колебания, термодинамика, электричество, магнетизм, оптика, квантовая и ядерная физика, СТО, астрономия, ЭМВ, статистическая физика, механика сплошных сред и теория Бора. Обозначения, единицы, типичные ошибки, таблицы констант и интерактивная лаборатория."
     },
     en: {
-      search: "🔍 Search: speed, Ohm, photon, Kepler...  (press /)",
+      search: "🔍 Search: speed, Ohm, photon... (press /)",
       expand: "📖 Expand all",
       collapse: "📕 Collapse all",
       langBtn: "🇷🇺 RU",
       jump: "📑 Sections…",
       fav: "⭐ Favorites",
-      train: "🎓 Training"
+      train: "🎓 Training",
+      simple: "In simple terms.",
+      sym: "Symbols and units.",
+      ex: "Example.",
+      err: "Common mistake.",
+      calc: "Calculator",
+      grade: " gr.",
+      heroTitle: "All physics formulas — <em>with derivations, examples & calculators</em>",
+      heroLede: "Mechanics, oscillations, thermodynamics, electricity, magnetism, optics, quantum and nuclear physics, relativity, astronomy, EM waves, statistical physics, continuous media and Bohr model. Symbols, units, common mistakes, constants and an interactive lab."
     }
   };
 
@@ -1549,6 +1566,13 @@ document.addEventListener('DOMContentLoaded', function () {
     if (expBtn) {
         expBtn.textContent = expBtn.textContent.includes('📕') || expBtn.textContent.includes('Collapse') ? t.collapse : t.expand;
     }
+    
+    // Перевод заголовка
+    const h1 = document.querySelector('.hero h1');
+    if (h1) h1.innerHTML = t.heroTitle;
+    const lede = document.querySelector('.hero .lede');
+    if (lede) lede.textContent = t.heroLede;
+  }
   }
 
   function toggleLang() {
