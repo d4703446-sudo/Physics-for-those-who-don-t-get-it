@@ -301,8 +301,12 @@ const SECTIONS_EN = [
 
 // --- UI STRINGS ---
 const UI_STRINGS = {
-  ru: { search: "🔍 Поиск...", expand: "📖 Развернуть всё", collapse: "📕 Свернуть всё", langBtn: "🇬🇧 EN", jump: "📑 Разделы…", fav: "⭐ Избранное", train: "🎓 Тренировка", simple: "По-простому.", sym: "Обозначения.", ex: "Пример.", err: "Ошибка.", calc: "Калькулятор", grade: " кл", lblGrade: "Класс:", lblLevel: "Уровень:", heroTitle: "Все формулы физики — <em>с выводом, примерами и калькуляторами</em>", heroLede: "Полный справочник.", footTitle: "Справочник формул", footDesc: "Кликни на карточку." },
-  en: { search: "🔍 Search...", expand: "📖 Expand all", collapse: "📕 Collapse all", langBtn: "🇷🇺 RU", jump: "📑 Sections…", fav: "⭐ Favorites", train: "🎓 Training", simple: "In simple terms.", sym: "Symbols.", ex: "Example.", err: "Mistake.", calc: "Calculator", grade: " gr.", lblGrade: "Grade:", lblLevel: "Level:", heroTitle: "All physics formulas — <em>with derivations & calculators</em>", heroLede: "Complete reference.", footTitle: "Formula Reference", footDesc: "Click a card." }
+  ru: { search: "🔍 Поиск...", expand: "📖 Развернуть всё", collapse: "📕 Свернуть всё", langBtn: "🇬🇧 EN", jump: "📑 Разделы…", fav: "⭐ Избранное", train: "🎓 Тренировка", simple: "По-простому.", sym: "Обозначения.", ex: "Пример.", err: "Ошибка.", calc: "Калькулятор", grade: " кл", lblGrade: "Класс:", lblLevel: "Уровень:", heroTitle: "Все формулы физики — <em>с выводом, примерами и калькуляторами</em>", heroLede: "Полный справочник.", footTitle: "Справочник формул", footDesc: "Кликни на карточку.",
+    eyebrow: "🌳 Полный справочник · 7–11 класс", all: "Все", base: "Базовый", adv: "Углублённый" 
+  },
+  en: { search: "🔍 Search...", expand: "📖 Expand all", collapse: "📕 Collapse all", langBtn: "🇷🇺 RU", jump: "📑 Sections…", fav: "⭐ Favorites", train: "🎓 Training", simple: "In simple terms.", sym: "Symbols.", ex: "Example.", err: "Mistake.", calc: "Calculator", grade: " gr.", lblGrade: "Grade:", lblLevel: "Level:", heroTitle: "All physics formulas — <em>with derivations & calculators</em>", heroLede: "Complete reference.", footTitle: "Formula Reference", footDesc: "Click a card.",
+    eyebrow: "🌳 Complete Reference · Grades 7–11", all: "All", base: "Basic", adv: "Advanced"
+  }
 };
 let currentLang = localStorage.getItem('fiz-lang') || 'ru';
 function toggleLang() { currentLang = currentLang === 'ru' ? 'en' : 'ru'; localStorage.setItem('fiz-lang', currentLang); location.reload(); }
@@ -319,7 +323,16 @@ function applyUI() {
   document.getElementById('heroLede').textContent = t.heroLede;
   document.getElementById('footTitle').textContent = t.footTitle;
   document.getElementById('footDesc').textContent = t.footDesc;
-  const expBtn = document.getElementById('toggleExpand'); if (expBtn && !expBtn.classList.contains('on')) expBtn.textContent = t.expand;
+  
+  // ДОБАВЛЯЕМ ЭТИ СТРОКИ:
+  document.getElementById('eyebrow').textContent = t.eyebrow;
+  document.querySelector('.chip[data-g="0"]').textContent = t.all;
+  document.querySelector('.chip[data-l="all"]').textContent = t.all;
+  document.querySelector('.chip[data-l="base"]').textContent = t.base;
+  document.querySelector('.chip[data-l="adv"]').textContent = t.adv;
+
+  const expBtn = document.getElementById('toggleExpand'); 
+  if (expBtn && !expBtn.classList.contains('on')) expBtn.textContent = t.expand;
 }
 
 // --- ЛОГИКА ---
