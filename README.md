@@ -1,3 +1,4 @@
+**[🇷🇺 Русский](README.md) | [🇬🇧 English](README.en.md)**
 <div align="center">
 
 # 🌳 Физика 7–11
