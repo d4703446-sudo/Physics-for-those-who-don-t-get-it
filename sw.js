@@ -1,5 +1,5 @@
 // Service Worker для офлайн-режима
-const CACHE_NAME = 'physics-v7';
+const CACHE_NAME = 'physics-v8';
 const CACHE_URLS = [
   './',
   './index.html',
