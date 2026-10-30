@@ -155,6 +155,7 @@ footer{text-align:center;padding:40px 20px 60px;color:var(--muted);font-size:13p
     <button class="icon-btn" type="button" id="trainBtn" aria-pressed="false" title="Формулы размыты — вспомни сам, потом открой карточку">🎓 Тренировка</button>
     <button class="icon-btn" type="button" id="toggleExpand">📖 Развернуть всё</button>
     <button class="icon-btn" type="button" id="printBtn" title="Печать или сохранение в PDF (Ctrl+P). С включённым «Избранным» получится шпаргалка.">🖨 PDF</button>
+    <button class="icon-btn" type="button" id="langToggle" onclick="toggleLang()">🇬🇧 EN</button>
     <button class="icon-btn" type="button" id="themeToggle" aria-label="Сменить тему">🌙</button>
   </div>
   <div class="filters" id="filters">
@@ -644,12 +645,418 @@ const SECTIONS = [
  {t:'Данные о телах Солнечной системы',c:'9-11',tbl:{cols:['Тело','M, кг','R, км','g, м/с²','v₂, км/с','a, а.е.','T, лет'],rows:[['Солнце','1,989·10³⁰','696 000','274','618','—','—'],['Меркурий','3,3·10²³','2440','3,7','4,3','0,387','0,241'],['Венера','4,87·10²⁴','6052','8,9','10,4','0,723','0,615'],['Земля','5,97·10²⁴','6371','9,8','11,2','1,000','1,000'],['Луна','7,35·10²²','1737','1,62','2,4','—','—'],['Марс','6,42·10²³','3390','3,7','5,0','1,524','1,88'],['Юпитер','1,90·10²⁷','69 900','24,8','59,5','5,20','11,86'],['Сатурн','5,68·10²⁶','58 200','10,4','35,5','9,54','29,5']]}}
 ]}
 ];
+const SECTIONS_EN = [
+/* ============ 01 KINEMATICS ============ */
+{id:'kinematics',n:'Kinematics',sub:'Uniform and accelerated motion · Projectile · Circular motion',col:'mech',cards:[
+ {t:'Uniform Motion',f:T`v=\dfrac{S}{t}`,c:'7-9',s:'Speed is the distance covered per unit of time. 2 km in 30 min is 4 km/h.',sym:'v — speed (m/s, km/h); S — distance (m, km); t — time (s, h)',e:'120 km in 2 h → **60 km/h**.',err:'Do not mix units: 36 km/h = 10 m/s (divide km/h by 3.6).',k:[['S','S, km',120],['t','t, h',2]],o:['v, km/h','S/t'],
+  kids:[
+   {t:'Distance and Time',f:T`S=vt,\quad t=\dfrac{S}{v}`,d:'v = S/t ⇒ S = v·t, t = S/v'},
+   {t:'Law of Uniform Motion',f:T`x=x_0+vt`,c:'9-10',s:'Coordinate of a body at time t. If moving against the axis, velocity has a minus sign.',sym:'x₀ — initial coordinate (m); v — velocity projection (m/s); t — time (s)',e:'x₀ = 5 m, v = −2 m/s, t = 3 s → x = **−1 m**.'}
+  ]},
+ {t:'Average Speed',f:T`v_{\text{avg}}=\dfrac{S_{\text{total}}}{t_{\text{total}}}`,c:'7-9',s:'Total distance divided by total time. This is NOT the arithmetic mean of speeds!',sym:'S_total — total distance; t_total — total time',e:'60 km at 30 km/h and another 60 km at 60 km/h: t = 2 + 1 = 3 h, v_avg = 120/3 = **40 km/h** (not 45).',err:'Calculating (v₁+v₂)/2 is only valid if time intervals are equal, not distances.',k:[['S1','S₁, km',60],['v1','v₁, km/h',30],['S2','S₂, km',60],['v2','v₂, km/h',60]],o:['v_avg, km/h','(S1+S2)/(S1/v1+S2/v2)']},
+ {t:'Relativity of Motion',f:T`\vec v=\vec v_1+\vec v_2`,c:'9-10',s:'Velocities add as vectors: a boat moves faster downstream and slower upstream.',sym:'v₁ — velocity relative to medium; v₂ — velocity of medium relative to shore',e:'Boat 5 m/s, current 2 m/s: downstream **7 m/s**, upstream **3 m/s**.',err:'Galilean addition is valid for v ≪ c. For speeds near c, see "Special Relativity".'},
+ {t:'Motion Graphs',f:T`v=\dfrac{\Delta x}{\Delta t},\quad S=\int v\,dt`,c:'8-10',s:'On an x(t) graph, the slope is velocity. On a v(t) graph, the slope is acceleration and the area under the curve is distance.',e:'v = 4 m/s for 5 s: area of rectangle 4·5 = **20 m**.',err:'Horizontal line on x(t) means the body is at rest; on v(t) it means moving uniformly.',w:'graph slope area'},
+ {t:'Acceleration',f:T`a=\dfrac{v-v_0}{t}`,c:'9-10',s:'Shows how fast velocity changes.',sym:'a — acceleration (m/s²); v₀, v — initial and final speeds',e:'0 → 20 m/s in 4 s → **5 m/s²**.',err:'Acceleration sign depends on the axis. When braking, a is opposite to v.',k:[['v0','v₀, m/s',0],['v','v, m/s',20],['t','t, s',4]],o:['a, m/s²','(v-v0)/t'],
+  kids:[
+   {t:'Velocity during Acceleration',f:T`v=v_0+at`,d:'a = (v−v₀)/t ⇒ v = v₀ + at'},
+   {t:'Distance during Acceleration',f:T`S=v_0t+\dfrac{at^2}{2}`,d:'S = (v₀+v)/2 · t, v = v₀+at ⇒ S = v₀t + at²/2',k:[['v0','v₀, m/s',0],['a','a, m/s²',2],['t','t, s',5]],o:['S, m','v0*t+a*t*t/2']},
+   {t:'Coordinate in Accelerated Motion',f:T`x=x_0+v_0t+\dfrac{at^2}{2}`,c:'9-10',d:'S = x − x₀ = v₀t + at²/2'},
+   {t:'Distance without Time',f:T`S=\dfrac{v^2-v_0^2}{2a}`,d:'From v = v₀+at express t and substitute into S = (v₀+v)/2·t'},
+   {t:'Braking Distance',f:T`S=\dfrac{v_0^2}{2a},\quad t=\dfrac{v_0}{a}`,c:'9-10',s:'Braking distance grows as the square of speed: double speed means four times longer distance.',e:'v₀ = 20 m/s, a = 5 m/s² → S = **40 m**, t = **4 s**.'},
+   {t:'Distance in n-th second',f:T`S_n=v_0+\dfrac{a(2n-1)}{2}`,a:1,e:'v₀ = 0, a = 2 m/s², n = 3 → **5 m**.'}
+  ]},
+ {t:'Free Fall',f:T`h=\dfrac{gt^2}{2},\; v=gt,\; v^2=2gh`,c:'9-10',s:'A special case of accelerated motion with a = g ≈ 9.8 m/s² (≈ 10 in problems).',e:'Falling for 3 s → v = **30 m/s**, h = **45 m** (g = 10).',err:'Without air resistance, all bodies fall equally — heavy and light alike.',k:[['t','t, s',3]],o:['h, m (g=9.8)','g*t*t/2'],
+  kids:[
+   {t:'Vertical Throw Upward',f:T`h_{\max}=\dfrac{v_0^2}{2g},\; t_{\text{up}}=\dfrac{v_0}{g}`,c:'9-10',s:'At the highest point, velocity is zero. Time up equals time down.',e:'v₀ = 20 m/s → h_max = **20 m**, up 2 s, total flight 4 s (g = 10).',err:'At the top v = 0, but acceleration is still g.'},
+   {t:'Horizontal Throw',f:T`t=\sqrt{\dfrac{2h}{g}},\; L=v_0t`,c:'9-10',s:'Horizontal — uniform motion, vertical — free fall. The motions are independent.',e:'h = 45 m, v₀ = 10 m/s → t = **3 s**, L = **30 m**.'}
+  ]},
+ {t:'Projectile at an Angle',f:T`L=\dfrac{v_0^2\sin2\alpha}{g},\; H=\dfrac{v_0^2\sin^2\alpha}{2g}`,c:'9-11',s:'Range and height. Maximum range is at 45°. Angles α and 90°−α give the same range.',e:'v₀ = 20 m/s, α = 45° → L = **40 m** (g = 10).',err:'Flight time T = 2v₀sinα/g, not L/v₀ with a wrong angle.',k:[['v0','v₀, m/s',20],['al','α, °',45]],o:['L, m (g=9.8)','v0*v0*Math.sin(2*al*Math.PI/180)/g'],w:'trajectory range projectile'},
+ {t:'Circular Motion',f:T`v=\omega R=\dfrac{2\pi R}{T},\; a_{\text{c}}=\dfrac{v^2}{R}`,c:'9-11',s:'You feel a "push" into the seat on a turn — that is centripetal acceleration, directed toward the center.',e:'v = 10 m/s, R = 50 m → a = **2 m/s²**.',err:'Uniform circular motion is accelerated because the direction of velocity changes.',k:[['v','v, m/s',10],['R','R, m',50]],o:['a, m/s²','v*v/R'],
+  kids:[
+   {t:'Period and Frequency',f:T`T=\dfrac{1}{\nu},\quad \nu=\dfrac{1}{T}`,c:'9-11',sym:'T — period (s); ν — frequency (Hz)',d:'T is the time of one revolution, ν is the number of revolutions per second'},
+   {t:'Angular Frequency',f:T`\omega=\dfrac{2\pi}{T}=2\pi\nu`,c:'10-11',sym:'ω — angular frequency (rad/s)',d:'One revolution = 2π radians ⇒ ω = 2π/T = 2πν'}
+  ]}
+]},
+
+/* ============ 02 DYNAMICS ============ */
+{id:'dynamics',n:'Dynamics',sub:"Newton's Laws · Forces · Gravitation",col:'mech',cards:[
+ {t:"Newton's First Law",f:T`\sum\vec F=0\;\Rightarrow\;\vec v=\mathrm{const}`,c:'7-9',s:'If forces are balanced, the body is at rest or moves uniformly in a straight line. The law of inertia.',err:'No force is needed to keep moving at constant velocity. Force is only needed to change velocity.'},
+ {t:"Newton's Second Law",f:T`\vec F=m\vec a`,c:'8-11',s:'More force means more acceleration. More mass means less acceleration.',e:'10 kg, 20 N → **2 m/s²**.',err:'F = ma uses the net force, not just one of the forces acting on the body.',k:[['F','F, N',20],['m','m, kg',10]],o:['a, m/s²','F/m'],
+  kids:[
+   {t:'Impulse Form',f:T`\vec F=\dfrac{\Delta\vec p}{\Delta t}`,c:'9-11',s:'Force is the rate of change of momentum. This is how Newton formulated his law.'},
+   {t:'Gravity Force',f:T`F_{\text{g}}=mg`,c:'7-9',s:'Always acts on the body, applied to the body, directed downward.',e:'m = 5 kg → **≈ 50 N**.',k:[['m','m, kg',5]],o:['F, N (g=9.8)','m*g']},
+   {t:'Weight',f:T`P=mg`,c:'7-9',s:'Weight is the force with which a body presses on a support or pulls a suspension. Valid at rest or uniform motion.',err:'Weight and mass are different: mass in kg, weight in N; weight is applied to the support, not the body.'},
+   {t:'Weight in an Elevator',f:T`P=m(g\pm a)`,c:'9-10',s:'Acceleration upward is "+", overload. Downward is "−". At a = g — weightlessness.',e:'m = 70 kg, a = 2 m/s² up → P = 70·(9.8+2) ≈ **826 N**.'}
+  ]},
+ {t:"Newton's Third Law",f:T`\vec F_{12}=-\vec F_{21}`,c:'7-9',s:'Hit a wall — the wall "hits" back with the same force.',err:'These two forces act on different bodies, so they do not balance each other.'},
+ {t:"Hooke's Law",f:T`F_{\text{el}}=k\,\Delta l`,c:'7-9',s:'The more you stretch a spring, the harder it pulls back.',e:'k = 100 N/m, Δl = 0.1 m → **10 N**.',err:'Δl is the extension, not the length. Valid only for small deformations.',k:[['k','k, N/m',100],['dl','Δl, m',0.1]],o:['F, N','k*dl'],
+  kids:[
+   {t:'Spring Combinations',f:T`k_{\parallel}=k_1+k_2,\quad \dfrac1{k_{\text{ser}}}=\dfrac1{k_1}+\dfrac1{k_2}`,c:'9-10',s:'Parallel — stiffer, series — softer.',e:'k₁=k₂=100 N/m: parallel **200**, series **50 N/m**.'}
+  ]},
+ {t:'Friction Force',f:T`F_{\text{fr}}=\mu N`,c:'7-9',s:'Small μ on ice, large on asphalt.',e:'N = 500 N, μ = 0.2 → **100 N**.',err:'N is not always mg: on an incline N = mg·cosα. Static friction can be less than μN.',k:[['mu','μ',0.2],['N','N, N',500]],o:['F_fr, N','mu*N'],
+  kids:[
+   {t:'Inclined Plane',f:T`a=g(\sin\alpha-\mu\cos\alpha)`,c:'9-10',s:'Along the plane — mg·sinα down and μmg·cosα friction. Mass cancels out.',e:'α = 30°, μ = 0.2, g = 10 → a ≈ **3.3 m/s²**.',err:'If μ ≥ tgα, the body will not slide by itself.',k:[['al','α, °',30],['mu','μ',0.2]],o:['a, m/s²','g*(Math.sin(al*Math.PI/180)-mu*Math.cos(al*Math.PI/180))']}
+  ]},
+ {t:'Two Masses on a Pulley (Atwood)',f:T`a=\dfrac{(m_2-m_1)g}{m_1+m_2},\; T=\dfrac{2m_1m_2g}{m_1+m_2}`,c:'10-11',a:1,s:'Light and heavy weights on a string over a pulley. The heavier one descends with acceleration a.',e:'m₁ = 1 kg, m₂ = 3 kg, g = 10 → a = **5 m/s²**, T = **15 N**.',err:'Tension is not equal to either m₁g or m₂g.',k:[['m1','m₁, kg',1],['m2','m₂, kg',3]],o:['a, m/s²','(m2-m1)*g/(m1+m2)']},
+ {t:'Law of Universal Gravitation',f:T`F=G\dfrac{m_1m_2}{R^2}`,c:'9-11',s:'Any two bodies attract. We do not stick to each other — the force is negligible.',e:'Two people of 70 kg at 1 m → **3·10⁻⁷ N**.',err:'R is the distance between centers, not surfaces.',k:[['m1','m₁, kg',70],['m2','m₂, kg',70],['R','R, m',1]],o:['F, N','G*m1*m2/(R*R)'],
+  kids:[
+   {t:'Acceleration due to Gravity',f:T`g=\dfrac{GM}{R^2},\quad g'=\dfrac{GM}{(R+h)^2}`,c:'9-11',d:'mg = GMm/R² ⇒ g = GM/R²; at height h, distance to center is R+h',e:'Earth: g ≈ 9.8; Moon ≈ 1.6; Mars ≈ 3.7 m/s².'},
+   {t:'First Cosmic Velocity',f:T`v_1=\sqrt{\dfrac{GM}{R}}\approx7.9\ \text{km/s}`,c:'9-11',d:'mv²/R = GMm/R² ⇒ v₁ = √(GM/R) = √(gR)'}
+  ]},
+ {t:'Circular Motion Dynamics',f:T`F_{\text{cp}}=\dfrac{mv^2}{R}`,c:'9-11',s:'Centripetal force is not a new force, but the net force directed to the center.',e:'Loop-the-loop: at the top N + mg = mv²/R; at the bottom N − mg = mv²/R. The overload is greater at the bottom.',err:'Do not draw "centrifugal force" on the diagram in an inertial frame.',w:'turn loop centripetal'}
+]},
+
+/* ============ 03 STATICS AND HYDROSTATICS ============ */
+{id:'statics',n:'Statics and Hydrostatics',sub:'Lever · Torque · Pressure · Pascal · Archimedes',col:'mech',cards:[
+ {t:'Torque',f:T`M=F\cdot l`,c:'7-10',s:'Rotational effect of a force. Longer arm — easier to turn.',sym:'M — torque (N·m); l — lever arm, shortest distance from axis to line of action',err:'The lever arm is not the distance to the point of application, but the perpendicular to the line of action.'},
+ {t:'Lever Equilibrium',f:T`F_1l_1=F_2l_2`,c:'7-9',s:'Torques on the left and right are equal. This is how a crowbar and a seesaw work.',e:'20 N · 1 m = 40 N · 0.5 m.',k:[['F1','F₁, N',20],['l1','l₁, m',1],['l2','l₂, m',0.5]],o:['F₂, N','F1*l1/l2'],
+  kids:[
+   {t:'General Equilibrium Conditions',f:T`\sum\vec F=0,\quad \sum M=0`,c:'9-11',s:'The body does not translate (sum of forces = 0) and does not rotate (sum of torques = 0).'}
+  ]},
+ {t:'"Golden Rule" of Mechanics and Efficiency',f:T`A_1=A_2,\quad \eta=\dfrac{A_{\text{useful}}}{A_{\text{total}}}\cdot100\%`,c:'7-9',s:'Gain in force — lose in distance, no gain in work. Useful work is always less than total work.',e:'Lifted a load 2 m, useful work 800 J, spent 1000 J → η = **80 %**.',err:'Efficiency cannot exceed 100 %.'},
+ {t:'Pressure',f:T`p=\dfrac{F}{S}`,c:'7-9',s:'Sharp knife, wide skis: the same force over different areas presses differently.',e:'100 N on 0.02 m² → **5000 Pa**.',err:'Convert area to m²: 1 cm² = 10⁻⁴ m².',k:[['F','F, N',100],['S','S, m²',0.02]],o:['p, Pa','F/S'],
+  kids:[
+   {t:'Fluid Pressure',f:T`p=\rho gh`,c:'7-9',s:'Depends on depth and density, not on vessel shape.',e:'Depth 10 m in water → **≈ 10⁵ Pa** (one more atmosphere).',d:'p = F/S = mg/S = ρShg/S = ρgh',k:[['rho','ρ, kg/m³',1000],['h','h, m',10]],o:['p, Pa','rho*g*h']},
+   {t:"Pascal's Law. Hydraulic Press",f:T`\dfrac{F_1}{S_1}=\dfrac{F_2}{S_2}`,c:'7-9',s:'Pressure is transmitted by a fluid equally in all directions.',e:'S₁ = 10 cm², S₂ = 500 cm², F₁ = 100 N → F₂ = **5000 N**.',k:[['F1','F₁, N',100],['S1','S₁, cm²',10],['S2','S₂, cm²',500]],o:['F₂, N','F1*S2/S1']},
+   {t:'Communicating Vessels',f:T`\rho_1h_1=\rho_2h_2`,c:'7-9',s:'Heights are inversely proportional to densities.',e:'Oil (800) 10 cm → water (1000) **8 cm**.'},
+   {t:'Atmospheric Pressure',f:T`p_0\approx101\,325\ \text{Pa}\approx760\ \text{mmHg}`,c:'7-9',s:'Air pressure drops with altitude: ~1 mmHg per 12 m of ascent.'},
+   {t:'Archimedes Force',f:T`F_{\text{A}}=\rho_{\text{fl}}\,g\,V_{\text{sub}}`,c:'7-9',s:'Buoyant force equals the weight of displaced fluid.',e:'1 L in water → **≈ 10 N**.',err:'Use the density of the fluid, not the body.',d:'Pressure below is greater than above by ρgh; difference of forces = ρ_fl g V',k:[['rho','ρ_fl, kg/m³',1000],['V','V, L',1]],o:['F, N','rho*g*V/1000']},
+   {t:'Floating Condition',f:T`\rho_{\text{b}}<\rho_{\text{fl}}\;\text{floats up},\;\rho_{\text{b}}=\rho_{\text{fl}}\;\text{floats},\;\rho_{\text{b}}>\rho_{\text{fl}}\;\text{sinks}`,c:'7-9',s:'If it floats, F_A = mg, and the submerged fraction equals ρ_b/ρ_fl.',e:'Ice (900) in water (1000): **90 %** is underwater.'}
+  ]}
+]},
+
+/* ============ 04 MOMENTUM ============ */
+{id:'momentum',n:'Momentum',sub:'Momentum · Conservation · Collisions · Jet Propulsion',col:'mech',cards:[
+ {t:'Body Momentum',f:T`\vec p=m\vec v`,c:'9-10',s:'"Quantity of motion". A heavy slow truck and a light fast motorcycle are equally hard to stop.',e:'2 kg · 10 m/s = **20 kg·m/s**.',err:'Momentum is a vector: for opposite bodies, momenta subtract.'},
+ {t:'Impulse of Force',f:T`F\,\Delta t=\Delta p`,c:'9-10',s:'The longer the force acts, the more momentum changes. That is why an airbag is safer than a steering wheel.',e:'F = 50 N, Δt = 2 s → Δp = **100 kg·m/s**.'},
+ {t:'Conservation of Momentum',f:T`m_1\vec v_1+m_2\vec v_2=m_1\vec v_1'+m_2\vec v_2'`,c:'9-10',s:'Billiard balls. Momentum "flows" from body to body, but the sum remains (in a closed system).',e:'2 kg · 3 m/s sticks to 4 kg (at rest): (2+4)·v′ = 6 → v′ = **1 m/s**.',err:'Mind the signs of projections. Valid only if external forces are negligible.',
+  kids:[
+   {t:'Perfectly Inelastic Collision',f:T`v'=\dfrac{m_1v_1+m_2v_2}{m_1+m_2}`,c:'9-10',s:'Bodies stick together. Some energy turns into heat.',k:[['m1','m₁, kg',2],['v1','v₁, m/s',3],['m2','m₂, kg',4],['v2','v₂, m/s',0]],o:['v′, m/s','(m1*v1+m2*v2)/(m1+m2)']},
+   {t:'Elastic Central Collision',f:T`v_1'=\dfrac{(m_1-m_2)v_1+2m_2v_2}{m_1+m_2}`,c:'10-11',a:1,s:'Both momentum and kinetic energy are conserved. Equal masses exchange velocities.',e:'m₁ = m₂, v₂ = 0 → v₁′ = **0**, v₂′ = v₁.'},
+   {t:'Jet Propulsion',f:T`m\vec u=-M\vec v`,c:'9-10',s:'A rocket ejects gas backward and gains momentum forward.',w:'rocket recoil'},
+   {t:'Tsiolkovsky Rocket Equation',f:T`\Delta v=u\ln\dfrac{m_0}{m}`,c:'11',a:1,s:'Velocity increment depends on exhaust velocity and mass ratio.'}
+  ]}
+]},
+
+/* ============ 05 ROTATION ============ */
+{id:'rotation',n:'Rotational Motion',sub:'Moment of inertia · Angular momentum · Rotational energy',col:'mech',cards:[
+ {t:'Angular Velocity and Angular Acceleration',f:T`\omega=\dfrac{\Delta\varphi}{\Delta t},\quad \varepsilon=\dfrac{\Delta\omega}{\Delta t}`,c:'10-11',a:1,s:'Analogues of v and a for rotation.',sym:'φ — angle (rad); ω — angular velocity (rad/s); ε — angular acceleration (rad/s²)',e:'A wheel spun up from 0 to 20 rad/s in 4 s → ε = **5 rad/s²**.',err:'Angles in formulas must be in radians.',
+  kids:[{t:'Relation between Linear and Angular Quantities',f:T`v=\omega R,\quad a_\tau=\varepsilon R`,c:'10-11',a:1}]},
+ {t:'Moment of Inertia',f:T`I=\sum m_ir_i^2`,c:'10-11',a:1,s:'"Mass" for rotation: the farther the mass from the axis, the harder it is to spin.',e:'A 2 kg mass on a massless rod 0.5 m from the axis → I = 2·0.25 = **0.5 kg·m²**.',
+  tbl:{cols:['Body','Axis','Moment of inertia'],rows:[['Point mass','at distance r','mr²'],['Thin ring, hoop','through center ⟂ plane','mR²'],['Solid disk, cylinder','through center ⟂ plane','mR²/2'],['Solid sphere','through center','2mR²/5'],['Thin rod length l','through center','ml²/12'],['Thin rod length l','through end','ml²/3']]},
+  kids:[{t:"Steiner's Theorem",f:T`I=I_c+md^2`,c:'11',a:1,s:'If the axis is shifted by d from the axis through the center of mass.'}]},
+ {t:'Basic Equation of Rotational Dynamics',f:T`M=I\varepsilon`,c:'10-11',a:1,s:'Analogous to F = ma for rotation.',e:'M = 10 N·m, I = 2 kg·m² → ε = **5 rad/s²**.',k:[['M','M, N·m',10],['I','I, kg·m²',2]],o:['ε, rad/s²','M/I']},
+ {t:'Angular Momentum',f:T`L=I\omega,\quad \Delta L=M\Delta t`,c:'10-11',a:1,s:'If the net external torque is zero, L is conserved. A skater pulls arms in — I decreases, ω increases.',e:'I₁ = 4, ω₁ = 2 → pulled arms in, I₂ = 2 → ω₂ = **4 rad/s**.',w:'skater Joukowski bench'},
+ {t:'Rotational Kinetic Energy',f:T`E_k=\dfrac{I\omega^2}{2}`,c:'10-11',a:1,s:'For rolling without slipping, total energy: mv²/2 + Iω²/2.',e:'Disk m = 2 kg, R = 0.5 m, ω = 10 rad/s: I = 0.25, E = **12.5 J**.'}
+]},
+
+/* ============ 06 MOLECULAR PHYSICS ============ */
+{id:'molecular',n:'Molecular Physics',sub:'MKT · Gas laws · Equation of state · Liquids',col:'therm',cards:[
+ {t:'Amount of Substance',f:T`\nu=\dfrac{m}{M}=\dfrac{N}{N_A}`,c:'8-10',s:'"How many moles". One mole contains 6.02·10²³ particles.',e:'36 g of water (M = 18 g/mol) → **2 mol**.',err:'In formulas with R, use molar mass in kg/mol: M(H₂O) = 0.018 kg/mol.',
+  kids:[{t:'Mass of a Molecule and Concentration',f:T`m_0=\dfrac{M}{N_A},\quad n=\dfrac{N}{V}`,c:'10-11',sym:'m₀ — mass of one molecule (kg); n — concentration (m⁻³)'}]},
+ {t:'Temperature',f:T`T=t+273.15`,c:'8-10',s:'Absolute Kelvin scale. 0 K is the limit where thermal motion stops.',err:'In gas laws and p = nkT, temperature must be in Kelvin.',e:'20 °C = **293 K**.'},
+ {t:'Basic Equation of MKT',f:T`p=\dfrac13\,n\,m_0\,\overline{v^2}=\dfrac23\,n\,\overline{E_k}`,c:'10-11',s:'Gas pressure is the result of molecules hitting the walls.',
+  kids:[
+   {t:'Average Kinetic Energy of a Molecule',f:T`\overline{E_k}=\dfrac32kT`,c:'10-11',d:'p = (2/3)nĒ and p = nkT ⇒ Ē = (3/2)kT'},
+   {t:'Gas Pressure through Concentration and Temperature',f:T`p=nkT`,c:'10-11',s:'Hotter — higher pressure. A can in the sun might explode.',e:'Temperature doubled → pressure doubled at same n.'},
+   {t:'Root Mean Square Speed',f:T`v_{\text{rms}}=\sqrt{\dfrac{3kT}{m_0}}=\sqrt{\dfrac{3RT}{M}}`,c:'10-11',d:'m₀v²/2 = 3kT/2',e:'Nitrogen at 300 K: **≈ 517 m/s**.',k:[['T','T, K',300],['M','M, kg/mol',0.028]],o:['v_rms, m/s','Math.sqrt(3*Rg*T/M)']}
+  ]},
+ {t:'Mendeleev-Clapeyron Equation',f:T`pV=\dfrac{m}{M}RT=\nu RT`,c:'10-11',s:'Relates pressure, volume, and temperature.',e:'1 mol at 273 K in 22.4 L → p ≈ **101 kPa**.',err:'Volume in m³ (1 L = 10⁻³ m³), pressure in Pa.',d:'p = nkT, n = N/V, N = νN_A, R = kN_A ⇒ pV = νRT',k:[['nu','ν, mol',1],['T','T, K',273],['V','V, m³',0.0224]],o:['p, Pa','nu*Rg*T/V']},
+ {t:'Gas Laws',f:T`\dfrac{pV}{T}=\mathrm{const}`,c:'9-11',s:'For a given mass of gas. Special cases are isoprocesses.',e:'T = const, pressure doubled → volume halved.',
+  tbl:{cols:['Process','Constant','Law','Name'],rows:[['Isothermal','T, m','pV = const','Boyle-Mariotte'],['Isobaric','p, m','V/T = const','Gay-Lussac'],['Isochoric','V, m','p/T = const','Charles'],['Combined','m','pV/T = const','Clapeyron']]},
+  kids:[{t:"Dalton's Law",f:T`p=p_1+p_2+\dots`,c:'10-11',s:'Pressure of a gas mixture equals the sum of partial pressures.'}]},
+ {t:'Relative Humidity',f:T`\varphi=\dfrac{p}{p_{\text{sat}}}\cdot100\%`,c:'8-10',s:'How close the air is to saturation. At 100% dew forms.',e:'p = 1.2 kPa, p_sat = 2.3 kPa → φ ≈ **52%**.'},
+ {t:'Surface Tension',f:T`F=\sigma l,\quad h=\dfrac{2\sigma\cos\theta}{\rho g r}`,c:'10-11',a:1,s:'Liquid surface acts like an elastic film. Capillary: the thinner, the higher water rises.',e:'Water (σ = 0.072 N/m) in capillary r = 0.5 mm, θ = 0 → h ≈ **2.9 cm**.'},
+ {t:'Thermal Expansion',f:T`\Delta l=\alpha\,l_0\,\Delta t,\quad \Delta V=\beta V_0\Delta t`,c:'8-10',s:'Heated bodies expand. For volume, β ≈ 3α.',e:'Steel rail 25 m (α = 1.2·10⁻⁵) heated by 40 K → expanded by **12 mm**.'}
+]},
+
+/* ============ 07 THERMODYNAMICS ============ */
+{id:'thermo',n:'Thermodynamics',sub:'Heat · First and Second Laws · Efficiency',col:'therm',cards:[
+ {t:'Heating and Cooling',f:T`Q=cm\,\Delta t`,c:'8',s:'A kettle takes longer than a cup — more mass.',e:'1 kg of water by 80 °C → **336 kJ**.',err:'When cooling, Δt is negative, Q < 0.',k:[['cw','c, J/(kg·°C)',4200],['m','m, kg',1],['dt','Δt, °C',80]],o:['Q, J','cw*m*dt'],
+  kids:[{t:'Heat Balance Equation',f:T`Q_{\text{given}}=Q_{\text{received}}`,c:'8',s:'Heat given by hot bodies equals heat received by cold ones.',e:'200 g water 80 °C + 300 g water 20 °C → t = **44 °C**.'}]},
+ {t:'Melting and Crystallization',f:T`Q=\lambda m`,c:'8',s:'While ice melts, temperature stays at 0 °C.',e:'1 kg of ice → **330 kJ**.'},
+ {t:'Vaporization and Condensation',f:T`Q=Lm`,c:'8',s:'Vaporizing water takes ~7 times more energy than melting ice.',e:'1 kg of water at 100 °C → **2300 kJ**.'},
+ {t:'Fuel Combustion',f:T`Q=qm`,c:'8',s:'Gasoline has a very high energy density.',e:'1 kg of gasoline → **46 MJ**.'},
+ {t:'Internal Energy of Ideal Gas',f:T`U=\dfrac{i}{2}\nu RT\;\;(i=3\ \text{for monatomic})`,c:'10-11',s:'Sum of kinetic energies of molecules. Depends only on temperature.',e:'Monatomic gas, ν = 2 mol, T = 300 K → U ≈ **7.5 kJ**.'},
+ {t:'First Law of Thermodynamics',f:T`Q=\Delta U+A`,c:'10-11',s:'Heat goes into heating the gas and doing work.',e:'Q = 100 J, A = 30 J → ΔU = **70 J**.',err:'A is work done BY the gas. If work is done ON the gas, A < 0.',
+  kids:[
+   {t:'Work Done by Gas',f:T`A=p\,\Delta V\;\;(p=\mathrm{const})`,c:'10-11',d:'A = F·h = p·S·h = pΔV',k:[['p','p, Pa',100000],['dV','ΔV, m³',0.002]],o:['A, J','p*dV']},
+   {t:'Application to Isoprocesses',f:T`C_V=\tfrac32R,\; C_p=\tfrac52R`,c:'10-11',a:1,s:'For monatomic ideal gas.',
+    tbl:{cols:['Process','A','ΔU','Q'],rows:[['Isochoric (V = const)','0','(3/2)νRΔT','ΔU'],['Isobaric (p = const)','pΔV = νRΔT','(3/2)νRΔT','(5/2)νRΔT'],['Isothermal (T = const)','νRT ln(V₂/V₁)','0','A'],['Adiabatic (Q = 0)','−ΔU','−A','0']]}}
+  ]},
+ {t:'Heat Engine Efficiency',f:T`\eta=\dfrac{Q_1-Q_2}{Q_1}\cdot100\%=\dfrac{A}{Q_1}\cdot100\%`,c:'8-11',s:'Gasoline engine η ≈ 25–30% — the rest goes out the exhaust.',e:'Q₁ = 1000 J, A = 300 J → **30%**.',k:[['A','A, J',300],['Q1','Q₁, J',1000]],o:['η, %','A/Q1*100'],
+  kids:[{t:'Carnot Cycle — Maximum Efficiency',f:T`\eta_{\max}=1-\dfrac{T_{\text{c}}}{T_{\text{h}}}`,c:'10-11',s:'Theoretical limit for any heat engine.',e:'T_h = 600 K, T_c = 300 K → η_max = **50%**.',err:'Temperatures in Kelvin.',k:[['Th','T_h, K',600],['Tc','T_c, K',300]],o:['η_max, %','(1-Tc/Th)*100']}]},
+ {t:'Second Law of Thermodynamics',f:T`\Delta S\ge0`,c:'10-11',a:1,s:'In a closed system, entropy does not decrease. Heat does not flow spontaneously from cold to hot.',w:'entropy perpetual motion'}
+]},
+
+/* ============ 08 ELECTROSTATICS ============ */
+{id:'electrostatics',n:'Electrostatics',sub:"Coulomb's Law · Field · Potential · Capacitor",col:'elec',cards:[
+ {t:'Charge Conservation',f:T`q_1+q_2+\dots=\mathrm{const}`,c:'8-10',s:'In a closed system, total charge is constant.'},
+ {t:'Coulomb\'s Law',f:T`F=\dfrac{k\,|q_1||q_2|}{\varepsilon r^2}`,c:'8-11',s:'Like charges repel, opposite attract.',e:'Two 1 μC charges at 0.1 m → **0.9 N**.',err:'Convert to Coulombs: 1 μC = 10⁻⁶ C.',k:[['q1','q₁, C',1e-6],['q2','q₂, C',1e-6],['r','r, m',0.1],['eps','ε',1]],o:['F, N','kC*q1*q2/(eps*r*r)'],
+  kids:[
+   {t:'Electric Field Strength',f:T`E=\dfrac{F}{q}`,c:'8-11',sym:'E — field strength (V/m = N/C)'},
+   {t:'Point Charge Field',f:T`E=\dfrac{kq}{\varepsilon r^2}`,c:'10-11',e:'q = 1 nC at 0.3 m → **100 V/m**.',k:[['q','q, C',1e-9],['r','r, m',0.3]],o:['E, V/m','kC*q/(r*r)']},
+   {t:'Superposition Principle',f:T`\vec E=\vec E_1+\vec E_2+\dots`,c:'10-11',s:'Fields add as vectors.'},
+   {t:'Potential and Work of Field',f:T`\varphi=\dfrac{W_p}{q}=\dfrac{kq}{\varepsilon r},\quad A=q(\varphi_1-\varphi_2)=qU`,c:'10-11',e:'q = 2 C, U = 5 V → A = **10 J**.'},
+   {t:'Voltage and Field Strength',f:T`U=Ed`,c:'10-11',d:'A = F·d = qEd = qU ⇒ U = Ed',e:'E = 1000 V/m, d = 2 cm → **20 V**.'},
+   {t:'Charge Acceleration in Field',f:T`qU=\dfrac{mv^2}{2}`,c:'10-11',s:'Work of field goes into kinetic energy.',e:'Electron, U = 100 V → v ≈ **5.9·10⁶ m/s**.',k:[['U','U, V',100]],o:['v, m/s (electron)','Math.sqrt(2*qe*U/me)']}
+  ]},
+ {t:'Capacitor Capacitance',f:T`C=\dfrac{q}{U}`,c:'10-11',s:'A "reservoir" for charge.',e:'100 μC, 10 V → **10 μF**.',k:[['q','q, μC',100],['U','U, V',10]],o:['C, μF','q/U'],
+  kids:[
+   {t:'Parallel Plate Capacitor',f:T`C=\dfrac{\varepsilon_0\varepsilon S}{d}`,c:'10-11',e:'S = 0.01 m², d = 1 mm, ε = 1 → **88.5 pF**.',k:[['S','S, m²',0.01],['d','d, m',0.001],['eps','ε',1]],o:['C, F','e0*eps*S/d']},
+   {t:'Capacitor Combinations',f:T`C_{\parallel}=C_1+C_2,\quad \dfrac1{C_{\text{ser}}}=\dfrac1{C_1}+\dfrac1{C_2}`,c:'10-11',s:'Opposite to resistors.'},
+   {t:'Capacitor Energy',f:T`W=\dfrac{CU^2}{2}=\dfrac{q^2}{2C}`,c:'10-11',d:'W = qU/2, q = CU ⇒ W = CU²/2',e:'C = 10 μF, U = 100 V → **0.05 J**.',k:[['C','C, μF',10],['U','U, V',100]],o:['W, J','C*1e-6*U*U/2']}
+  ]}
+]},
+
+/* ============ 09 ELECTRIC CURRENT ============ */
+{id:'current',n:'Electric Current',sub:"Ohm's Law · Connections · Power · EMF · Electrolysis",col:'elec',cards:[
+ {t:'Current Strength',f:T`I=\dfrac{q}{t}`,c:'8-10',s:'Like water flow in a pipe — "coulombs per second".',e:'20 C in 4 s → **5 A**.'},
+ {t:'Ohm\'s Law for a Circuit Section',f:T`I=\dfrac{U}{R}`,c:'8-10',s:'More voltage — more current. More resistance — less current.',e:'12 V / 6 Ω → **2 A**.',k:[['U','U, V',12],['R','R, Ω',6]],o:['I, A','U/R'],
+  kids:[
+   {t:'Conductor Resistance',f:T`R=\dfrac{\rho l}{S}`,c:'8-10',e:'Copper (ρ = 1.7·10⁻⁸ Ω·m), l = 100 m, S = 1 mm² → **1.7 Ω**.',k:[['rho','ρ, Ω·mm²/m',0.017],['l','l, m',100],['S','S, mm²',1]],o:['R, Ω','rho*l/S']},
+   {t:'Resistance vs Temperature',f:T`R=R_0(1+\alpha\Delta t)`,c:'10-11',s:'In metals, resistance increases with heating.'}
+  ]},
+ {t:'Electromotive Force (EMF)',f:T`\varepsilon=\dfrac{A_{\text{ext}}}{q}`,c:'10-11',s:'Work done by external forces to move a unit charge inside the source.'},
+ {t:'Work and Power of Current',f:T`A=UIt,\quad P=UI=I^2R=\dfrac{U^2}{R}`,c:'8-10',e:'Lamp 220 V, 0.5 A → **110 W**; in 1 hour — **0.11 kWh**.',d:'P = A/t = UIt/t = UI; U = IR',k:[['U','U, V',220],['I','I, A',0.5]],o:['P, W','U*I'],
+  kids:[{t:'Joule-Lenz Law',f:T`Q=I^2Rt`,c:'8-10',s:'Heating of a conductor by current.',e:'I = 2 A, R = 10 Ω, t = 60 s → **2400 J**.',d:'A = UIt, U = IR ⇒ Q = I²Rt'}]},
+ {t:'Ohm\'s Law for a Complete Circuit',f:T`I=\dfrac{\varepsilon}{R+r}`,c:'10-11',s:'Part of the EMF is "eaten" by internal resistance.',e:'ε = 12 V, R = 5 Ω, r = 1 Ω → **2 A**.',k:[['E','ε, V',12],['R','R, Ω',5],['r','r, Ω',1]],o:['I, A','E/(R+r)'],
+  kids:[
+   {t:'Terminal Voltage',f:T`U=\varepsilon-Ir`,c:'10-11'},
+   {t:'Short Circuit Current',f:T`I_{\text{sc}}=\dfrac{\varepsilon}{r}`,c:'10-11',e:'ε = 12 V, r = 0.1 Ω → **120 A** (dangerous!).'},
+   {t:'Source Efficiency',f:T`\eta=\dfrac{U}{\varepsilon}=\dfrac{R}{R+r}`,c:'10-11',s:'Maximum power at load — when R = r, but efficiency is 50%.'}
+  ]},
+ {t:'Series Connection',f:T`R=R_1+R_2+\dots,\;\; I=\mathrm{const},\;\; U=U_1+U_2`,c:'8-10',s:'Garland: one bulb burns out — all go dark.',e:'3 + 5 → **8 Ω**.'},
+ {t:'Parallel Connection',f:T`\dfrac1R=\dfrac1{R_1}+\dfrac1{R_2}+\dots,\;\; U=\mathrm{const}`,c:'8-10',s:'Like wall sockets at home — all at 220 V. Total R is less than each.',e:'6 and 3 Ω → **2 Ω**. For two: R = R₁R₂/(R₁+R₂).',k:[['R1','R₁, Ω',6],['R2','R₂, Ω',3]],o:['R, Ω','R1*R2/(R1+R2)']},
+ {t:'Kirchhoff\'s Rules',f:T`\sum I_k=0,\quad \sum I_kR_k=\sum\varepsilon_k`,c:'11',a:1,s:'1st: sum of currents at a node is zero. 2nd: in any closed loop, sum of voltage drops equals sum of EMFs.'},
+ {t:'Faraday\'s Laws of Electrolysis',f:T`m=kIt=\dfrac{M}{zF}\,It`,c:'10-11',a:1,s:'Mass of substance deposited on an electrode.',e:'Copper (M = 0.0635 kg/mol, z = 2), I = 1 A, t = 1 h → **≈ 1.2 g**.'}
+]},
+
+/* ============ 10 MAGNETISM ============ */
+{id:'magnetism',n:'Magnetism and Induction',sub:'Ampere · Lorentz · Induction · Self-induction',col:'mag',cards:[
+ {t:'Magnetic Field of Current',f:T`B=\dfrac{\mu_0I}{2\pi r}\;\text{(straight wire)},\quad B=\mu_0nI\;\text{(solenoid)}`,c:'10-11',s:'A magnetic field surrounds a current-carrying conductor. It is uniform inside a long coil.',e:'I = 5 A at distance 0.1 m → **10 μT**.',k:[['I','I, A',5],['r','r, m',0.1]],o:['B, T','mu0*I/(2*Math.PI*r)']},
+ {t:"Ampere's Force",f:T`F_A=BIl\sin\alpha`,c:'9-11',s:'This is the force that spins an electric motor.',e:'B = 0.5 T, I = 2 A, l = 0.3 m → **0.3 N**.',k:[['B','B, T',0.5],['I','I, A',2],['l','l, m',0.3]],o:['F, N','B*I*l']},
+ {t:'Lorentz Force',f:T`F_{\text{L}}=Bqv\sin\alpha`,c:'10-11',s:'A particle flies through a magnetic field — it gets "pulled" to the side. Lorentz force does no work.',e:'Electron at 10⁶ m/s in 0.1 T → **1.6·10⁻¹⁴ N**.',err:'For a negative charge, the direction is opposite to the left-hand rule.',k:[['B','B, T',0.1],['v','v, m/s',1e6]],o:['F, N (electron)','qe*v*B'],
+  kids:[
+   {t:'Radius of Trajectory',f:T`R=\dfrac{mv}{qB}`,c:'10-11',d:'mv²/R = qvB ⇒ R = mv/(qB)',e:'Electron, v = 10⁶ m/s, B = 0.1 T → R ≈ **57 μm**.'},
+   {t:'Period of Revolution',f:T`T=\dfrac{2\pi m}{qB}`,c:'10-11',s:'Does not depend on speed — this is the basis of a cyclotron.'}
+  ]},
+ {t:'Magnetic Flux',f:T`\Phi=BS\cos\alpha`,c:'9-11',s:'"Flow of mosquitoes through a frame": turn it edge-on and flux is 0.',e:'B = 0.5 T, S = 0.1 m² → **0.05 Wb**.',
+  kids:[
+   {t:'Faraday\'s Law of Induction',f:T`\varepsilon=-\dfrac{\Delta\Phi}{\Delta t}`,c:'9-11',s:'Changing flux generates EMF. The minus sign reflects Lenz\'s law.',e:'Flux changed by 0.2 Wb in 0.1 s → **2 V**.',k:[['dF','ΔΦ, Wb',0.2],['dt','Δt, s',0.1]],o:['|ε|, V','dF/dt']},
+   {t:'Lenz\'s Rule',f:T`\text{induced current opposes the cause that produced it}`,c:'9-11',s:'Push a magnet into a ring — the induced current creates a field that repels the magnet.'},
+   {t:'EMF in a Moving Conductor',f:T`\varepsilon=Blv\sin\alpha`,c:'10-11',e:'B = 0.2 T, l = 0.5 m, v = 4 m/s → **0.4 V**.',k:[['B','B, T',0.2],['l','l, m',0.5],['v','v, m/s',4]],o:['ε, V','B*l*v']},
+   {t:'EMF of Self-Induction',f:T`\varepsilon_{\text{si}}=-L\dfrac{\Delta I}{\Delta t},\quad \Phi=LI`,c:'10-11',s:'A coil "resists" changes in current.',e:'L = 0.5 H, current rises by 4 A in 0.1 s → **20 V**.'},
+   {t:'Magnetic Energy of a Coil',f:T`W=\dfrac{LI^2}{2}`,c:'10-11',e:'L = 0.5 H, I = 4 A → **4 J**.'}
+  ]}
+]},
+
+/* ============ 11 ALTERNATING CURRENT ============ */
+{id:'ac',n:'Alternating Current',sub:'RMS values · Reactances · Transformers',col:'mag',cards:[
+ {t:'Harmonic Alternating Current',f:T`i=I_m\sin\omega t,\quad \omega=2\pi\nu`,c:'11',s:'Mains frequency is ν = 50 Hz (or 60 Hz), ω = 314 rad/s.',e:'Mains voltage is 220 V RMS; amplitude is **≈ 311 V**.',
+  kids:[
+   {t:'RMS Values',f:T`I=\dfrac{I_m}{\sqrt2},\quad U=\dfrac{U_m}{\sqrt2}`,c:'11',s:'Such a DC value produces the same heating effect.',k:[['Um','U_m, V',311]],o:['U, V','Um/Math.sqrt(2)']},
+   {t:'EMF of Rotating Frame',f:T`\varepsilon=BS\omega\sin\omega t`,c:'11',s:'Principle of an electric generator.'}
+  ]},
+ {t:'Reactances',f:T`X_L=\omega L,\quad X_C=\dfrac{1}{\omega C}`,c:'11',s:'An inductor "dislikes" fast current changes, a capacitor passes fast currents easily.',e:'L = 0.1 H, ν = 50 Hz → X_L ≈ **31 Ω**.',k:[['L','L, H',0.1],['nu','ν, Hz',50]],o:['X_L, Ω','2*Math.PI*nu*L']},
+ {t:'Impedance and Ohm\'s Law',f:T`Z=\sqrt{R^2+(X_L-X_C)^2},\quad I=\dfrac UZ`,c:'11',a:1,s:'Resistances add "Pythagorean-style", not arithmetically.',e:'R = 30 Ω, X_L − X_C = 40 Ω → Z = **50 Ω**.',k:[['R','R, Ω',30],['X','X_L−X_C, Ω',40]],o:['Z, Ω','Math.sqrt(R*R+X*X)']},
+ {t:'Resonance in a Circuit',f:T`\omega_0=\dfrac1{\sqrt{LC}}`,c:'11',a:1,s:'At ω = ω₀ reactances cancel (X_L = X_C) and current is maximum.'},
+ {t:'AC Power',f:T`P=UI\cos\varphi`,c:'11',a:1,s:'cos φ is the power factor: how well current is in phase with voltage.'},
+ {t:'Transformer',f:T`k=\dfrac{U_1}{U_2}=\dfrac{N_1}{N_2}\approx\dfrac{I_2}{I_1}`,c:'11',s:'Steps voltage up or down (but not power).',e:'N₁ = 1000, N₂ = 100, U₁ = 220 V → U₂ = **22 V**.',k:[['U1','U₁, V',220],['N1','N₁',1000],['N2','N₂',100]],o:['U₂, V','U1*N2/N1'],
+  kids:[{t:'Transmission Losses',f:T`P_{\text{loss}}=I^2R=\dfrac{P^2R}{U^2}`,c:'11',s:'That is why power lines use hundreds of kilovolts: higher U means lower I and lower losses.'}]}
+]},
+
+/* ============ 12 OSCILLATIONS ============ */
+{id:'oscillations',n:'Oscillations and Waves',sub:'Pendulums · LC circuit · Waves · Sound · Doppler',col:'osc',cards:[
+ {t:'Harmonic Oscillations',f:T`x=A\sin(\omega t+\varphi_0)`,c:'9-11',s:'A pendulum swings back and forth: A is amplitude, ω is frequency, φ₀ is initial phase.',e:'A = 5 cm, T = 2 s → ω = **π rad/s**.',
+  kids:[
+   {t:'Velocity and Acceleration',f:T`v=A\omega\cos(\omega t+\varphi_0),\;\; a=-\omega^2x`,c:'10-11',s:'At equilibrium, velocity is maximum and acceleration is zero. At extremes, vice versa.'},
+   {t:'Energy of Oscillations',f:T`E=\dfrac{kA^2}{2}=\dfrac{mv_{\max}^2}{2}`,c:'10-11',s:'Energy converts between potential and kinetic; total remains constant.'}
+  ]},
+ {t:'Simple Pendulum',f:T`T=2\pi\sqrt{\dfrac lg}`,c:'9-11',s:'Long — slow, short — fast. Mass does NOT matter!',e:'l = 1 m → T ≈ **2 s**.',err:'Valid only for small angles (up to ~10°).',k:[['l','l, m',1]],o:['T, s','2*Math.PI*Math.sqrt(l/g)']},
+ {t:'Spring Pendulum',f:T`T=2\pi\sqrt{\dfrac mk}`,c:'9-11',s:'Heavy — slow, stiff spring — fast.',e:'m = 1 kg, k = 100 N/m → T ≈ **0.63 s**.',k:[['m','m, kg',1],['k','k, N/m',100]],o:['T, s','2*Math.PI*Math.sqrt(m/k)']},
+ {t:'LC Circuit (Thomson Formula)',f:T`T=2\pi\sqrt{LC}`,c:'11',s:'Energy "swings" between capacitor and coil.',e:'L = 1 mH, C = 1 μF → T ≈ **0.2 ms** (ν ≈ 5 kHz).',d:'Total energy W = CU²/2 + LI²/2 = const',k:[['L','L, mH',1],['C','C, μF',1]],o:['T, s','2*Math.PI*Math.sqrt(L*1e-3*C*1e-6)']},
+ {t:'Damping and Resonance',f:T`A(t)=A_0e^{-\beta t},\quad \omega_{\text{ext}}=\omega_0`,c:'9-11',s:'Due to friction, amplitude drops. If external frequency matches natural frequency, amplitude spikes (swinging, bridge collapse).',w:'resonance swing'},
+ {t:'Wave Speed',f:T`v=\lambda\nu=\dfrac\lambda T`,c:'9-11',s:'Throw a stone into a pond — waves spread. v is crest speed, λ is distance between crests.',e:'λ = 2 m, ν = 3 Hz → **6 m/s**.',err:'When changing medium, frequency stays the same; v and λ change.',k:[['lam','λ, m',2],['nu','ν, Hz',3]],o:['v, m/s','lam*nu'],
+  kids:[
+   {t:'Traveling Wave Equation',f:T`y=A\sin(\omega t-kx),\quad k=\dfrac{2\pi}{\lambda}`,c:'11',a:1,sym:'k — wave number (rad/m)'},
+   {t:'Standing Waves',f:T`l=n\dfrac\lambda2`,c:'11',a:1,s:'A string fixed at both ends holds an integer number of half-waves.',e:'String 60 cm, n = 1 → λ = **1.2 m**.'}
+  ]},
+ {t:'Sound',f:T`v\approx331+0{,}6\,t_{\text{°C}}\ \text{m/s},\quad s=\dfrac{vt}{2}`,c:'9-11',s:'Air ≈ 340 m/s, water ≈ 1500, steel ≈ 5000 m/s. Echo travels there and back, so divide by 2.',e:'Echo after 2 s → to obstacle **≈ 340 m**.',err:'Sound does not travel in a vacuum.',
+  kids:[{t:'Loudness Level',f:T`L=10\lg\dfrac{I}{I_0},\quad I_0=10^{-12}\ \text{W/m}^2`,c:'10-11',a:1,s:'Decibel scale. Every +10 dB means intensity is 10 times higher.',e:'Intensity 10⁻⁶ W/m² → **60 dB**.'}]},
+ {t:'Doppler Effect',f:T`\nu=\nu_0\dfrac{v\pm v_{\text{rcv}}}{v\mp v_{\text{src}}}`,c:'11',a:1,s:'An ambulance siren sounds higher as it approaches and lower as it departs.',e:'Source 500 Hz moves to receiver at 34 m/s → ν = **≈ 555 Hz**.',err:'Top signs = approaching (frequency increases), bottom = departing.'}
+]},
+
+/* ============ 13 OPTICS ============ */
+{id:'optics',n:'Optics',sub:'Reflection · Refraction · Lenses · Interference · Diffraction',col:'opt',cards:[
+ {t:'Law of Reflection',f:T`\alpha=\alpha'`,c:'8-9',s:'Angle of incidence equals angle of reflection.',err:'Angles are measured from the normal, not from the surface.',
+  kids:[{t:'Plane Mirror',f:T`d=f`,c:'8-9',s:'Image is virtual, upright, same size, at the same distance behind the mirror.'}]},
+ {t:'Snell\'s Law of Refraction',f:T`\dfrac{\sin\alpha}{\sin\beta}=\dfrac{n_2}{n_1}=\dfrac{v_1}{v_2}`,c:'8-11',s:'A spoon "breaks" in a glass. Light is slower in water.',e:'Air → water (n = 1.33), sinα = 0.5 → β ≈ **22°**.',k:[['al','α, °',30],['n1','n₁',1],['n2','n₂',1.33]],o:['β, °','Math.asin(n1*Math.sin(al*Math.PI/180)/n2)*180/Math.PI'],
+  kids:[
+   {t:'Refractive Index',f:T`n=\dfrac cv`,c:'8-11',s:'How many times slower light is in a medium compared to a vacuum.',e:'In glass n = 1.5 → v = **2·10⁸ m/s**.'},
+   {t:'Total Internal Reflection',f:T`\sin\alpha_{\text{cr}}=\dfrac{n_2}{n_1}\;(n_1>n_2)`,c:'10-11',s:'From a denser medium at a steep angle, light cannot escape. Basis of fiber optics.',e:'Glass → air: sinα_cr = 1/1.5 → α_cr ≈ **42°**.',k:[['n','n (glass/diamond)',1.5]],o:['α_cr, °','Math.asin(1/n)*180/Math.PI']}
+  ]},
+ {t:'Lens Power',f:T`D=\dfrac1F`,c:'8-11',s:'Shorter focal length means a stronger lens. +2 diopters means F = 0.5 m.',e:'F = 0.5 m → **2 diopters**.',
+  kids:[
+   {t:'Thin Lens Equation',f:T`\dfrac1F=\dfrac1d+\dfrac1f`,c:'8-11',s:'Signs: F > 0 for converging, F < 0 for diverging; f > 0 for real image, f < 0 for virtual.',e:'F = 0.2 m, d = 0.3 m → f = **0.6 m**.',err:'Use the same units for distances.',k:[['F','F, m',0.2],['d','d, m',0.3]],o:['f, m','1/(1/F-1/d)']},
+   {t:'Lens Magnification',f:T`\Gamma=\dfrac Hh=\dfrac fd`,c:'8-11',s:'Image size vs object size.',e:'f = 0.6 m, d = 0.3 m → Γ = **2**.'},
+   {t:'Lenses in Contact',f:T`D=D_1+D_2`,c:'9-11',s:'Optical powers add up.'},
+   {t:'Lensmaker\'s Equation',f:T`\dfrac1F=(n-1)\left(\dfrac1{R_1}+\dfrac1{R_2}\right)`,c:'11',a:1,s:'Focal length depends on glass index and surface curvature.'}
+  ]},
+ {t:'Spherical Mirror',f:T`\dfrac1F=\dfrac1d+\dfrac1f,\quad F=\dfrac R2`,c:'9-11',a:1,s:'Concave mirror converges light (F > 0), convex diverges (F < 0).'},
+ {t:'Dispersion of Light',f:T`n=n(\lambda)`,c:'9-11',s:'Refractive index depends on wavelength: red bends less, violet more. That creates a rainbow.'},
+ {t:'Interference',f:T`\Delta d=k\lambda\;(\max),\quad \Delta d=(2k+1)\dfrac\lambda2\;(\min)`,c:'11',s:'Crest + crest = bright; crest + trough = dark.',e:'k = 2, λ = 500 nm → Δd = **1 μm** (maximum).',
+  kids:[{t:'Thin Films',f:T`2nh\cos\beta=(k+\tfrac12)\lambda\;(\text{max in reflection})`,c:'11',a:1,s:'Iridescent spots on soap bubbles and oil slicks.'}]},
+ {t:'Diffraction Grating',f:T`d\sin\varphi=k\lambda`,c:'11',s:'Light passes through slits — rainbow bands on screen.',e:'d = 2·10⁻⁶ m, k = 1, λ = 500 nm → φ ≈ **14.5°**.',k:[['d','d, μm',2],['lam','λ, nm',500],['k','k',1]],o:['φ, °','Math.asin(k*lam*1e-9/(d*1e-6))*180/Math.PI']},
+ {t:'Polarization. Brewster\'s Law',f:T`\tan\alpha_B=n`,c:'11',a:1,s:'Reflected light is fully polarized at Brewster\'s angle. Basis of polarized sunglasses.',e:'Glass (n = 1.5) → α_B ≈ **56°**.'}
+]},
+
+/* ============ 14 QUANTUM PHYSICS ============ */
+{id:'quantum',n:'Quantum Physics',sub:'Photon · Photoelectric Effect · de Broglie Waves · Radiation',col:'quant',cards:[
+ {t:'Photon Energy',f:T`E=h\nu=\dfrac{hc}{\lambda}`,c:'11',s:'A violet photon has more energy than a red one.',e:'λ = 500 nm → **4·10⁻¹⁹ J ≈ 2.5 eV**.',err:'Useful rule: E(eV) ≈ 1240 / λ(nm).',k:[['lam','λ, nm',500]],o:['E, J','hp*c/(lam*1e-9)'],
+  kids:[
+   {t:'Photon Momentum',f:T`p=\dfrac h\lambda=\dfrac Ec`,c:'11',s:'A photon has no rest mass but has momentum. That\'s why light exerts pressure.'},
+   {t:'Light Pressure',f:T`p=\dfrac{I}{c}(1+\rho)`,c:'11',a:1,s:'ρ = 1 is a mirror surface, ρ = 0 is fully absorbing.',e:'Sunlight near Earth, I ≈ 1400 W/m², black surface → **≈ 4.7·10⁻⁶ Pa**.'}
+  ]},
+ {t:'Einstein\'s Photoelectric Equation',f:T`h\nu=A_{\text{out}}+\dfrac{mv^2}{2}`,c:'11',s:'Photon energy = work function + kinetic energy of the electron.',e:'4·10⁻¹⁹ J − 3·10⁻¹⁹ J → E_k = **10⁻¹⁹ J**.',err:'Photoelectric effect happens only if hν > A_out, regardless of light intensity.',
+  kids:[
+   {t:'Red Limit of Photoelectric Effect',f:T`\nu_{\text{red}}=\dfrac{A_{\text{out}}}{h},\quad \lambda_{\text{red}}=\dfrac{hc}{A_{\text{out}}}`,c:'11',d:'At hν = A_out the speed of the emitted electron is zero'},
+   {t:'Stopping Voltage',f:T`eU_{\text{stop}}=\dfrac{mv_{\max}^2}{2}`,c:'11',s:'Voltage that stops the fastest photoelectrons.',e:'E_k = 1.6·10⁻¹⁹ J (1 eV) → U_stop = **1 V**.'}
+  ]},
+ {t:'de Broglie Waves',f:T`\lambda=\dfrac hp=\dfrac{h}{mv}`,c:'11',s:'Any particle has wave properties. For balls the wavelength is negligible, for electrons it\'s comparable to atoms.',e:'Electron, v = 10⁶ m/s → λ ≈ **0.73 nm**.',k:[['v','v, m/s',1e6]],o:['λ, m (electron)','hp/(me*v)']},
+ {t:'Heisenberg Uncertainty Principle',f:T`\Delta x\,\Delta p\ge\dfrac\hbar2`,c:'11',a:1,s:'You cannot simultaneously know both the exact position and momentum of a particle.'},
+ {t:'Thermal Radiation',f:T`R=\sigma T^4,\quad \lambda_{\max}=\dfrac bT`,c:'11',a:1,s:'Stefan-Boltzmann law: emitted power per m² grows as T⁴. Wien\'s law: hotter bodies emit shorter wavelengths.',e:'Sun, T ≈ 5800 K → λ_max ≈ **500 nm** (yellow-green).'}
+]},
+
+/* ============ 15 NUCLEAR PHYSICS ============ */
+{id:'nuclear',n:'Nuclear Physics',sub:'Nucleus · Binding Energy · Radioactivity',col:'nuc',cards:[
+ {t:'Composition of Nucleus',f:T`A=Z+N`,c:'9-11',s:'Mass number is the number of protons plus neutrons.',e:'¹⁴₆C: Z = 6, A = 14 → N = **8**.'},
+ {t:'Mass Defect and Binding Energy',f:T`\Delta m=Zm_p+Nm_n-M_{\text{nuc}},\quad E_{\text{b}}=\Delta m\,c^2`,c:'9-11',s:'A whole nucleus is lighter than the sum of its parts. The mass difference is the binding energy.',e:'Δm = 1.66·10⁻³⁰ kg → **1.5·10⁻¹³ J**. 1 amu ↔ **931.5 MeV**.',k:[['dm','Δm, kg',1.66e-30],['c0','c, m/s',2.998e8]],o:['E_b, J','dm*c0*c0']},
+ {t:'Law of Radioactive Decay',f:T`N=N_0\cdot2^{-t/T_{1/2}}`,c:'9-11',s:'Every half-life T½ leaves half the nuclei.',e:'t = 2T½ → **25%** left.',k:[['N0','N₀',1000],['t','t',20],['T','T½',10]],o:['N','N0*Math.pow(2,-t/T)'],
+  kids:[
+   {t:'Decay Constant and Activity',f:T`\lambda=\dfrac{\ln2}{T_{1/2}},\quad A=\lambda N`,c:'11',a:1,e:'T½ = 10 s → λ ≈ **0.069 s⁻¹**.'}
+  ]},
+ {t:'Radioactive Transformations',f:T`{}^A_Z X\to{}^{A-4}_{Z-2}Y+{}^4_2\text{He}`,c:'9-11',s:'Charge and mass number are conserved.',
+  tbl:{cols:['Type','Emitted','Z of nucleus','A of nucleus'],rows:[['α-decay','⁴₂He nucleus','−2','−4'],['β⁻-decay','electron (+ antineutrino)','+1','0'],['β⁺-decay','positron (+ neutrino)','−1','0'],['γ-radiation','photon','0','0']]}},
+ {t:'Nuclear Reactions and Energy Yield',f:T`Q=\left(\sum M_{\text{before}}-\sum M_{\text{after}}\right)c^2`,c:'11',a:1,s:'If mass decreases — energy is released (Q > 0).',e:'One fission of ²³⁵U yields about **200 MeV**.'},
+ {t:'Absorbed Dose',f:T`D=\dfrac Em`,c:'9-11',s:'Radiation energy absorbed per unit mass.',e:'0.5 J absorbed by 50 kg → **0.01 Gy**.'}
+]},
+
+/* ============ 16 SPECIAL RELATIVITY ============ */
+{id:'sto',n:'Special Relativity',sub:'Relativistic effects · Energy and Momentum',col:'quant',cards:[
+ {t:'Postulates of STR',f:T`c=\mathrm{const}`,c:'11',s:'1) Physics laws are the same in all inertial frames. 2) The speed of light in vacuum is the same for all observers.',w:'einstein postulate relativity'},
+ {t:'Relativistic Factor',f:T`\gamma=\dfrac{1}{\sqrt{1-v^2/c^2}}`,c:'11',s:'Shows how noticeable relativistic effects are.',e:'v = 0.8c → γ = **1.67**.',k:[['b','β = v/c',0.8]],o:['γ','1/Math.sqrt(1-b*b)'],
+  kids:[
+   {t:'Time Dilation',f:T`\Delta t=\gamma\,\Delta t_0=\dfrac{\Delta t_0}{\sqrt{1-v^2/c^2}}`,c:'11',s:'Clocks run slower on a fast rocket.',e:'v = 0.8c: 1 year on rocket is **1.67 years** on Earth.',k:[['dt0','Δt₀, years',1],['b','β = v/c',0.8]],o:['Δt, years','dt0/Math.sqrt(1-b*b)']},
+   {t:'Length Contraction',f:T`l=l_0\sqrt{1-v^2/c^2}`,c:'11',s:'A fast object "squashes" along the direction of motion.',e:'Ship 100 m at v = 0.6c → **80 m**.'},
+   {t:'Relativistic Velocity Addition',f:T`u=\dfrac{u'+v}{1+u'v/c^2}`,c:'11',s:'You cannot exceed the speed of light by adding velocities.',e:'Two ships at 0.5c towards each other → **0.8c**, not c.'}
+  ]},
+ {t:'Rest and Total Energy',f:T`E_0=mc^2,\quad E=\gamma mc^2`,c:'11',s:'Even at rest a body has huge energy. 1 kg ↔ 9·10¹⁶ J.',err:'School physics does not use "relativistic mass": rest mass is constant, energy grows.',
+  kids:[
+   {t:'Kinetic Energy',f:T`E_k=(\gamma-1)mc^2`,c:'11',s:'At low speeds it becomes mv²/2.'},
+   {t:'Relativistic Momentum',f:T`p=\gamma mv`,c:'11',a:1},
+   {t:'Energy-Momentum Relation',f:T`E^2=(pc)^2+(mc^2)^2`,c:'11',a:1,s:'For a photon (m = 0): E = pc.'},
+   {t:'Lorentz Transformations',f:T`x'=\gamma(x-vt),\quad t'=\gamma\left(t-\dfrac{vx}{c^2}\right)`,c:'11',a:1,s:'Relates coordinates and time of one event in two inertial frames.'}
+  ]}
+]},
+
+/* ============ 17 ASTRONOMY ============ */
+{id:'astronomy',n:'Astronomy',sub:'Kepler\'s Laws · Cosmic Velocities · Stars · Cosmology',col:'astro',cards:[
+ {t:'Kepler\'s First Law',f:T`\text{orbit is an ellipse, Sun at focus}`,c:'9-11',s:'Planets move in ellipses.'},
+ {t:'Kepler\'s Second Law',f:T`\dfrac{\Delta S}{\Delta t}=\mathrm{const}`,c:'9-11',s:'Equal areas in equal times. A planet moves faster near the Sun.',e:'v_p·r_p = v_a·r_a'},
+ {t:'Kepler\'s Third Law',f:T`\dfrac{T^2}{a^3}=\dfrac{4\pi^2}{GM}`,c:'9-11',s:'Square of period is proportional to cube of semi-major axis.',e:'If a is 4 times Earth\'s → T = √(4³) = **8 years**.',k:[['a','a, AU (around Sun)',4]],o:['T, years','Math.pow(a,1.5)'],
+  kids:[
+   {t:'Orbital Period',f:T`T=2\pi\sqrt{\dfrac{a^3}{GM}}`,c:'10-11'},
+   {t:'Refined Third Law',f:T`\dfrac{T^2}{a^3}=\dfrac{4\pi^2}{G(M+m)}`,c:'11',a:1,s:'Accounts for the mass of the planet m, not just the Sun M.'}
+  ]},
+ {t:'Cosmic Velocities',f:T`v_1=\sqrt{\dfrac{GM}{R}},\; v_2=\sqrt{\dfrac{2GM}{R}}=\sqrt2\,v_1`,c:'9-11',s:'v₁ is circular orbit at surface (Earth: 7.9 km/s). v₂ is escape velocity (11.2 km/s).',e:'Earth: M = 5.97·10²⁴ kg, R = 6371 km → v₁ ≈ **7.9 km/s**.',k:[['M','M, kg',5.97e24],['R','R, m',6.371e6]],o:['v₁, m/s','Math.sqrt(G*M/R)'],
+  kids:[
+   {t:'Circular Orbit Speed',f:T`v=\sqrt{\dfrac{GM}{r}}`,c:'10-11',s:'Higher orbit means slower satellite.'},
+   {t:'Elliptical Orbit Speed',f:T`v=\sqrt{GM\left(\dfrac2r-\dfrac1a\right)}`,c:'11',a:1},
+   {t:'Geostationary Orbit',f:T`r=\left(\dfrac{GMT^2}{4\pi^2}\right)^{1/3}`,c:'10-11',a:1,s:'Period = 24 h. Satellite "hangs" over one point.',e:'r ≈ **42,164 km** from center.'}
+  ]},
+ {t:'Stellar Parameters',f:T`L=4\pi R^2\sigma T^4`,c:'11',a:1,s:'Luminosity depends on radius and temperature.',e:'A star twice as hot as the Sun of same size is **16 times** brighter.',
+  kids:[
+   {t:'Magnitudes',f:T`m_1-m_2=-2.5\lg\dfrac{E_1}{E_2}`,c:'11',a:1,s:'Lower m means brighter. Difference of 5 magnitudes is 100 times brightness.'},
+   {t:'Annual Parallax',f:T`d[\text{pc}]=\dfrac{1}{\pi''}`,c:'11',s:'Distance to stars by shift against background.',e:'π = 0.1″ → d = **10 pc**.',k:[['pi','π, arcsec',0.1]],o:['d, pc','1/pi']}
+  ]},
+ {t:'Hubble\'s Law',f:T`v=H\,d`,c:'11',a:1,s:'Distant galaxies recede faster. Expansion of the Universe.',e:'d = 100 Mpc → v ≈ **7000 km/s**.',k:[['d','d, Mpc',100]],o:['v, km/s (H=70)','70*d']},
+ {t:'Schwarzschild Radius',f:T`r_s=\dfrac{2GM}{c^2}`,c:'11',a:1,s:'Radius at which a body becomes a black hole.',e:'Sun r_s ≈ **3 km**, Earth ≈ **9 mm**.',k:[['M','M, kg',1.989e30]],o:['r_s, m','2*G*M/(c*c)']}
+]},
+
+/* ============ 18 EM WAVES ============ */
+{id:'emwaves',n:'Electromagnetic Waves',sub:'Speed · Wavelength · EM Spectrum',col:'em',cards:[
+ {t:'EM Wave Speed',f:T`c=\dfrac1{\sqrt{\mu_0\varepsilon_0}}\approx3\cdot10^8\ \text{m/s}`,c:'11',s:'Radio, light, X-ray — all EM waves. In vacuum, all travel at speed of light.',
+  kids:[{t:'Speed in Medium',f:T`v=\dfrac{c}{\sqrt{\varepsilon\mu}}=\dfrac cn`,c:'11'}]},
+ {t:'Wavelength-Frequency Relation',f:T`c=\lambda\nu,\quad \lambda=\dfrac c\nu`,c:'9-11',s:'Higher frequency means shorter wavelength.',e:'ν = 100 MHz → λ = **3 m**.',k:[['nu','ν, MHz',100]],o:['λ, m','c/(nu*1e6)']},
+ {t:'EM Wave Period',f:T`T=\dfrac1\nu=\dfrac\lambda c`,c:'9-11'},
+ {t:'Relation between E and B',f:T`E=cB`,c:'11',s:'Electric and magnetic fields oscillate in phase in an EM wave.'},
+ {t:'Radar',f:T`s=\dfrac{ct}{2}`,c:'9-11',s:'Signal goes to target and back, so divide by 2.',e:'Echo after 200 μs → target at **30 km**.',k:[['t','t, μs',200]],o:['s, m','c*t*1e-6/2']},
+ {t:'Radio Tuning',f:T`\nu=\dfrac{1}{2\pi\sqrt{LC}}`,c:'11',s:'Changing capacitance tunes the circuit to a station.',e:'L = 1 μH, C = 100 pF → ν ≈ **15.9 MHz**.'},
+ {t:'EM Spectrum',f:T`\text{radio}\to\text{IR}\to\text{light}\to\text{UV}\to\text{X-ray}\to\gamma`,c:'11',tbl:{cols:['Range','Wavelength','Application'],rows:[['Radio','> 1 mm','communication, TV, radar'],['Microwave','1 mm – 1 m','Wi-Fi, microwave oven'],['Infrared','760 nm – 1 mm','thermal imaging, remote controls'],['Visible','380–760 nm','red to violet'],['Ultraviolet','10–380 nm','tanning, sterilization'],['X-ray','0.01–10 nm','medicine, defectoscopy'],['Gamma','< 0.01 nm','nuclear processes']]}}
+]},
+
+/* ============ 19 STATISTICAL PHYSICS ============ */
+{id:'statphys',n:'Statistical Physics',sub:'Maxwell Distribution · Boltzmann · Barometric Formula',col:'stat',cards:[
+ {t:'Maxwell Distribution of Speeds',f:T`f(v)=4\pi v^2\left(\dfrac{m}{2\pi kT}\right)^{3/2}e^{-mv^2/2kT}`,c:'11',a:1,s:'Molecules do not all fly at the same speed: most are near average, but some are very fast or very slow. The graph is a "hump". Higher T shifts it right.',w:'hump lab'},
+ {t:'Characteristic Speeds',f:T`v_{\text{prob}}=\sqrt{\dfrac{2kT}{m}},\;\langle v\rangle=\sqrt{\dfrac{8kT}{\pi m}},\;v_{\text{rms}}=\sqrt{\dfrac{3kT}{m}}`,c:'11',a:1,s:'Most probable is the peak. Average is the arithmetic mean. RMS is used in E_k. Ratio: 1 : 1.13 : 1.22.',e:'N₂ at 300 K: v_prob ≈ **422**, ⟨v⟩ ≈ **476**, v_rms ≈ **517 m/s**.',k:[['T','T, K',300],['M','M, kg/mol',0.028]],o:['v_prob, m/s','Math.sqrt(2*Rg*T/M)']},
+ {t:'Equipartition Theorem',f:T`\overline{E}=\dfrac i2kT`,c:'11',a:1,s:'Each degree of freedom gets on average kT/2 energy.',e:'Monatomic gas: i = 3. Diatomic at room T: i = 5.'},
+ {t:'Boltzmann Distribution',f:T`n=n_0e^{-E_p/kT}`,c:'11',a:1,s:'Concentration of particles in a potential field drops exponentially with energy.',
+  kids:[{t:'Barometric Formula',f:T`p=p_0e^{-Mgh/RT}`,c:'10-11',s:'Air pressure drops with altitude.',e:'h = 5500 m → pressure **≈ half** of sea level.',k:[['h','h, m',5500],['T','T, K',273]],o:['p/p₀','Math.exp(-0.029*g*h/(Rg*T))']}]},
+ {t:'Entropy (Boltzmann Formula)',f:T`S=k\ln W`,c:'11',a:1,s:'More ways to realize a state (W) means higher entropy.'}
+]},
+
+/* ============ 20 CONTINUOUS MEDIA ============ */
+{id:'fluids',n:'Mechanics of Continuous Media',sub:'Continuity · Bernoulli · Viscosity · Deformations',col:'fluid',cards:[
+ {t:'Continuity Equation',f:T`S_1v_1=S_2v_2=\mathrm{const}`,c:'10-11',a:1,s:'Where the pipe is narrower, fluid flows faster.',e:'Area halved → speed doubled.',
+  kids:[{t:'Fluid Flow Rate',f:T`Q=vS=\mathrm{const}`,c:'10-11',a:1,sym:'Q — volumetric flow rate (m³/s)'}]},
+ {t:'Bernoulli\'s Equation',f:T`\dfrac{\rho v^2}{2}+\rho gh+p=\mathrm{const}`,c:'11',a:1,s:'Higher speed means lower pressure. This is how an airplane wing generates lift.',e:'Horizontal pipe: speed 2 → 4 m/s → pressure dropped by **ρ(v₂²−v₁²)/2 = 6 kPa**.',
+  kids:[{t:'Torricelli\'s Formula',f:T`v=\sqrt{2gh}`,c:'10-11',a:1,s:'Speed of fluid flowing from a hole at depth h.',e:'Hole 0.8 m deep → **≈ 4 m/s**.',k:[['h','h, m',0.8]],o:['v, m/s','Math.sqrt(2*g*h)']}]},
+ {t:'Viscous Friction (Stokes\' Law)',f:T`F=6\pi\eta rv`,c:'11',a:1,s:'Drag force on a sphere in a viscous fluid.',
+  kids:[{t:'Reynolds Number',f:T`\mathrm{Re}=\dfrac{\rho vd}{\eta}`,c:'11',a:1,s:'Low Re — laminar flow, high Re — turbulent flow.'}]},
+ {t:'Elastic Deformation',f:T`\sigma=E\varepsilon,\quad \sigma=\dfrac FS,\;\varepsilon=\dfrac{\Delta l}{l}`,c:'10-11',a:1,s:'Stress is proportional to relative strain.',e:'Steel: E ≈ 2·10¹¹ Pa. Rod 1 m, S = 1 mm², F = 200 N → Δl = **1 mm**.'}
+]},
+
+/* ============ 21 BOHR MODEL ============ */
+{id:'bohr',n:'Atomic Physics (Bohr Model)',sub:'Postulates · Energy Levels · Spectral Series',col:'bohr',cards:[
+ {t:'First Bohr Postulate',f:T`m v r=n\hbar`,c:'11',s:'Electron can only be on certain "allowed" orbits, like steps on a staircase.',err:'This is a model for hydrogen-like atoms. Modern physics uses electron clouds.'},
+ {t:'Second Bohr Postulate',f:T`h\nu=E_{n_2}-E_{n_1}`,c:'11',s:'Electron "jumps" down — atom emits a photon. Jumps up — absorbs.',e:'Transition 2 → 1 in hydrogen → photon **122 nm** (UV).'},
+ {t:'Energy on n-th Orbit',f:T`E_n=-\dfrac{13.6}{n^2}\ \text{eV}`,c:'11',s:'Larger n means higher energy. n = 1 is ground state (−13.6 eV).',e:'n = 2 → E = **−3.4 eV**.',k:[['n','n',2]],o:['E, eV','-13.6/(n*n)'],
+  kids:[
+   {t:'Radius of n-th Orbit',f:T`r_n=n^2r_1,\quad r_1\approx0.529\cdot10^{-10}\ \text{m}`,c:'11',k:[['n','n',3]],o:['r, Å','0.529*n*n']},
+   {t:'Electron Speed on Orbit',f:T`v_n=\dfrac{2.19\cdot10^6}{n}\ \text{m/s}`,c:'11',a:1}
+  ]},
+ {t:'Generalized Balmer Formula',f:T`\dfrac1\lambda=R\left(\dfrac{1}{n_1^2}-\dfrac{1}{n_2^2}\right)`,c:'11',s:'Wavelength of emission when transitioning from n₂ to n₁.',e:'n₁ = 2, n₂ = 3 → λ ≈ **656 nm** (H_α red line).',k:[['n1','n₁',2],['n2','n₂',3]],o:['λ, nm','1e9/(1.097e7*(1/(n1*n1)-1/(n2*n2)))'],
+  tbl:{cols:['Series','Lower level n₁','Range'],rows:[['Lyman','1','ultraviolet'],['Balmer','2','visible (H_α 656, H_β 486 nm)'],['Paschen','3','infrared'],['Brackett','4','infrared'],['Pfund','5','infrared']]},
+  kids:[{t:'Number of Spectral Lines',f:T`N=\dfrac{n(n-1)}{2}`,c:'11',a:1,e:'From n = 4 there are **6** lines.'}]}
+]},
+
+/* ============ 22 LABORATORY ============ */
+{id:'lab',n:'Interactive Laboratory',sub:'Move the sliders to bring formulas to life',col:'lab',lab:true},
+
+/* ============ 23 REFERENCE TABLES ============ */
+{id:'tables',n:'Reference Tables',sub:'Constants · Prefixes · Units · Densities · Planets',col:'tab',cards:[
+ {t:'Physical Constants',c:'7-11',tbl:{cols:['Quantity','Symbol','Value'],rows:[['Gravitational constant','G','6.674·10⁻¹¹ N·m²/kg²'],['Acceleration due to gravity','g','9.81 m/s² (≈ 10 in problems)'],['Speed of light','c','2.998·10⁸ m/s'],['Planck constant','h','6.626·10⁻³⁴ J·s'],['Reduced Planck constant','ħ','1.055·10⁻³⁴ J·s'],['Elementary charge','e','1.602·10⁻¹⁹ C'],['Electron mass','mₑ','9.109·10⁻³¹ kg'],['Proton mass','m_p','1.673·10⁻²⁷ kg'],['Neutron mass','m_n','1.675·10⁻²⁷ kg'],['Avogadro constant','N_A','6.022·10²³ mol⁻¹'],['Universal gas constant','R','8.314 J/(mol·K)'],['Boltzmann constant','k','1.381·10⁻²³ J/K'],['Stefan-Boltzmann constant','σ','5.67·10⁻⁸ W/(m²·K⁴)'],['Wien constant','b','2.898·10⁻³ m·K'],['Coulomb constant','k','8.99·10⁹ N·m²/C²'],['Electric constant','ε₀','8.854·10⁻¹² F/m'],['Magnetic constant','μ₀','4π·10⁻⁷ H/m'],['Faraday constant','F','96 485 C/mol'],['Rydberg constant','R','1.097·10⁷ m⁻¹'],['Bohr radius','r₁','0.529·10⁻¹⁰ m'],['Atomic mass unit','1 amu','1.661·10⁻²⁷ kg = 931.5 MeV/c²'],['Normal atmospheric pressure','p₀','101 325 Pa = 760 mmHg'],['Absolute zero','0 K','−273.15 °C']]}},
+ {t:'SI Prefixes',c:'7-11',tbl:{cols:['Prefix','Symb.','Factor','Prefix','Symb.','Factor'],rows:[['tera','T','10¹²','deci','d','10⁻¹'],['giga','G','10⁹','centi','c','10⁻²'],['mega','M','10⁶','milli','m','10⁻³'],['kilo','k','10³','micro','μ','10⁻⁶'],['hecto','h','10²','nano','n','10⁻⁹'],['deca','da','10¹','pico','p','10⁻¹²']]}},
+ {t:'Unit Conversions',c:'7-11',tbl:{cols:['Quantity','Relation'],rows:[['Speed','1 km/h = 0.278 m/s; 36 km/h = 10 m/s'],['Volume','1 L = 10⁻³ m³ = 1 dm³'],['Density','1 g/cm³ = 1000 kg/m³'],['Area','1 cm² = 10⁻⁴ m²; 1 mm² = 10⁻⁶ m²'],['Pressure','1 atm = 101 325 Pa; 1 mmHg ≈ 133 Pa'],['Energy','1 kWh = 3.6·10⁶ J; 1 eV = 1.6·10⁻¹⁹ J'],['Power','1 hp = 735.5 W'],['Temperature','T (K) = t (°C) + 273'],['Astronomy','1 AU = 1.496·10¹¹ m; 1 ly = 9.46·10¹⁵ m']]}},
+ {t:'SI Dimensions',c:'7-11',tbl:{cols:['Quantity','Unit','Base units'],rows:[['Force','N','kg·m/s²'],['Energy','J','N·m'],['Power','W','J/s'],['Pressure','Pa','N/m²'],['Frequency','Hz','1/s'],['Charge','C','A·s'],['Voltage','V','J/C'],['Resistance','Ω','V/A']]}},
+ {t:'Densities',c:'7-9',tbl:{cols:['Substance','ρ, kg/m³','Substance','ρ, kg/m³'],rows:[['Water','1000','Aluminum','2700'],['Seawater','1030','Iron, steel','7800'],['Ice','900','Copper','8900'],['Alcohol','800','Lead','11 300'],['Kerosene','800','Mercury','13 600'],['Air (0 °C)','1.29','Gold','19 300']]}},
+ {t:'Specific Heat Capacities',c:'8',tbl:{cols:['Substance','c, J/(kg·°C)','Substance','c, J/(kg·°C)'],rows:[['Water','4200','Aluminum','920'],['Ice','2100','Iron','460'],['Steam','2000','Copper','380'],['Alcohol','2400','Lead','130'],['Air','1000','Glass','840']]}},
+ {t:'Heat of Fusion, Vaporization, Combustion',c:'8',tbl:{cols:['Substance','t melt, °C','λ, kJ/kg','Substance','L, kJ/kg','Fuel','q, MJ/kg'],rows:[['Ice','0','330','Water','2300','Gasoline','46'],['Aluminum','660','390','Alcohol','840','Kerosene','46'],['Copper','1085','210','Ether','350','Diesel','42'],['Iron','1538','270','Mercury','285','Natural gas','44'],['Lead','327','25','','','Coal','27']]}},
+ {t:'Electrical Resistivity',c:'8-10',tbl:{cols:['Substance','ρ, Ω·mm²/m','Substance','ρ, Ω·mm²/m'],rows:[['Silver','0.016','Steel','0.15'],['Copper','0.017','Tungsten','0.055'],['Aluminum','0.028','Constantan','0.5'],['Iron','0.10','Nichrome','1.1']]}},
+ {t:'Refractive Indices and Permittivities',c:'8-11',tbl:{cols:['Medium','n','Substance','ε'],rows:[['Air','1.0003','Vacuum','1'],['Water','1.33','Air','1.0006'],['Alcohol','1.36','Paraffin','2.1'],['Glass','≈ 1.5','Kerosene','2'],['Diamond','2.42','Glass','5–7'],['Ice','1.31','Water','81']]}},
+ {t:'Solar System Data',c:'9-11',tbl:{cols:['Body','M, kg','R, km','g, m/s²','v₂, km/s','a, AU','T, years'],rows:[['Sun','1.989·10³⁰','696 000','274','618','—','—'],['Mercury','3.3·10²³','2440','3.7','4.3','0.387','0.241'],['Venus','4.87·10²⁴','6052','8.9','10.4','0.723','0.615'],['Earth','5.97·10²⁴','6371','9.8','11.2','1.000','1.000'],['Moon','7.35·10²²','1737','1.62','2.4','—','—'],['Mars','6.42·10²³','3390','3.7','5.0','1.524','1.88'],['Jupiter','1.90·10²⁷','69 900','24.8','59.5','5.20','11.86'],['Saturn','5.68·10²⁶','58 200','10.4','35.5','9.54','29.5']]}}
+]}
+];
 </script>
 
 <!-- ===================== ПРИЛОЖЕНИЕ ===================== -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
+    // ВЫБИРАЕМ ЯЗЫК ДАННЫХ
+  const lang = localStorage.getItem('fiz-lang') || 'ru';
+  const DATA = lang === 'en' ? (typeof SECTIONS_EN !== 'undefined' ? SECTIONS_EN : SECTIONS) : SECTIONS;
 
   var CONSTS = {G:6.674e-11, g:9.8, kC:8.99e9, kB:1.381e-23, hp:6.626e-34, c:2.998e8, e0:8.854e-12, mu0:1.2566e-6, qe:1.602e-19, me:9.109e-31, NA:6.022e23, Rg:8.314, sigma:5.67e-8};
   var main = document.getElementById('main');
@@ -784,7 +1191,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return node;
   }
 
-  SECTIONS.forEach(function(sec, si){
+  DATA.forEach(function(sec, si){
     var num_ = si + 1;
     var secEl = el('section', 'section'); secEl.id = 'sec-' + sec.id; secEl.style.setProperty('--c', 'var(--c-' + sec.col + ')');
     secEl.innerHTML = '<div class="section-head"><div class="section-num">' + pad(num_) + '</div><div><h2>' + esc(sec.n) + '</h2><p>' + esc(sec.sub) + '</p></div></div>';
@@ -1104,6 +1511,55 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch((err) => console.warn('SW не зарегистрирован:', err));
     });
   }
+</script>
+<script>
+  // --- НАСТРОЙКА ЯЗЫКА ИНТЕРФЕЙСА ---
+  let currentLang = localStorage.getItem('fiz-lang') || 'ru';
+
+  const UI_STRINGS = {
+    ru: {
+      search: "🔍 Поиск: скорость, Ом, фотон, Кеплер...  (нажми /)",
+      expand: "📖 Развернуть всё",
+      collapse: "📕 Свернуть всё",
+      langBtn: "🇬🇧 EN",
+      jump: "📑 Разделы…",
+      fav: "⭐ Избранное",
+      train: "🎓 Тренировка"
+    },
+    en: {
+      search: "🔍 Search: speed, Ohm, photon, Kepler...  (press /)",
+      expand: "📖 Expand all",
+      collapse: "📕 Collapse all",
+      langBtn: "🇷🇺 RU",
+      jump: "📑 Sections…",
+      fav: "⭐ Favorites",
+      train: "🎓 Training"
+    }
+  };
+
+  function applyUI() {
+    const t = UI_STRINGS[currentLang];
+    document.getElementById('search').placeholder = t.search;
+    document.getElementById('langToggle').textContent = t.langBtn;
+    document.getElementById('jump').options[0].textContent = t.jump;
+    document.getElementById('favOnly').childNodes[0].nodeValue = t.fav + " ";
+    document.getElementById('trainBtn').textContent = t.train;
+    
+    const expBtn = document.getElementById('toggleExpand');
+    if (expBtn) {
+        expBtn.textContent = expBtn.textContent.includes('📕') || expBtn.textContent.includes('Collapse') ? t.collapse : t.expand;
+    }
+  }
+
+  function toggleLang() {
+    currentLang = currentLang === 'ru' ? 'en' : 'ru';
+    localStorage.setItem('fiz-lang', currentLang);
+    // Перезагружаем страницу, чтобы применить новые данные
+    location.reload(); 
+  }
+
+  // Применяем интерфейс при загрузке страницы
+  document.addEventListener('DOMContentLoaded', applyUI);
 </script>
 </body>
 </html>
